@@ -1,3 +1,11 @@
 export { default as ArrowRightIcon } from './ArrowRightIcon';
 export { default as ArrowRightOutlinedIcon } from './ArrowRightOutlinedIcon';
 export { default as ArrowLeftIcon } from './ArrowLeftIcon';
+export { default as BulbIcon } from './BulbIcon';
+export { default as PlanetIcon } from './PlanetIcon';
+export { default as EcologyHouseIcon } from './EcologyHouseIcon';
+export { default as ThermometerIcon } from './ThermometerIcon';
+export { default as SprayIcon } from './SprayIcon';
+export { default as GlobeIcon } from './GlobeIcon';
+export { default as GearIcon } from './GearIcon';
+export { default as CheckCircleIcon } from './CheckCircleIcon';
