@@ -12,7 +12,13 @@ import styles from './Button.module.scss';
 export type ButtonProps<T extends ElementType = 'button'> = {
   as?: T;
   fullWidth?: boolean;
-  variant?: 'primary' | 'callback' | 'primary_with_icon' | 'link' | 'secondary';
+  variant?:
+    | 'primary'
+    | 'callback'
+    | 'primary_with_icon'
+    | 'link'
+    | 'secondary'
+    | 'icon';
 } & ComponentPropsWithoutRef<T>;
 
 export const Button = forwardRef(

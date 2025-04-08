@@ -1,0 +1,75 @@
+.container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.root {
+  cursor: pointer;
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  background-color: var(--white);
+  border: 1px solid #252b3333;
+  border-radius: 2px;
+
+  & > button {
+    all: unset;
+  }
+
+  &:hover {
+    border-color: var(--green);
+  }
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+    background-color: transparent;
+    border-color: #252b330d;
+  }
+
+  &[data-state='checked'] {
+    width: 32px;
+    height: 32px;
+    background-color: var(--green);
+    border-radius: 2px;
+    border: none;
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+.label {
+  opacity: 0.5;
+  &.disabled {
+    opacity: 0.2;
+  }
+}
+
+.isRequired {
+  &::after {
+    content: '*';
+    color: var(--red);
+  }
+}

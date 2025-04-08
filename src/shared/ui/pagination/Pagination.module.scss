@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
+}
+.pagination {
+  display: flex;
+  gap: 8px;
+}
+.paginationElem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  border: none;
+  background-color: transparent;
+  width: 51px;
+  height: 51px;
+
+  &:hover {
+    color: var(--green);
+    text-decoration: underline;
+    opacity: 0.5;
+  }
+
+  &.active {
+    color: var(--green);
+    text-decoration: underline;
+  }
+}
