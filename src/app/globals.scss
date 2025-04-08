@@ -1,0 +1,278 @@
+@import '../assets/sass/functions';
+@import '../assets/fonts/fonts.scss';
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --text: #252b33;
+  --bg: #fcfcfc;
+  --white: #ffffff;
+
+  --grey-1: #e9e8e5;
+  --grey-2: #e8e8e7;
+  --grey-3: #484a51;
+
+  --green: #86c05b;
+  --green-2: #56902b;
+  --blue: #1f3d5f;
+  --red: #e66a54;
+
+  --second-family: 'Igra Sans', sans-serif;
+}
+
+.h1 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 140%;
+  text-transform: uppercase;
+}
+
+.h1-other {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 120%;
+  text-transform: uppercase;
+}
+
+.h2 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 140%;
+  text-transform: uppercase;
+}
+
+.h3 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.h4 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 140%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.h5 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.body-1 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 140%;
+}
+
+.body-2 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+}
+
+.body-3 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.body-4 {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 140%;
+}
+
+.body-5 {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 140%;
+}
+
+.body-6 {
+  font-family: var(--font3);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 140%;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.button-primary {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.button-secondary {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.t-placeholder {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.t-header {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1490px) {
+  .h1 {
+    font-size: vw-1490(80);
+  }
+
+  .h1-other {
+    font-size: vw-1490(56);
+  }
+
+  .h2 {
+    font-size: vw-1490(48);
+  }
+
+  .h3 {
+    font-size: vw-1490(40);
+  }
+
+  .h4 {
+    font-size: vw-1490(28);
+  }
+
+  .h5 {
+    font-size: vw-1490(18);
+  }
+
+  .body-1 {
+    font-size: vw-1490(24);
+  }
+
+  .body-2 {
+    font-size: vw-1490(18);
+  }
+
+  .body-3 {
+    font-size: vw-1490(18);
+  }
+
+  .body-4 {
+    font-size: vw-1490(17);
+  }
+
+  .body-5 {
+    font-size: vw-1490(17);
+  }
+
+  .body-6 {
+    font-size: vw-1490(17);
+  }
+
+  .button-primary {
+    font-size: vw-1490(20);
+  }
+
+  .button-secondary {
+    font-size: vw-1490(16);
+  }
+
+  .t-placeholder {
+    font-size: vw-1490(20);
+  }
+
+  .t-header {
+    font-size: vw-1490(18);
+  }
+}
+
+@media (max-width: 768px) {
+  .h1 {
+    font-size: 28px;
+  }
+
+  .h2 {
+    font-size: 24px;
+  }
+
+  .h3 {
+    font-size: 20px;
+  }
+
+  .h4 {
+    font-size: 14px;
+  }
+
+  .h5 {
+    font-size: 12px;
+  }
+
+  .body-1 {
+    font-size: 18px;
+  }
+
+  .body-2 {
+    font-size: 16px;
+  }
+
+  .body-3 {
+    font-size: 15px;
+  }
+
+  .body-4 {
+    font-size: 14px;
+  }
+
+  .body-5 {
+    font-size: 12px;
+  }
+
+  .body-6 {
+    font-size: 12px;
+  }
+
+  .button-primary {
+    font-size: 18px;
+  }
+
+  .button-secondary {
+    font-size: 14px;
+  }
+
+  .t-placeholder {
+    font-size: 18px;
+  }
+
+  .t-header {
+    font-size: 18px;
+  }
+}

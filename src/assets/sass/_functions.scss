@@ -1,0 +1,3 @@
+@function vw-1490($px) {
+  @return min((($px * 100) / 1490) * 1vw, $px * 1px);
+}
