@@ -10,3 +10,5 @@ export { default as GlobeIcon } from './GlobeIcon';
 export { default as GearIcon } from './GearIcon';
 export { default as CheckCircleIcon } from './CheckCircleIcon';
 export { default as CheckedIcon } from './CheckedIcon';
+export { default as BrickWallIcon } from './BrickWallIcon';
+export { default as BracketsIcon } from './BracketsIcon';
