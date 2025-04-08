@@ -1,0 +1,212 @@
+@import '../../shared/config/styles/functions';
+
+.wrapper {
+  max-width: 1322px;
+  margin: 0 auto;
+  filter: drop-shadow(0px 22px 35px rgba(50, 50, 0, 0.1));
+  margin-bottom: 160px;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  border-radius: 12px;
+  padding: 80px 111px 45px 80px;
+  display: flex;
+  gap: 96px;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.block {
+  width: fit-content;
+  max-width: 530px;
+}
+
+.brackets {
+  flex: 1 1 100%;
+  position: relative;
+  max-width: 505px;
+  width: 100%;
+  text-transform: none;
+}
+
+.brackets span {
+  font-weight: 700;
+}
+
+.icon {
+  position: absolute;
+  color: var(--grey-1);
+  right: 0;
+  bottom: 0;
+}
+
+.image {
+  margin-top: 28px;
+  width: 435px;
+  height: 250px;
+  display: flex;
+}
+
+.link {
+  display: block;
+  margin-top: 68px;
+  text-decoration: none;
+}
+
+.link .button {
+  width: 370px;
+}
+
+.bracketsIcon {
+  position: absolute;
+  color: var(--grey-3);
+  left: -32px;
+  top: -32px;
+  width: 54px;
+  height: 54px;
+}
+
+.bracketsIcon:last-child {
+  left: initial;
+  top: initial;
+  right: -32px;
+  bottom: -32px;
+  transform: rotate(180deg);
+}
+
+.bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+@media (max-width: 1490px) {
+  .wrapper {
+    max-width: vw-1490(1322);
+    margin-bottom: vw-1490(160);
+  }
+
+  .container {
+    border-radius: vw-1490(12);
+    padding: vw-1490(80) vw-1490(111) vw-1490(45) vw-1490(80);
+    gap: vw-1490(96);
+  }
+
+  .block {
+    max-width: vw-1490(530);
+  }
+
+  .brackets {
+    max-width: vw-1490(505);
+  }
+
+  .icon {
+    width: vw-1490(415);
+    height: vw-1490(230);
+  }
+
+  .link .button {
+    width: vw-1490(370);
+    margin-top: vw-1490(68);
+  }
+
+  .bracketsIcon {
+    width: vw-1490(54);
+    height: vw-1490(54);
+    left: vw-1490(-32);
+    top: vw-1490(-32);
+  }
+
+  .bracketsIcon:last-child {
+    left: initial;
+    top: initial;
+    right: vw-1490(-32);
+    bottom: vw-1490(-32);
+  }
+
+  .image {
+    width: vw-1490(435);
+    height: vw-1490(250);
+    margin-top: vw-1490(28);
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 335px;
+    max-width: 335px;
+    margin-bottom: 72px;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 94px 15px 32px;
+    gap: 36px;
+  }
+
+  .block {
+    max-width: 100%;
+    text-align: center;
+    width: 100%;
+  }
+
+  .link {
+    display: none;
+  }
+
+  .linkMobile {
+    display: block;
+    margin-top: 24px;
+    text-decoration: none;
+  }
+
+  .linkMobile .button {
+    width: 100%;
+  }
+
+  .image {
+    width: auto;
+    height: 174px;
+    margin-top: 36px;
+  }
+
+  .bg {
+    display: none;
+  }
+
+  .bgMobile {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .brackets {
+    max-width: 271px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .bracketsIcon {
+    width: 36px;
+    height: 36px;
+    left: vw-768(-16);
+    top: vw-768(-16);
+  }
+
+  .bracketsIcon:last-child {
+    left: initial;
+    top: initial;
+    right: vw-768(-16);
+    bottom: vw-768(-16);
+  }
+}
