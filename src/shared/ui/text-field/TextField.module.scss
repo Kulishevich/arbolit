@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 650px;
+}
+
+.input {
+  box-sizing: border-box;
+  padding: 18px 6px 18px 16px;
+  width: 100%;
+  color: var(--text);
+  border: none;
+  border-bottom: 1px solid #252b3333;
+  background-color: transparent;
+  outline: none;
+
+  &:focus {
+    border-bottom: 1px solid var(--green);
+  }
+
+  &:hover {
+    border-bottom: 1px solid var(--green);
+  }
+
+  &:disabled {
+    opacity: 0.2;
+  }
+
+  &::placeholder {
+    opacity: 0.5;
+  }
+}
+
+.error {
+  color: var(--red);
+  border-bottom: 1px solid var(--red);
+  &::placeholder {
+    color: var(--red);
+  }
+}
+
+.errorMessage {
+  color: var(--red);
+  &::before {
+    content: '*';
+  }
+}
+
+.disabled {
+  cursor: default;
+}

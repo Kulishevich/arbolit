@@ -9,3 +9,4 @@ export { default as SprayIcon } from './SprayIcon';
 export { default as GlobeIcon } from './GlobeIcon';
 export { default as GearIcon } from './GearIcon';
 export { default as CheckCircleIcon } from './CheckCircleIcon';
+export { default as CheckedIcon } from './CheckedIcon';
