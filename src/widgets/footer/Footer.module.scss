@@ -1,0 +1,90 @@
+.container {
+  width: 1322px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  padding: 24px 0 48px;
+
+  & > div {
+    &:nth-child(1) {
+      margin-right: 70px;
+    }
+    &:nth-child(2) {
+      margin-right: 92px;
+    }
+    &:nth-child(3) {
+      margin-right: auto;
+    }
+  }
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 266px;
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 278px;
+  color: var(--text);
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    & > a {
+      text-decoration: none;
+    }
+  }
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  color: var(--text);
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    & > a {
+      text-decoration: none;
+    }
+  }
+}
+
+.contacts {
+  width: 344px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.phones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+
+  & > p {
+    color: var(--grey-3);
+  }
+}

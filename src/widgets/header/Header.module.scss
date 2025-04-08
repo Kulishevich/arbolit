@@ -1,0 +1,48 @@
+.container {
+  width: 1322px;
+  margin: 0 auto;
+}
+
+.info {
+  display: flex;
+
+  & > div:nth-child(1) {
+    margin-right: 340px;
+  }
+
+  & > div:nth-child(2) {
+    margin-right: 42px;
+  }
+  & > div:nth-child(3) {
+    margin-right: 49px;
+  }
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  & > p {
+    width: 209px;
+  }
+}
+
+.phones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+.navigation {
+  display: flex;
+  gap: 72px;
+
+  & > a {
+    text-decoration: none;
+  }
+}

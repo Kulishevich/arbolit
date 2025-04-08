@@ -37,7 +37,9 @@ export const Button = forwardRef(
     const cn = clsx(
       styles.button,
       styles[variant],
-      variant === 'link' ? 'button-secondary' : 'button-primary',
+      variant === 'link' || variant === 'callback'
+        ? 'button-secondary'
+        : 'button-primary',
       fullWidth && styles.fullWidth,
       className
     );

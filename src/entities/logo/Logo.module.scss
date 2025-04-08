@@ -1,0 +1,11 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}

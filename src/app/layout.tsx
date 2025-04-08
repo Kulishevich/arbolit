@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
 import './globals.scss';
+import { Header } from '@/widgets/header';
+import { Footer } from '@/widgets/footer';
 
 const manropeSans = Manrope({
   variable: '--font-family',
@@ -19,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manropeSans.variable}`}>{children}</body>
+      <body className={`${manropeSans.variable}`}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
