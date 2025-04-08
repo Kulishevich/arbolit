@@ -25,6 +25,7 @@ export const Header = () => {
         </div>
         <Button variant="callback">Обратный звонок</Button>
       </div>
+      <div className={s.line}></div>
       <div className={s.navigation}>
         <a className="t-header" href={navigation[0].path}>
           {navigation[0].title}

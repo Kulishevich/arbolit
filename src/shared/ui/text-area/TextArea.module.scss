@@ -5,16 +5,17 @@
   width: 100%;
 }
 
-.input {
+.textarea {
   box-sizing: border-box;
   padding: 18px 6px 18px 16px;
   width: 100%;
+  height: 125px;
   color: var(--text);
   border: none;
   border-bottom: 1px solid #252b3333;
   background-color: transparent;
   outline: none;
-
+  resize: none;
   &:focus {
     border-bottom: 1px solid var(--green);
   }
@@ -29,6 +30,23 @@
 
   &::placeholder {
     opacity: 0.5;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background: var(--grey);
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    flex: 1;
+    background: var(--grey-2);
+    border-radius: 3px;
+
+    &:hover {
+      background: var(--green);
+      cursor: pointer;
+    }
   }
 }
 
@@ -45,8 +63,4 @@
   &::before {
     content: '*';
   }
-}
-
-.disabled {
-  cursor: default;
 }

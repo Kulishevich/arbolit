@@ -8,10 +8,13 @@ import { Button } from '@/shared/ui/button';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { Pagination } from '@/shared/ui/pagination';
 import { TextField } from '@/shared/ui/text-field';
+import { FeedbackForm } from '@/widgets/feedback-form';
+import s from './page.module.scss';
 
 export default function Home() {
   return (
-    <div className="h1">
+    <div className={s.container}>
+      <FeedbackForm />
       <TextField placeholder="Имя" />
       <TextField placeholder="Имя" errorMessage="Неверно введены данные" />
       <Checkbox label="Согласие на обработку персональных данных" />

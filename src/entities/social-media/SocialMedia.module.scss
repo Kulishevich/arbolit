@@ -1,4 +1,7 @@
 .container {
   display: flex;
   gap: 20px;
+  & > svg {
+    flex-shrink: 0;
+  }
 }

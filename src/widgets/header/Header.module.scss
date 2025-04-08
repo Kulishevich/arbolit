@@ -1,6 +1,9 @@
 .container {
   width: 1322px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .info {
@@ -16,6 +19,13 @@
   & > div:nth-child(3) {
     margin-right: 49px;
   }
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: var(--text);
+  opacity: 0.1;
 }
 
 .address {
