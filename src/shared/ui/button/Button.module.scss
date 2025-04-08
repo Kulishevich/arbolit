@@ -22,11 +22,12 @@
 
   &:disabled {
     cursor: default;
+    pointer-events: none;
   }
 }
 
 .primary {
-  color: var(--text);
+  color: var(--white);
   background-color: var(--green);
   padding: 18px 16px;
 
@@ -45,17 +46,27 @@
   }
 
   &:disabled {
-    color: var(--color-bg-overlay);
-    background-color: var(--color-grey);
+    color: var(--text);
+    background-color: var(--grey-2);
+    opacity: 0.5;
   }
 }
 
-.secondary {
-  color: var(--text);
+.primary_with_icon {
+  color: var(--white);
   background-color: var(--green);
+  padding: 6px 6px 6px 16px;
+  gap: 8px;
+
+  & > svg {
+    color: var(--green);
+  }
 
   &:hover {
     background-color: var(--green-2);
+    & > svg {
+      color: var(--green-2);
+    }
   }
 
   &:active {
@@ -69,8 +80,12 @@
   }
 
   &:disabled {
-    color: var(--color-bg-overlay);
-    background-color: var(--color-grey);
+    color: var(--text);
+    background-color: var(--grey-2);
+    opacity: 0.5;
+    & > svg {
+      color: var(--text);
+    }
   }
 }
 
@@ -98,7 +113,101 @@
 
   &:disabled {
     color: var(--text);
-    background-color: var(--text);
+    border: 1px solid var(--text);
+    opacity: 0.5;
+  }
+}
+
+.icon {
+  color: var(--green);
+  background-color: var(--white);
+  border: 1px solid var(--green);
+  height: 51px;
+  width: 51px;
+
+  &:hover {
+    color: var(--white);
+    background-color: var(--green);
+    border: none;
+  }
+
+  &:active {
+    color: var(--white);
+    background-color: var(--green-2);
+    border: none;
+  }
+
+  &:focus-visible {
+    color: var(--white);
+    background-color: var(--green-2);
+    border: none;
+  }
+
+  &:disabled {
+    color: var(--text);
+    opacity: 0.5;
+    border: none;
+  }
+}
+
+.link {
+  color: var(--grey-3);
+  text-decoration: underline;
+  gap: 12px;
+
+  & > svg {
+    color: var(--green);
+  }
+
+  &:hover {
+    color: var(--green);
+  }
+
+  &:active {
+    color: var(--green-2);
+    & > svg {
+      color: var(--green-2);
+    }
+  }
+
+  &:focus-visible {
+    color: var(--green-2);
+    & > svg {
+      color: var(--green-2);
+    }
+  }
+
+  &:disabled {
+    color: var(--text);
+    opacity: 0.5;
+
+    & > svg {
+      color: var(--text);
+    }
+  }
+}
+
+.secondary {
+  padding: 18px 16px;
+  color: var(--white);
+  background-color: var(--grey-3);
+
+  &:hover {
+    background-color: var(--blue);
+  }
+
+  &:active {
+    background-color: var(--blue);
+    box-shadow: 0px 0px 10px 0px #1f3d5f80;
+  }
+
+  &:focus-visible {
+    background-color: var(--blue);
+    box-shadow: 0px 0px 10px 0px #1f3d5f80;
+  }
+
+  &:disabled {
+    opacity: 0.5;
   }
 }
 

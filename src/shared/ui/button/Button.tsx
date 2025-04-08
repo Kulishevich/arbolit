@@ -12,7 +12,7 @@ import styles from './Button.module.scss';
 export type ButtonProps<T extends ElementType = 'button'> = {
   as?: T;
   fullWidth?: boolean;
-  variant?: 'primary' | 'secondary' | 'callback';
+  variant?: 'primary' | 'callback' | 'primary_with_icon' | 'link' | 'secondary';
 } & ComponentPropsWithoutRef<T>;
 
 export const Button = forwardRef(
@@ -31,7 +31,7 @@ export const Button = forwardRef(
     const cn = clsx(
       styles.button,
       styles[variant],
-      'button-primary',
+      variant === 'link' ? 'button-secondary' : 'button-primary',
       fullWidth && styles.fullWidth,
       className
     );
