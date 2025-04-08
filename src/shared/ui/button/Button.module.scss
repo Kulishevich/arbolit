@@ -1,0 +1,107 @@
+.button {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  outline: none;
+  text-transform: uppercase;
+
+  color: inherit;
+  text-align: center;
+
+  & > a {
+    color: inherit;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.primary {
+  color: var(--text);
+  background-color: var(--green);
+  padding: 18px 16px;
+
+  &:hover {
+    background-color: var(--green-2);
+  }
+
+  &:active {
+    background-color: var(--green-2);
+    box-shadow: 0px 0px 10px 0px #56902b80;
+  }
+
+  &:focus-visible {
+    background-color: var(--green-2);
+    box-shadow: 0px 0px 10px 0px #56902b80;
+  }
+
+  &:disabled {
+    color: var(--color-bg-overlay);
+    background-color: var(--color-grey);
+  }
+}
+
+.secondary {
+  color: var(--text);
+  background-color: var(--green);
+
+  &:hover {
+    background-color: var(--green-2);
+  }
+
+  &:active {
+    background-color: var(--green-2);
+    box-shadow: 0px 0px 10px 0px #56902b80;
+  }
+
+  &:focus-visible {
+    background-color: var(--green-2);
+    box-shadow: 0px 0px 10px 0px #56902b80;
+  }
+
+  &:disabled {
+    color: var(--color-bg-overlay);
+    background-color: var(--color-grey);
+  }
+}
+
+.callback {
+  color: var(--green);
+  border: 1px solid var(--green);
+  padding: 16px;
+
+  &:hover {
+    color: var(--green-2);
+    border: 1px solid var(--green-2);
+  }
+
+  &:active {
+    color: var(--green-2);
+    border: 1px solid var(--green-2);
+    box-shadow: 0px 0px 10px 0px #56902b80;
+  }
+
+  &:focus-visible {
+    color: var(--green-2);
+    border: 1px solid var(--green-2);
+    box-shadow: 0px 0px 10px 0px #56902b80;
+  }
+
+  &:disabled {
+    color: var(--text);
+    background-color: var(--text);
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
