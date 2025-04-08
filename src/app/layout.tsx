@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
-import './globals.css';
+import './globals.scss';
 
 const manropeSans = Manrope({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+  variable: '--font-family',
+  subsets: ['latin', 'cyrillic'],
 });
 
 export const metadata: Metadata = {
@@ -19,9 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manropeSans.variable} ${manropeSans.variable}`}>
-        {children}
-      </body>
+      <body className={`${manropeSans.variable}`}>{children}</body>
     </html>
   );
 }
