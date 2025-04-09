@@ -1,51 +1,38 @@
 'use client';
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  ArrowRightOutlinedIcon,
-} from '@/shared/assets/icons';
-import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
-import { Button } from '@/shared/ui/button';
-import { Checkbox } from '@/shared/ui/checkbox';
-import { Pagination } from '@/shared/ui/pagination';
-import { TextField } from '@/shared/ui/text-field';
-import { FeedbackForm } from '@/widgets/feedback-form';
-import { NewsCard } from '@/entities/news-card';
+import AboutBanner from '@/widgets/AboutBanner/AboutBanner';
 import s from './page.module.scss';
-import { GalleryCard } from '@/entities/gallery-card';
+import ArbolitCharacteristicsBlock from '@/widgets/ArbolitCharacteristicsBlock/ArbolitCharacteristicsBlock';
+import AdvantagesBlock from '@/widgets/AdvantagesBlock/AdvantagesBlock';
+import ArbolitCompound from '@/widgets/ArbolitCompound/ArbolitCompound';
+import { FeedbackForm } from '@/widgets/feedback-form';
+import MainHero from '@/widgets/MainHero/MainHero';
+import OurAdvantages from '@/widgets/OurAdwantages/OurAdwantages';
+import { SliderWrapper } from '@/entities/slider-wrapper';
 import { CertificateCard } from '@/entities/certificate-card';
-import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
-import { ItemCard } from '@/entities/item-card';
+import { NewsCard } from '@/entities/news-card';
+import ContactsBlock from '@/widgets/ContactsBlock/ContactsBlock';
 
 export default function Home() {
   return (
     <div className={s.container}>
-      <ItemCard />
-      <FeedbackPopup />
-      <CertificateCard />
-      <GalleryCard />
-      <NewsCard />
+      <MainHero />
+      <AdvantagesBlock />
+      <ArbolitCharacteristicsBlock />
+      <AboutBanner />
+      <OurAdvantages />
+      <ArbolitCompound />
+      <SliderWrapper title="сертификаты" variant="сertificate">
+        {new Array(5).fill('').map((elem) => (
+          <CertificateCard />
+        ))}
+      </SliderWrapper>
+      <SliderWrapper title="последние новости" variant="news">
+        {new Array(5).fill('').map((elem) => (
+          <NewsCard />
+        ))}
+      </SliderWrapper>
+      <ContactsBlock />
       <FeedbackForm />
-      <TextField placeholder="Имя" />
-      <TextField placeholder="Имя" errorMessage="Неверно введены данные" />
-      <Checkbox label="Согласие на обработку персональных данных" />
-      <Checkbox disabled label="Согласие на обработку персональных данных" />
-      <Pagination totalPages="5" />
-      <Breadcrumbs />
-      <Button variant="primary">заказать арболит</Button>
-      <Button variant="callback">Обратный звонок</Button>
-      <Button variant="primary_with_icon">
-        Построить маршрут
-        <ArrowRightOutlinedIcon />
-      </Button>
-      <Button variant="icon">
-        <ArrowRightIcon />
-      </Button>
-      <Button variant="link">
-        <ArrowLeftIcon />
-        назад к новостям
-      </Button>
-      <Button variant="secondary">Подробнее</Button>
     </div>
   );
 }

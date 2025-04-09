@@ -1,0 +1,52 @@
+.container {
+  position: relative;
+  width: 1322px;
+
+  @media (max-width: 768px) {
+    width: 336px;
+    margin-bottom: 70px;
+  }
+}
+
+.itemsContainer {
+  width: 100%;
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
+}
+
+.iconLeft {
+  position: absolute;
+  left: -90px;
+  bottom: 50%;
+  transform: translateY(50%);
+
+  @media (max-width: 768px) {
+    bottom: -72px;
+    left: 112px;
+    transform: translate(0, 0);
+  }
+}
+
+.iconRight {
+  position: absolute;
+  right: -90px;
+
+  bottom: 50%;
+  transform: translateY(50%);
+
+  @media (max-width: 768px) {
+    bottom: -72px;
+    right: 112px;
+    transform: translate(0, 0);
+  }
+}
