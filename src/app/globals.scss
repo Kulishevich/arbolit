@@ -12,6 +12,12 @@ body {
   margin: 0;
 }
 
+p,
+a,
+h1 {
+  color: var(--text);
+}
+
 a {
   color: var(--text);
   text-decoration: none;
