@@ -1,0 +1,28 @@
+.container {
+  max-width: 1322px;
+  margin: 0 auto;
+}
+
+main .hero {
+  margin-bottom: 96px;
+}
+
+@media (max-width: 1490px) {
+  main .hero {
+    margin-bottom: vw-1490(96);
+  }
+
+  .container {
+    max-width: vw-1490(1322);
+  }
+}
+
+@media (max-width: 768px) {
+  main .hero {
+    margin-bottom: 48px;
+  }
+
+  .container {
+    max-width: calc(100% - 40px);
+  }
+}

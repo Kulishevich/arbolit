@@ -8,9 +8,15 @@ import bg from '@/shared/assets/images/banner-bg.svg';
 import bgMobile from '@/shared/assets/images/banner-bg-mobile.svg';
 import { BracketsIcon, BrickWallIcon } from '@/shared/assets/icons';
 
-const AboutBanner = () => {
+interface AboutBannerProps {
+  isBanner?: boolean;
+}
+
+const AboutBanner = ({ isBanner = true }: AboutBannerProps) => {
   return (
-    <section className={styles.wrapper}>
+    <section
+      className={clsx(styles.wrapper, { [styles.standalone]: !isBanner })}
+    >
       <div className={styles.container}>
         <div className={styles.block}>
           <div className={clsx('body-1', styles.brackets)}>

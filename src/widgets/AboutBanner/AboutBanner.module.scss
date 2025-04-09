@@ -86,6 +86,44 @@
   z-index: 1;
 }
 
+.bgMobile {
+  display: none;
+}
+
+.linkMobile {
+  display: none;
+}
+
+.standalone {
+  .bg {
+    display: none;
+  }
+  .link {
+    display: none;
+  }
+
+  .container {
+    padding: 32px 0px 0px 32px;
+  }
+
+  .brackets {
+    max-width: 474px;
+  }
+
+  .block {
+    max-width: 650px;
+  }
+
+  .image {
+    width: 314px;
+    height: 180px;
+  }
+
+  .icon {
+    display: none;
+  }
+}
+
 @media (max-width: 1490px) {
   .wrapper {
     max-width: vw-1490(1322);
@@ -134,6 +172,25 @@
     width: vw-1490(435);
     height: vw-1490(250);
     margin-top: vw-1490(28);
+  }
+
+  .standalone {
+    .container {
+      padding: vw-1490(32) 0px 0px vw-1490(32);
+    }
+
+    .brackets {
+      max-width: vw-1490(474);
+    }
+
+    .block {
+      max-width: vw-1490(650);
+    }
+
+    .image {
+      width: vw-1490(314);
+      height: vw-1490(180);
+    }
   }
 }
 
@@ -199,14 +256,42 @@
   .bracketsIcon {
     width: 36px;
     height: 36px;
-    left: vw-768(-16);
-    top: vw-768(-16);
+    left: -16px;
+    top: -16px;
   }
 
   .bracketsIcon:last-child {
     left: initial;
     top: initial;
-    right: vw-768(-16);
-    bottom: vw-768(-16);
+    right: -16px;
+    bottom: -16px;
+  }
+
+  .standalone {
+    &.wrapper {
+      max-width: calc(100% - 40px);
+      width: 100%;
+    }
+
+    .container {
+      padding: 0px;
+    }
+
+    .brackets {
+      max-width: 100%;
+      margin: 0;
+    }
+
+    .block {
+      max-width: 100%;
+    }
+
+    .image {
+      display: none;
+    }
+
+    .button {
+      display: none;
+    }
   }
 }

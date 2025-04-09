@@ -16,10 +16,12 @@ export const Breadcrumbs = ({ className }: Props) => {
     switch (path) {
       case '':
         return { href: '/', name: 'Главная' };
-      case 'about':
+      case 'news':
         return { href: '/news', name: 'Новости' };
       case 'contacts':
         return { href: '/contacts', name: 'Контакты' };
+      case 'policy':
+        return { href: '/policy', name: 'Политика конфиденциальности' };
       case 'delivery-and-payment':
         return {
           href: '/delivery-and-payment',

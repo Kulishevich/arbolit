@@ -4,10 +4,16 @@ import Map from '@/features/Map/Map';
 import Link from 'next/link';
 import { Button } from '@/shared/ui/button/Button';
 
-const ContactsBlock = () => {
+interface ContactsBlockProps {
+  isTitle?: boolean;
+}
+
+const ContactsBlock = ({ isTitle = true }: ContactsBlockProps) => {
   return (
     <section className={styles.wrapper}>
-      <h2 className={clsx('h2', styles.title)}>контакты компании</h2>
+      {isTitle && (
+        <h2 className={clsx('h2', styles.title)}>контакты компании</h2>
+      )}
       <div className={styles.container}>
         <div className={styles.info}>
           <div className={styles.infoItem}>

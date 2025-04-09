@@ -1,0 +1,64 @@
+.container {
+  max-width: 1322px;
+  margin: 0 auto;
+}
+
+.requisites {
+  margin-bottom: 160px;
+}
+
+.name {
+  margin-top: 32px;
+  font-weight: 700;
+}
+
+.info {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+@media (max-width: 1490px) {
+  .container {
+    max-width: vw-1490(1322);
+  }
+
+  .requisites {
+    margin-bottom: vw-1490(160);
+  }
+
+  .name {
+    margin-top: vw-1490(32);
+  }
+
+  .info {
+    gap: vw-1490(6);
+    margin-top: vw-1490(16);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: calc(100% - 40px);
+  }
+
+  .requisites {
+    margin-bottom: 72px;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .name {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .info {
+    margin-top: 12px;
+    gap: 6px;
+    text-align: center;
+  }
+}

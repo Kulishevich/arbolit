@@ -1,0 +1,233 @@
+@import '../../../shared/config/styles/functions.scss';
+
+.container {
+  max-width: 1322px;
+  margin: 0 auto;
+}
+
+main .hero {
+  margin-bottom: 48px;
+}
+
+.info {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  align-items: center;
+}
+
+.date {
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: var(--white);
+  background: var(--grey-3);
+}
+
+.views {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: var(--font6);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  color: var(--text);
+}
+
+.content {
+  margin-bottom: 160px;
+}
+
+.textBlock {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+  color: var(--text);
+}
+
+.textBlock:first-of-type p:first-of-type {
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+
+.textBlock ul {
+  margin-top: 6px;
+  margin-left: 24px;
+}
+
+.textBlock h2 {
+  margin-top: 32px;
+  margin-bottom: 12px;
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 140%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.textBlock p {
+  margin-bottom: 6px;
+}
+
+.imageBlock {
+  margin-top: 24px;
+  display: flex;
+  gap: 22px;
+}
+
+.imageBlock img {
+  width: 0;
+  flex: 1 1 auto;
+  border-radius: 12px;
+  height: 320px;
+  object-fit: cover;
+}
+
+.backButton {
+  margin-top: 36px;
+}
+
+@media (max-width: 1490px) {
+  .container {
+    max-width: vw-1490(1322);
+  }
+
+  main .hero {
+    margin-bottom: vw-1490(48);
+  }
+
+  .info {
+    margin-bottom: vw-1490(32);
+    gap: vw-1490(16);
+  }
+
+  .date {
+    padding: vw-1490(8) vw-1490(16);
+    border-radius: vw-1490(6);
+  }
+
+  .views {
+    font-size: vw-1490(16);
+    gap: vw-1490(8);
+  }
+
+  .content {
+    margin-bottom: vw-1490(160);
+  }
+
+  .textBlock {
+    font-size: vw-1490(18);
+  }
+
+  .textBlock:first-of-type p:first-of-type {
+    margin-bottom: vw-1490(16);
+    font-size: vw-1490(24);
+  }
+
+  .textBlock ul {
+    margin-top: vw-1490(6);
+    margin-left: vw-1490(24);
+  }
+
+  .textBlock h2 {
+    margin-top: vw-1490(32);
+    margin-bottom: vw-1490(12);
+    font-size: vw-1490(28);
+  }
+
+  .textBlock p {
+    margin-bottom: vw-1490(6);
+  }
+
+  .imageBlock {
+    margin-top: vw-1490(24);
+    gap: vw-1490(22);
+  }
+
+  .imageBlock img {
+    height: vw-1490(320);
+    border-radius: vw-1490(6);
+  }
+
+  .backButton {
+    margin-top: vw-1490(36);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: calc(100% - 40px);
+  }
+
+  main .hero {
+    margin-bottom: 48px;
+  }
+
+  .info {
+    margin-bottom: 32px;
+    gap: 16px;
+  }
+
+  .date {
+    padding: 8px 16px;
+  }
+
+  .views {
+    font-size: 14px;
+    gap: 6px;
+  }
+
+  .content {
+    margin-bottom: 72px;
+  }
+
+  .textBlock {
+    font-size: 16px;
+  }
+
+  .textBlock:first-of-type p:first-of-type {
+    margin-bottom: 16px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .textBlock:first-of-type p {
+    text-align: left;
+  }
+
+  .textBlock p {
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .textBlock h2 {
+    margin-top: 24px;
+    margin-bottom: 12px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .textBlock ul {
+    margin-top: 6px;
+    margin-left: 24px;
+  }
+
+  .backButton {
+    display: none;
+  }
+
+  .imageBlock {
+    gap: 16px;
+    flex-direction: column;
+  }
+
+  .imageBlock img {
+    height: 200px;
+    width: 100%;
+    border-radius: 6px;
+  }
+}

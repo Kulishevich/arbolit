@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Manrope } from 'next/font/google';
+import { Manrope, Noto_Sans } from 'next/font/google';
 import './globals.scss';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
@@ -7,6 +7,11 @@ import Script from 'next/script';
 
 const manropeSans = Manrope({
   variable: '--font-family',
+  subsets: ['latin', 'cyrillic'],
+});
+
+const notoSans = Noto_Sans({
+  variable: '--font6',
   subsets: ['latin', 'cyrillic'],
 });
 
@@ -22,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manropeSans.variable}`}>
+      <body className={`${manropeSans.variable} ${notoSans.variable}`}>
         <Script
           src={`https://api-maps.yandex.ru/v3/?apikey=${process.env.NEXT_PUBLIC_YANDEX_API_KEY}&lang=ru_RU`}
           strategy="beforeInteractive"
