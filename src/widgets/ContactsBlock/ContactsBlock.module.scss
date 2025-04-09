@@ -1,0 +1,162 @@
+@import '../../shared/config/styles/functions';
+
+.wrapper {
+  max-width: 1322px;
+  margin: 0 auto;
+  margin-bottom: 160px;
+  width: 100%;
+}
+
+.title {
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 123px;
+}
+
+.info {
+  display: flex;
+  margin-bottom: 36px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  color: var(--text);
+}
+
+.infoItemTitle {
+  opacity: 0.7;
+}
+
+.infoItem:nth-child(1) .infoItemContent {
+  max-width: 426px;
+}
+
+.infoItem:nth-child(2) {
+  margin-left: 117px;
+}
+
+.infoItem:nth-child(2) .infoItemContent {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.infoItem:nth-child(3) {
+  margin-left: 131px;
+  flex: 1 1 auto;
+}
+
+.infoItem:nth-child(3) .infoItemContent {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  width: 100%;
+}
+
+.button {
+  flex: 1 1 auto;
+  width: 100%;
+  color: var(--text);
+  border-color: rgba(37, 43, 51, 0.1);
+}
+
+.button:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+@media (max-width: 1490px) {
+  .wrapper {
+    max-width: vw-1490(1322);
+    margin-bottom: vw-1490(160);
+  }
+
+  .title {
+    margin-bottom: vw-1490(36);
+  }
+
+  .info {
+    margin-bottom: vw-1490(36);
+  }
+
+  .infoItem:nth-child(1) .infoItemContent {
+    max-width: vw-1490(426);
+  }
+
+  .infoItem:nth-child(2) {
+    margin-left: vw-1490(117);
+  }
+
+  .infoItem:nth-child(2) .infoItemContent {
+    gap: vw-1490(6);
+  }
+
+  .infoItem:nth-child(3) {
+    margin-left: vw-1490(131);
+  }
+
+  .infoItem:nth-child(3) .infoItemContent {
+    gap: vw-1490(24);
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 100%;
+    max-width: calc(100% - 40px);
+    margin-bottom: 72px;
+  }
+
+  .title {
+    margin-bottom: 20px;
+    position: static;
+  }
+
+  .info {
+    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .infoItemTitle {
+    text-align: center;
+  }
+
+  .infoItem {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .infoItem:nth-child(1) .infoItemContent {
+    max-width: 100%;
+  }
+
+  .infoItem:nth-child(2) {
+    margin-left: 0;
+  }
+
+  .infoItem:nth-child(2) .infoItemContent {
+    gap: 6px;
+  }
+
+  .infoItem:nth-child(3) {
+    margin-left: 0;
+  }
+
+  .infoItemContent {
+    text-align: center;
+  }
+
+  .infoItem:nth-child(3) .infoItemContent {
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .button {
+    max-width: 200px;
+  }
+}

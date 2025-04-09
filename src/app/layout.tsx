@@ -3,6 +3,7 @@ import { Manrope } from 'next/font/google';
 import './globals.scss';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
+import Script from 'next/script';
 
 const manropeSans = Manrope({
   variable: '--font-family',
@@ -22,6 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manropeSans.variable}`}>
+        <Script
+          src={`https://api-maps.yandex.ru/v3/?apikey=${process.env.NEXT_PUBLIC_YANDEX_API_KEY}&lang=ru_RU`}
+          strategy="beforeInteractive"
+        />
         <Header />
         {children}
         <Footer />

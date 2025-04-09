@@ -18,3 +18,6 @@ export { default as ViberIcon } from './ViberIcon';
 export { default as WhatsappIcon } from './WhatsappIcon';
 export { default as BrickWallIcon } from './BrickWallIcon';
 export { default as BracketsIcon } from './BracketsIcon';
+export { default as CheckboxCrossIcon } from './CheckboxCrossIcon';
+export { default as CheckboxOkIcon } from './CheckboxOkIcon';
+

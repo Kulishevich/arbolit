@@ -1,0 +1,291 @@
+@import '../../shared/config/styles/functions';
+
+.wrapper {
+  max-width: 1204px;
+  margin: 0 auto;
+  margin-bottom: 160px;
+  width: 100%;
+}
+
+.title {
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 123px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.item {
+  border: 1px solid var(--grey-1);
+  border-radius: 12px;
+  width: 418px;
+  box-shadow: 0 4px 20px 0 rgba(233, 232, 229, 0.4);
+  background: var(--white);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 70px;
+}
+
+.item img {
+  width: 307px;
+  height: 307px;
+}
+
+.name {
+  margin-top: 16px;
+  margin-bottom: 32px;
+  opacity: 0.5;
+}
+
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.5;
+  border-bottom: 1px solid rgba(37, 43, 51, 0.1);
+  padding-bottom: 14px;
+}
+
+.listItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.listItem span {
+  font-weight: 700;
+}
+
+.activeItem {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--blue);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px 0 rgba(233, 232, 229, 0.4);
+  background: var(--white);
+  width: 418px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 48px;
+  overflow: hidden;
+}
+
+.pin {
+  position: absolute;
+  top: 36px;
+  right: -50px;
+  background: var(--blue);
+  color: var(--white);
+  transform: rotate(45deg);
+  padding: 14px 38px 10px;
+}
+
+.activeItem img {
+  width: 307px;
+  height: 307px;
+}
+
+.activeItem .name {
+  color: var(--green);
+  margin-bottom: 16px;
+  margin-bottom: 12px;
+  opacity: 1;
+}
+
+.sizes {
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.sizes span {
+  font-weight: 700;
+}
+
+.activeItem .listItem {
+  opacity: 1;
+}
+
+.price {
+  margin-top: 16px;
+  margin-bottom: 20px;
+  color: var(--red);
+}
+
+.button {
+  width: 100%;
+}
+
+@media (max-width: 1490px) {
+  .wrapper {
+    max-width: vw-1490(1204);
+    margin-bottom: vw-1490(160);
+  }
+
+  .title {
+    margin-bottom: vw-1490(123);
+  }
+
+  .item {
+    width: vw-1490(418);
+    padding: vw-1490(32) vw-1490(24) vw-1490(70);
+    border-radius: vw-1490(12);
+  }
+
+  .item img {
+    width: vw-1490(307);
+    height: vw-1490(307);
+  }
+
+  .name {
+    margin-bottom: vw-1490(16);
+    margin-top: vw-1490(32);
+  }
+
+  .checkList {
+    gap: vw-1490(14);
+  }
+
+  .listItem {
+    gap: vw-1490(6);
+    padding-bottom: vw-1490(14);
+  }
+
+  .activeItem {
+    width: vw-1490(418);
+    padding: vw-1490(32) vw-1490(24) vw-1490(48);
+    border-radius: vw-1490(12);
+  }
+
+  .pin {
+    top: vw-1490(36);
+    right: vw-1490(-50);
+    padding: vw-1490(14) vw-1490(38) vw-1490(10);
+  }
+
+  .activeItem img {
+    width: vw-1490(307);
+    height: vw-1490(307);
+  }
+
+  .activeItem .name {
+    margin-bottom: vw-1490(12);
+    margin-top: vw-1490(16);
+  }
+
+  .sizes {
+    margin-bottom: vw-1490(14);
+  }
+
+  .price {
+    margin-top: vw-1490(16);
+    margin-bottom: vw-1490(20);
+  }
+
+  .listItem svg {
+    width: vw-1490(22);
+    height: vw-1490(22);
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 100%;
+    max-width: calc(100% - 40px);
+    margin-bottom: 72px;
+  }
+
+  .title {
+    margin-bottom: 20px;
+    position: static;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .activeItem {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    order: 1;
+    width: 100%;
+    max-width: 335px;
+    overflow: hidden;
+    padding: 24px 16px 32px;
+  }
+
+  .activeItem img {
+    width: 185px;
+    height: 185px;
+  }
+
+  .activeItem .name {
+    margin-top: 16px;
+    margin-bottom: 12px;
+  }
+
+  .sizes {
+    margin-bottom: 8px;
+  }
+
+  .pin {
+    padding: 14px 58px 12px;
+    right: -47px;
+    top: 39px;
+  }
+
+  .activeItem .listItem {
+    gap: 6px;
+  }
+
+  .listItem {
+    padding-bottom: 8px;
+  }
+
+  .listItem svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .item {
+    order: 2;
+    width: 100%;
+    max-width: 335px;
+  }
+
+  .item img {
+    width: 185px;
+    height: 185px;
+  }
+
+  .name {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .checkList {
+    gap: 8px;
+  }
+
+  .price {
+    margin-top: 16px;
+    margin-bottom: 20px;
+  }
+}
