@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  padding: 32px;
+  border-radius: 12px;
+  background-color: var(--white);
+}
+.content {
+  display: flex;
+  gap: 48px;
+}
+.imageContainer {
+  position: relative;
+  width: 426px;
+  height: 426px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #f8f8f9;
+  flex-shrink: 0;
+  & > img {
+    object-fit: cover;
+  }
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.characteristic {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  & > div {
+    display: grid;
+    grid-template-columns: repeat(2, 260px);
+    gap: 16px;
+  }
+}

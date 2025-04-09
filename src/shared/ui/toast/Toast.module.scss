@@ -1,0 +1,38 @@
+.rootClass {
+  position: relative;
+  padding: 32px;
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  width: 426px;
+  & > svg {
+    margin-bottom: 12px;
+  }
+
+  &.success {
+    background-color: var(--green);
+  }
+
+  &.error {
+    background-color: var(--red);
+    p,
+    h5 {
+      color: var(--white);
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media (max-width: 768px) {
+    width: 267px;
+    padding: 12px 20px;
+  }
+}

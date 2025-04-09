@@ -1,3 +1,4 @@
+'use client';
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -13,10 +14,14 @@ import { NewsCard } from '@/entities/news-card';
 import s from './page.module.scss';
 import { GalleryCard } from '@/entities/gallery-card';
 import { CertificateCard } from '@/entities/certificate-card';
+import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
+import { ItemCard } from '@/entities/item-card';
 
 export default function Home() {
   return (
     <div className={s.container}>
+      <ItemCard />
+      <FeedbackPopup />
       <CertificateCard />
       <GalleryCard />
       <NewsCard />

@@ -20,4 +20,5 @@ export { default as BrickWallIcon } from './BrickWallIcon';
 export { default as BracketsIcon } from './BracketsIcon';
 export { default as CheckboxCrossIcon } from './CheckboxCrossIcon';
 export { default as CheckboxOkIcon } from './CheckboxOkIcon';
-
+export { default as ErrorIcon } from './ErrorIcon';
+export { default as SuccessIcon } from './SuccessIcon';

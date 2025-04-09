@@ -4,6 +4,7 @@ import './globals.scss';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 import Script from 'next/script';
+import { Toaster } from 'sonner';
 
 const manropeSans = Manrope({
   variable: '--font-family',
@@ -35,6 +36,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
