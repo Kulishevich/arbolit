@@ -9,11 +9,17 @@ import { Checkbox } from '@/shared/ui/checkbox';
 import { Pagination } from '@/shared/ui/pagination';
 import { TextField } from '@/shared/ui/text-field';
 import { FeedbackForm } from '@/widgets/feedback-form';
+import { NewsCard } from '@/entities/news-card';
 import s from './page.module.scss';
+import { GalleryCard } from '@/entities/gallery-card';
+import { CertificateCard } from '@/entities/certificate-card';
 
 export default function Home() {
   return (
     <div className={s.container}>
+      <CertificateCard />
+      <GalleryCard />
+      <NewsCard />
       <FeedbackForm />
       <TextField placeholder="Имя" />
       <TextField placeholder="Имя" errorMessage="Неверно введены данные" />

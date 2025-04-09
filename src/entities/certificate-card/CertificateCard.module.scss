@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  width: 314px;
+  text-align: center;
+  .imageContainer {
+    position: relative;
+    width: 314px;
+    height: 444px;
+    border: 1px solid #252b331a;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  &:hover {
+    & > p {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 140%;
+    }
+    .imageContainer {
+      border-color: var(--blue);
+    }
+  }
+}
