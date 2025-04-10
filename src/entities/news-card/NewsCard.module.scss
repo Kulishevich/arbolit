@@ -9,6 +9,10 @@
     .imageContainer {
       width: 650px;
       height: 292px;
+      @media (max-width: 768px) {
+        width: 335px;
+        height: 286px;
+      }
     }
   }
 
@@ -29,6 +33,11 @@
     & > img {
       object-fit: cover;
       z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      width: 335px;
+      height: 286px;
     }
   }
   .overlay {
@@ -51,5 +60,9 @@
       height: 100%;
       padding: 20px;
     }
+  }
+
+  @media (max-width: 768px) {
+    width: 335px;
   }
 }

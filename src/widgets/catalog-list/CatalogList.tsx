@@ -8,7 +8,7 @@ const items = new Array(4).fill('');
 export const CatalogList = () => {
   return (
     <div className={s.container}>
-      {items.map((elem, index) => (
+      {items.map((_, index) => (
         <ItemCard key={index} />
       ))}
     </div>

@@ -1,7 +1,7 @@
 export function getPaginationPages({
   totalPages,
   currentPage,
-  paginationPages = 5,
+  paginationPages = 4,
 }: {
   totalPages: number;
   currentPage: number;

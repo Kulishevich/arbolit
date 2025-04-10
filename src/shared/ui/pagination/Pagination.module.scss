@@ -10,6 +10,9 @@
 .pagination {
   display: flex;
   gap: 8px;
+  @media (max-width: 768px) {
+    gap: 0;
+  }
 }
 .paginationElem {
   display: flex;

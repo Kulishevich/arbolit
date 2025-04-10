@@ -6,6 +6,7 @@ import { LocationIcon, PhoneIcon } from '@/shared/assets/icons';
 import { Button } from '@/shared/ui/button';
 import Link from 'next/link';
 import { Dropdown } from '@/shared/ui/Dropdown';
+import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 
 const aboutCompany = [
   {
@@ -40,7 +41,9 @@ export const HeaderDesktop = () => {
             <p className="body-3">+7 495 744 72 60</p>
           </div>
         </div>
-        <Button variant="callback">Обратный звонок</Button>
+        <FeedbackPopup>
+          <Button variant="callback">Обратный звонок</Button>
+        </FeedbackPopup>
       </div>
       <div className={s.line}></div>
       <div className={s.navigation}>

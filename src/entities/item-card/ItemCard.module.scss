@@ -6,10 +6,24 @@
   padding: 32px;
   border-radius: 12px;
   background-color: var(--white);
+  border: 1px solid #252b331a;
+
+  &:hover {
+    border: 1px solid var(--blue);
+  }
+  @media (max-width: 768px) {
+    text-align: center;
+    gap: 16px;
+  }
 }
 .content {
   display: flex;
   gap: 48px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 24px;
+  }
 }
 .imageContainer {
   position: relative;
@@ -21,6 +35,11 @@
   flex-shrink: 0;
   & > img {
     object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    width: 271px;
+    height: 271px;
   }
 }
 .info {
@@ -43,5 +62,9 @@
     display: grid;
     grid-template-columns: repeat(2, 260px);
     gap: 16px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(1, 271px);
+    }
   }
 }

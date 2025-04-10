@@ -8,4 +8,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px 22px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 }

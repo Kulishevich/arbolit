@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-
+  box-sizing: border-box;
   width: 314px;
   text-align: center;
   .imageContainer {
@@ -12,6 +12,10 @@
     border: 1px solid #252b331a;
     border-radius: 12px;
     overflow: hidden;
+    @media (max-width: 768px) {
+      width: 160px;
+      height: 226px;
+    }
   }
 
   &:hover {
@@ -23,5 +27,10 @@
     .imageContainer {
       border-color: var(--blue);
     }
+  }
+
+  @media (max-width: 768px) {
+    width: 160px;
+    gap: 8px;
   }
 }

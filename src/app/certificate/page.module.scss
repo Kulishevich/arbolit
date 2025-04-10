@@ -4,4 +4,9 @@
   display: flex;
   flex-direction: column;
   gap: 160px;
+
+  @media (max-width: 768px) {
+    width: 336px;
+    gap: 72px;
+  }
 }

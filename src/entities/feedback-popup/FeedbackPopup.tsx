@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import s from './FeedbackPopup.module.scss';
 import { TextField } from '@/shared/ui/text-field';
@@ -8,7 +8,7 @@ import { Checkbox } from '@/shared/ui/checkbox';
 import { Button } from '@/shared/ui/button';
 import Image from 'next/image';
 
-export const FeedbackPopup = () => {
+export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,6 +17,7 @@ export const FeedbackPopup = () => {
       onOpenChange={setIsOpen}
       aria-label="Увеличенное изображение"
     >
+      <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Overlay className={s.overlay}>
         <Dialog.Content className={s.content}>
           <div className={s.form}>

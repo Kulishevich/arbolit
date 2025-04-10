@@ -1,6 +1,8 @@
+'use client';
 import React, { ReactNode } from 'react';
 import s from './SliderWrapper.module.scss';
 import { Slider } from '@/shared/ui/slider';
+import { useBreakpoint } from '@/shared/lib/hooks/useBreakpoint';
 
 export const SliderWrapper = ({
   title,
@@ -11,14 +13,16 @@ export const SliderWrapper = ({
   children: ReactNode;
   variant?: 'news' | 'product' | 'discount' | 'certificate' | 'reviews';
 }) => {
+  const { isMobile } = useBreakpoint();
+
   const itemWidth = () => {
     switch (variant) {
       case 'certificate':
-        return 336;
+        return !isMobile ? 336 : 175;
       case 'news':
-        return 672;
+        return !isMobile ? 672 : 351;
       case 'reviews':
-        return 1322;
+        return !isMobile ? 1322 : 351;
     }
     return 330;
   };
