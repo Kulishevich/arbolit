@@ -91,7 +91,10 @@ const page = async ({ params }: { params: { slug: string } }) => {
         </>
       )}
 
-      <FeedbackForm />
+      <FeedbackForm
+        title="связаться с нами"
+        description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
+      />
     </main>
   );
 };

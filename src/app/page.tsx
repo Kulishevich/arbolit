@@ -39,7 +39,11 @@ export default async function Home() {
           ))}
         </SliderWrapper>
         <ContactsBlock />
-        <FeedbackForm />
+        <FeedbackForm
+          title="связаться с нами"
+          description="Оставьте свои контактные данные и мы ответим на все интересующие вас
+            вопросы"
+        />
       </div>
     </>
   );
