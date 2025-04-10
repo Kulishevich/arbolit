@@ -6,6 +6,8 @@ import { Button } from '@/shared/ui/button';
 import Image from 'next/image';
 import { SocialMedia } from '@/entities/social-media';
 import { TextArea } from '@/shared/ui/text-area';
+import background from '@/shared/assets/images/feedback-background.svg';
+import brickWall from '@/shared/assets/images/brick-wall.svg';
 
 export const FeedbackForm = ({
   title,
@@ -30,7 +32,10 @@ export const FeedbackForm = ({
         </div>
       </div>
       <div className={s.imageContainer}>
-        <Image src={'/background.svg'} fill alt="background" />
+        <Image src={background} fill alt="background" />
+        <div className={s.brickWall}>
+          <Image src={brickWall} fill alt="brick-wall" />
+        </div>
         <div className={s.info}>
           <p className="body-2">У вас срочный вопрос?</p>
           <p className="body-1  ">
