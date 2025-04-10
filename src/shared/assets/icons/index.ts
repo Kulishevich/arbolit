@@ -22,3 +22,4 @@ export { default as CheckboxCrossIcon } from './CheckboxCrossIcon';
 export { default as CheckboxOkIcon } from './CheckboxOkIcon';
 export { default as ErrorIcon } from './ErrorIcon';
 export { default as SuccessIcon } from './SuccessIcon';
+export { default as QuotesIcon } from './QuotesIcon';

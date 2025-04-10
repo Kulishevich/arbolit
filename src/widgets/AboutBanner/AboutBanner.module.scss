@@ -2,9 +2,7 @@
 
 .wrapper {
   max-width: 1322px;
-  margin: 0 auto;
   filter: drop-shadow(0px 22px 35px rgba(50, 50, 0, 0.1));
-  margin-bottom: 160px;
   position: relative;
 }
 
@@ -127,7 +125,6 @@
 @media (max-width: 1490px) {
   .wrapper {
     max-width: vw-1490(1322);
-    margin-bottom: vw-1490(160);
   }
 
   .container {
@@ -198,7 +195,6 @@
   .wrapper {
     width: 335px;
     max-width: 335px;
-    margin-bottom: 72px;
   }
 
   .container {

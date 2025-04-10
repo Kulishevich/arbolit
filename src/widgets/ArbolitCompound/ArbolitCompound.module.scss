@@ -3,7 +3,6 @@
 .wrapper {
   max-width: 1322px;
   margin: 0 auto;
-  margin-bottom: 160px;
   width: 100%;
 }
 
@@ -56,10 +55,13 @@
   margin-bottom: 12px;
 }
 
+.text {
+  color: var(--white);
+}
+
 @media (max-width: 1490px) {
   .wrapper {
     max-width: vw-1490(1322);
-    margin-bottom: vw-1490(160);
   }
 
   .title {
@@ -89,7 +91,6 @@
   .wrapper {
     width: 100%;
     max-width: calc(100% - 40px);
-    margin-bottom: 72px;
   }
 
   .title {

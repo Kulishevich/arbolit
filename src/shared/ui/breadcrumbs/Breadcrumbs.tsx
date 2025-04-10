@@ -20,6 +20,8 @@ export const Breadcrumbs = ({ className }: Props) => {
         return { href: '/news', name: 'Новости' };
       case 'contacts':
         return { href: '/contacts', name: 'Контакты' };
+      case 'catalog':
+        return { href: '/catalog', name: 'Каталог' };
       case 'policy':
         return { href: '/policy', name: 'Политика конфиденциальности' };
       case 'delivery-and-payment':

@@ -1,0 +1,124 @@
+@import '../../shared/config/styles/functions';
+
+.container {
+  width: 100%;
+  flex: 0 0 1322px;
+  max-width: 1322px;
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0 112px;
+}
+
+.caption {
+  max-width: 650px;
+  color: var(--text);
+}
+
+.caption svg {
+  width: 94px;
+  height: 69px;
+}
+
+.name {
+  margin-top: 48px;
+  margin-bottom: 12px;
+}
+
+.image {
+  position: relative;
+  width: 345px;
+  height: 710px;
+}
+
+.reviewImage {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: calc(100% - 31px);
+  height: calc(100% - 30px);
+  object-fit: contain;
+  object-position: bottom;
+  border-radius: 38px;
+}
+
+.phoneImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1490px) {
+  .container {
+    flex: 0 0 vw-1490(1322);
+    max-width: vw-1490(1322);
+    padding: 0 vw-1490(112);
+  }
+
+  .caption {
+    max-width: vw-1490(650);
+  }
+
+  .caption svg {
+    width: vw-1490(94);
+    height: vw-1490(69);
+  }
+
+  .name {
+    margin-top: vw-1490(48);
+    margin-bottom: vw-1490(12);
+  }
+
+  .image {
+    width: vw-1490(345);
+    height: vw-1490(710);
+  }
+
+  .reviewImage {
+    bottom: vw-1490(14);
+    width: calc(100% - vw-1490(31));
+    height: calc(100% - vw-1490(30));
+    border-radius: vw-1490(38);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    max-width: 100%;
+    align-items: center;
+    flex: 0 0 100%;
+    padding: 0;
+    gap: 32px;
+  }
+
+  .caption {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .caption svg {
+    width: 48px;
+    height: 35px;
+  }
+
+  .name {
+    margin-top: 32px;
+    margin-bottom: 8px;
+  }
+
+  .image {
+    width: 186px;
+    height: 382px;
+  }
+
+  .reviewImage {
+    bottom: 7px;
+    width: calc(100% - 17px);
+    height: calc(100% - 15px);
+    border-radius: 22px;
+  }
+}

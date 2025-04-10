@@ -7,23 +7,25 @@ export const SliderWrapper = ({
   children,
   variant,
 }: {
-  title: string;
+  title?: string;
   children: ReactNode;
-  variant?: 'news' | 'product' | 'discount' | 'сertificate';
+  variant?: 'news' | 'product' | 'discount' | 'certificate' | 'reviews';
 }) => {
   const itemWidth = () => {
     switch (variant) {
-      case 'сertificate':
+      case 'certificate':
         return 336;
       case 'news':
         return 672;
+      case 'reviews':
+        return 1322;
     }
     return 330;
   };
 
   return (
     <div className={s.container}>
-      <h2 className="h2">{title}</h2>
+      {title && <h2 className="h2">{title}</h2>}
       <Slider itemWidth={itemWidth()}>{children}</Slider>
     </div>
   );

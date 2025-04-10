@@ -2,8 +2,6 @@
 
 .wrapper {
   max-width: 1322px;
-  margin: 0 auto;
-  margin-bottom: 160px;
   display: flex;
   justify-content: space-between;
 }
@@ -85,7 +83,6 @@
 @media (max-width: 1490px) {
   .wrapper {
     max-width: vw-1490(1322);
-    margin-bottom: vw-1490(160);
   }
 
   .caption {
@@ -117,7 +114,6 @@
   .wrapper {
     width: 100%;
     max-width: calc(100% - 40px);
-    margin-bottom: 72px;
     flex-direction: column;
     gap: 32px;
   }

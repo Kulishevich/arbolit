@@ -14,25 +14,27 @@ import ContactsBlock from '@/widgets/ContactsBlock/ContactsBlock';
 
 export default function Home() {
   return (
-    <div className={s.container}>
+    <>
       <MainHero />
-      <AdvantagesBlock />
-      <ArbolitCharacteristicsBlock />
-      <AboutBanner />
-      <OurAdvantages />
-      <ArbolitCompound />
-      <SliderWrapper title="сертификаты" variant="сertificate">
-        {new Array(5).fill('').map((elem) => (
-          <CertificateCard />
-        ))}
-      </SliderWrapper>
-      <SliderWrapper title="последние новости" variant="news">
-        {new Array(5).fill('').map((elem) => (
-          <NewsCard />
-        ))}
-      </SliderWrapper>
-      <ContactsBlock />
-      <FeedbackForm />
-    </div>
+      <div className={s.container}>
+        <AdvantagesBlock />
+        <ArbolitCharacteristicsBlock />
+        <AboutBanner />
+        <OurAdvantages />
+        <ArbolitCompound />
+        <SliderWrapper title="сертификаты" variant="сertificate">
+          {new Array(5).fill('').map((elem, index) => (
+            <CertificateCard key={index} />
+          ))}
+        </SliderWrapper>
+        <SliderWrapper title="последние новости" variant="news">
+          {new Array(5).fill('').map((elem, index) => (
+            <NewsCard key={index} />
+          ))}
+        </SliderWrapper>
+        <ContactsBlock />
+        <FeedbackForm />
+      </div>
+    </>
   );
 }

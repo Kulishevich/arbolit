@@ -1,0 +1,99 @@
+import styles from './page.module.scss';
+import clsx from 'clsx';
+import { FeedbackForm } from '@/widgets/feedback-form';
+import Image from 'next/image';
+import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
+import { Button } from '@/shared/ui/button';
+import { ProductT } from '@/shared/types';
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  const product: ProductT = await fetch(
+    `${process.env.API_URL}/products/${params.slug.split('_')[1]}`
+  )
+    .then((res) => res.json())
+    .catch(() => undefined);
+
+  return product
+    ? {
+        title: product.name,
+        description: product.description.substring(0, 140),
+        keywords: product.name ?? '',
+        openGraph: {
+          title: product.name,
+          description: product.description.substring(0, 140),
+        },
+      }
+    : {};
+};
+
+const page = async ({ params }: { params: { slug: string } }) => {
+  const product: ProductT = await fetch(
+    `${process.env.API_URL}/products/${params.slug.split('_')[1]}`
+  )
+    .then((res) => res.json())
+    .catch(() => undefined);
+
+  return (
+    <main className={styles.container}>
+      <Breadcrumbs />
+
+      {product && (
+        <>
+          <section className={styles.product}>
+            <Image
+              src={`${process.env.STORE_URL}/${product.photo_path}`}
+              alt={product.name}
+              className={styles.image}
+              width={538}
+              height={538}
+            />
+
+            <div className={styles.info}>
+              <h1 className={clsx(styles.title, 'h2')}>{product.name}</h1>
+              <div className={styles.specifications}>
+                {product.specifications.map((specification) => (
+                  <div
+                    className={clsx(styles.specificationsItem, 'body-1')}
+                    key={specification.id}
+                  >
+                    <span className={styles.specificationsItemKey}>
+                      {specification.name}:{' '}
+                    </span>
+                    {specification.pivot.value}
+                  </div>
+                ))}
+              </div>
+
+              <div className={clsx(styles.price, 'h2')}>
+                7900 Р. / <span>m3</span>
+              </div>
+              <Button className={styles.button}>Заказать</Button>
+            </div>
+          </section>
+          <section className={styles.description}>
+            <div className={styles.tabs}>
+              <Button className={clsx(styles.tab, styles.active)}>
+                Описание
+              </Button>
+              <Button className={styles.tab} as="a" href="/delivery">
+                доставка
+              </Button>
+            </div>
+            <div
+              className={clsx(styles.content, 'body-2')}
+              dangerouslySetInnerHTML={{ __html: product.description }}
+            ></div>
+          </section>
+        </>
+      )}
+
+      <FeedbackForm />
+    </main>
+  );
+};
+
+export default page;

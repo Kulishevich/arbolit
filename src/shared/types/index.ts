@@ -32,3 +32,46 @@ export type DesignSettingsT = {
   company_info: string;
   bank_details: string;
 }
+
+export type ReviewT = {
+  id: number;
+  title: string;
+  description: string;
+  photo_path: string;
+}
+
+export type ProductT = {
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  price: string;
+  discount: string;
+  sku: string;
+  specifications: SpecificationT[];
+  is_active: boolean;
+  order: number;
+  is_popular: boolean;
+  created_at: string;
+  updated_at: string;
+  photo_path: string;
+}
+
+export type SpecificationT = {
+  id: number;
+  name: string;
+  slug: string;
+  type: string;
+  unit: string | null;
+  order: number;
+  filterable: boolean;
+  created_at: string;
+  updated_at: string;
+  pivot: {
+    product_id: number;
+    specification_id: number;
+    value: string;
+    created_at: string;
+    updated_at: string;
+  }
+}

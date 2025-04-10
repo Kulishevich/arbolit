@@ -2,9 +2,9 @@
 
 .wrapper {
   max-width: 1204px;
-  margin: 0 auto;
-  margin-bottom: 160px;
   width: 100%;
+  margin: 0 auto;
+  margin-bottom: 87px;
 }
 
 .title {
@@ -133,7 +133,7 @@
 @media (max-width: 1490px) {
   .wrapper {
     max-width: vw-1490(1204);
-    margin-bottom: vw-1490(160);
+    margin-bottom: vw-1490(87);
   }
 
   .title {
@@ -206,7 +206,7 @@
   .wrapper {
     width: 100%;
     max-width: calc(100% - 40px);
-    margin-bottom: 72px;
+    margin-bottom: 0;
   }
 
   .title {
