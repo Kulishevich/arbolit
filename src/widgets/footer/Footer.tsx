@@ -4,6 +4,7 @@ import { Logo } from '@/entities/logo';
 import { navigation } from '@/shared/config/constants/navigation';
 import { SocialMedia } from '@/entities/social-media';
 import Link from 'next/link';
+import { Dropdown } from '@/shared/ui/Dropdown';
 
 const catalog = [
   'Арболитовый блок стандартный конструкционный',
@@ -11,6 +12,21 @@ const catalog = [
   'Блок под армопояс',
   'Арболитовый блок перегородочный',
   'Блок с односторонним отделочным слоем',
+];
+
+const aboutCompany = [
+  {
+    name: 'О нас',
+    href: '/about',
+  },
+  {
+    name: 'Отзывы',
+    href: '/reviews',
+  },
+  {
+    name: 'Сертификаты',
+    href: '/certificate',
+  },
 ];
 
 export const Footer = () => {
@@ -36,7 +52,15 @@ export const Footer = () => {
         <div className={s.navigation}>
           <p className="body-6">клиенту</p>
           <div>
-            {navigation.map((elem, index) => (
+            <Link className="body-2" href={navigation[0].path}>
+              {navigation[0].title}
+            </Link>
+            <Dropdown
+              title="О компании"
+              items={aboutCompany}
+              className="body-2"
+            />
+            {navigation.slice(1).map((elem, index) => (
               <Link className="body-2" href={elem.path} key={index}>
                 {elem.title}
               </Link>

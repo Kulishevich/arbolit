@@ -5,6 +5,22 @@ import { Logo } from '@/entities/logo';
 import { LocationIcon, PhoneIcon } from '@/shared/assets/icons';
 import { Button } from '@/shared/ui/button';
 import Link from 'next/link';
+import { Dropdown } from '@/shared/ui/Dropdown';
+
+const aboutCompany = [
+  {
+    name: 'О нас',
+    href: '/about',
+  },
+  {
+    name: 'Отзывы',
+    href: '/reviews',
+  },
+  {
+    name: 'Сертификаты',
+    href: '/certificate',
+  },
+];
 
 export const Header = () => {
   return (
@@ -31,12 +47,12 @@ export const Header = () => {
         <Link className="t-header" href={navigation[0].path}>
           {navigation[0].title}
         </Link>
-        <Link className="t-header" href={navigation[0].path}>
-          Каталог
-        </Link>{' '}
-        <Link className="t-header" href={navigation[0].path}>
-          О компании
-        </Link>
+        <Dropdown title="Каталог" items={aboutCompany} className="t-header" />
+        <Dropdown
+          title="О компании"
+          items={aboutCompany}
+          className="t-header"
+        />
         {navigation.slice(1).map((nav, index) => (
           <Link className="t-header" key={index} href={nav.path}>
             {nav.title}
