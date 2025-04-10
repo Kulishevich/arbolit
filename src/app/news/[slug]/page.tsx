@@ -9,33 +9,15 @@ import { ContentBlockT, NewT } from '@/shared/types';
 import { Button } from '@/shared/ui/button';
 import { ArrowLeftIcon } from '@/shared/assets/icons';
 
-export const generateMetadata = async ({
-  params,
-}: {
-  params: { slug: string };
-}) => {
-  const news: NewT = await fetch(
-    `${process.env.API_URL}/news/${params.slug.split('_')[1]}`
-  )
-    .then((res) => res.json())
-    .catch(() => undefined);
-
-  return news
-    ? {
-        title: news.title,
-        description: news.subtitle,
-        keywords: news.title ?? '',
-        openGraph: {
-          title: news.title,
-          description: news.subtitle,
-        },
-      }
-    : {};
+type Props = {
+  params: Promise<{ slug: string }>;
 };
 
-const page = async ({ params }: { params: { slug: string } }) => {
+const page = async ({ params }: Props) => {
+  const { slug: newsSlug } = await params;
+
   const info: NewT = await fetch(
-    `${process.env.API_URL}/news/${params.slug.split('_')[1]}`
+    `${process.env.API_URL}/news/${newsSlug.split('_')[1]}`
   )
     .then((res) => res.json())
     .catch(() => undefined);
@@ -98,7 +80,10 @@ const page = async ({ params }: { params: { slug: string } }) => {
           </Button>
         </div>
 
-        <FeedbackForm />
+        <FeedbackForm
+          title="связаться с нами"
+          description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
+        />
       </div>
     </main>
   );

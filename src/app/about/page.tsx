@@ -19,7 +19,10 @@ const page = async () => {
         <AboutBanner isBanner={false} />
         <OurAdvantages />
 
-        <FeedbackForm />
+        <FeedbackForm
+          title="связаться с нами"
+          description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
+        />
       </div>
     </main>
   );

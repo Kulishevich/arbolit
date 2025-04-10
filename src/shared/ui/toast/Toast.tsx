@@ -17,7 +17,6 @@ type ToastOptions = {
 const showToast = ({
   className,
   duration = DEFAULT_DURATION,
-  icon,
   message,
   title,
   position = DEFAULT_POSITION,
@@ -30,7 +29,7 @@ const showToast = ({
   }[variant];
 
   toast.custom(
-    (t) => (
+    () => (
       <div className={clsx(styles.rootClass, typesClass, className)}>
         {variant === 'error' && <ErrorIcon />}
         {variant === 'success' && <SuccessIcon />}

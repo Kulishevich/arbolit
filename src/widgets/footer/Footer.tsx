@@ -3,6 +3,7 @@ import s from './Footer.module.scss';
 import { Logo } from '@/entities/logo';
 import { navigation } from '@/shared/config/constants/navigation';
 import { SocialMedia } from '@/entities/social-media';
+import Link from 'next/link';
 
 const catalog = [
   'Арболитовый блок стандартный конструкционный',
@@ -26,19 +27,19 @@ export const Footer = () => {
           <p className="body-6">каталог</p>
           <div>
             {catalog.map((category, index) => (
-              <a href="/" className="body-2" key={index}>
+              <Link href="/" className="body-2" key={index}>
                 {category}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
         <div className={s.navigation}>
           <p className="body-6">клиенту</p>
           <div>
-            {navigation.map((elem) => (
-              <a className="body-2" href={elem.path}>
+            {navigation.map((elem, index) => (
+              <Link className="body-2" href={elem.path} key={index}>
                 {elem.title}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -55,7 +56,7 @@ export const Footer = () => {
         <p className="body-5">© 2025 domremont.com</p>
         <p className="body-5">Политика обработки персональных данных</p>
         <p className="body-5">
-          Дизайн и разработка: <a href="/">Cropas.by</a>
+          Дизайн и разработка: <Link href="/">Cropas.by</Link>
         </p>
       </div>
     </div>

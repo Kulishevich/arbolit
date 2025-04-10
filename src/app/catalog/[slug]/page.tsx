@@ -6,33 +6,14 @@ import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { Button } from '@/shared/ui/button';
 import { ProductT } from '@/shared/types';
 
-export const generateMetadata = async ({
-  params,
-}: {
-  params: { slug: string };
-}) => {
-  const product: ProductT = await fetch(
-    `${process.env.API_URL}/products/${params.slug.split('_')[1]}`
-  )
-    .then((res) => res.json())
-    .catch(() => undefined);
-
-  return product
-    ? {
-        title: product.name,
-        description: product.description.substring(0, 140),
-        keywords: product.name ?? '',
-        openGraph: {
-          title: product.name,
-          description: product.description.substring(0, 140),
-        },
-      }
-    : {};
+type Props = {
+  params: Promise<{ slug: string }>;
 };
 
-const page = async ({ params }: { params: { slug: string } }) => {
+const page = async ({ params }: Props) => {
+  const { slug: catalogSlug } = await params;
   const product: ProductT = await fetch(
-    `${process.env.API_URL}/products/${params.slug.split('_')[1]}`
+    `${process.env.API_URL}/products/${catalogSlug.split('_')[1]}`
   )
     .then((res) => res.json())
     .catch(() => undefined);

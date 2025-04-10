@@ -3,6 +3,7 @@ import cn from 'clsx';
 import s from './Breadcrumbs.module.scss';
 import { ArrowRightIcon } from '@/shared/assets/icons';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 interface Props {
   className?: string;
@@ -46,12 +47,12 @@ export const Breadcrumbs = ({ className }: Props) => {
           return (
             <li className={s.elem} key={idx}>
               {isNotEmpty && <ArrowRightIcon className={s.icon} />}
-              <a
+              <Link
                 href={path?.href || '/'}
                 className={cn(!isCurrentPage && s.link, 'body-5')}
               >
                 {path?.name}
-              </a>
+              </Link>
             </li>
           );
         })}

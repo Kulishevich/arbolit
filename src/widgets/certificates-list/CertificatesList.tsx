@@ -9,8 +9,8 @@ export const CertificatesList = () => {
   return (
     <div className={s.container}>
       <div className={s.galleryList}>
-        {certificates.map((elem, index) => (
-          <CertificateCard />
+        {certificates.map((_, index) => (
+          <CertificateCard key={index} />
         ))}
       </div>
       <Pagination totalPages="10" />

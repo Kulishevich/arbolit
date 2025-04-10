@@ -7,10 +7,11 @@ import { NewT } from '@/shared/types';
 import NewsTags from '@/features/NewsTags/NewsTags';
 import { NewsCard } from '@/entities/news-card';
 import { Pagination } from '@/shared/ui/pagination';
+
 const page = async ({
   searchParams,
 }: {
-  searchParams: { page: string; tag: string };
+  searchParams: Promise<{ page: string; tag: string }>;
 }) => {
   const pageNumber = (await searchParams).page ?? '1';
   const tag = (await searchParams).tag ?? '';
@@ -71,7 +72,10 @@ const page = async ({
           totalPages={Math.ceil(news.total / 6).toString()}
         />
 
-        <FeedbackForm />
+        <FeedbackForm
+          title="связаться с нами"
+          description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
+        />
       </div>
     </main>
   );

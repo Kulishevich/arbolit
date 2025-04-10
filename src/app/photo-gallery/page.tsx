@@ -4,6 +4,7 @@ import PageInfo from '@/features/PageInfo/PageInfo';
 import s from './page.module.scss';
 import { FeedbackForm } from '@/widgets/feedback-form';
 import { PhotoGallery } from '@/widgets/photo-gallery';
+import { Suspense } from 'react';
 
 const page = async () => {
   return (
@@ -15,7 +16,9 @@ const page = async () => {
         />
       </PagesHero>
       <div className={s.container}>
-        <PhotoGallery />
+        <Suspense fallback={<h3 className="h3">Загрузка галереи...</h3>}>
+          <PhotoGallery />
+        </Suspense>
         <FeedbackForm
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"

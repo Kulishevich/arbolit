@@ -4,6 +4,7 @@ import { navigation } from '@/shared/config/constants/navigation';
 import { Logo } from '@/entities/logo';
 import { LocationIcon, PhoneIcon } from '@/shared/assets/icons';
 import { Button } from '@/shared/ui/button';
+import Link from 'next/link';
 
 export const Header = () => {
   return (
@@ -27,19 +28,19 @@ export const Header = () => {
       </div>
       <div className={s.line}></div>
       <div className={s.navigation}>
-        <a className="t-header" href={navigation[0].path}>
+        <Link className="t-header" href={navigation[0].path}>
           {navigation[0].title}
-        </a>
-        <a className="t-header" href={navigation[0].path}>
+        </Link>
+        <Link className="t-header" href={navigation[0].path}>
           Каталог
-        </a>{' '}
-        <a className="t-header" href={navigation[0].path}>
+        </Link>{' '}
+        <Link className="t-header" href={navigation[0].path}>
           О компании
-        </a>
+        </Link>
         {navigation.slice(1).map((nav, index) => (
-          <a className="t-header" key={index} href={nav.path}>
+          <Link className="t-header" key={index} href={nav.path}>
             {nav.title}
-          </a>
+          </Link>
         ))}
       </div>
     </div>

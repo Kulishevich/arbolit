@@ -6,11 +6,10 @@ import s from './TextArea.module.scss';
 
 export type TextAreaProps = {
   errorMessage?: string;
-  label?: string;
 } & ComponentPropsWithoutRef<'textarea'>;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ className, errorMessage, label, ...rest }, ref) => {
+  ({ className, errorMessage, ...rest }, ref) => {
     return (
       <div className={s.container}>
         <textarea

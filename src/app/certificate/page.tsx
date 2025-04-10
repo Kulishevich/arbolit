@@ -4,6 +4,7 @@ import PageInfo from '@/features/PageInfo/PageInfo';
 import { FeedbackForm } from '@/widgets/feedback-form';
 import s from './page.module.scss';
 import { CertificatesList } from '@/widgets/certificates-list';
+import { Suspense } from 'react';
 
 const page = async () => {
   return (
@@ -15,7 +16,9 @@ const page = async () => {
         />
       </PagesHero>
       <div className={s.container}>
-        <CertificatesList />
+        <Suspense fallback={<h3 className="h3">Загрузка сертификатов...</h3>}>
+          <CertificatesList />
+        </Suspense>
         <FeedbackForm
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
