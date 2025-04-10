@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 335px;
+  margin: 12px auto 0;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .phoneButton {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    color: var(--text);
+    border: none;
+    background-color: var(--grey-1);
+    border-radius: 50%;
+  }
+  .burgerButton {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    background-color: var(--green);
+    border-radius: 50%;
+  }
+}

@@ -5,4 +5,5 @@ export const paths = {
   news: '/news',
   delivery: '/delivery',
   contacts: '/contacts',
+  policy: '/policy',
 };

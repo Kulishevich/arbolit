@@ -4,4 +4,8 @@
   & > svg {
     flex-shrink: 0;
   }
+
+  @media (max-width: 768px) {
+    gap: 12px;
+  }
 }

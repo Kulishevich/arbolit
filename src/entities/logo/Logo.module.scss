@@ -8,4 +8,16 @@
     flex-direction: column;
     gap: 2px;
   }
+
+  @media (max-width: 768px) {
+    gap: 6px;
+
+    & > div {
+      gap: 0;
+    }
+    & > svg {
+      width: 33px;
+      height: 36px;
+    }
+  }
 }
