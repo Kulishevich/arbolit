@@ -7,16 +7,19 @@ import Image from 'next/image';
 import { SocialMedia } from '@/entities/social-media';
 import { TextArea } from '@/shared/ui/text-area';
 
-export const FeedbackForm = () => {
+export const FeedbackForm = ({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) => {
   return (
     <div className={s.container}>
       <div className={s.content}>
         <div className={s.title}>
-          <h2 className="h2">связаться с нами</h2>
-          <p className="body-1">
-            Оставьте свои контактные данные и мы ответим на все интересующие вас
-            вопросы
-          </p>
+          <h2 className="h2">{title}</h2>
+          <p className="body-1">{description}</p>
         </div>
         <div className={s.form}>
           <TextField placeholder="Имя" />

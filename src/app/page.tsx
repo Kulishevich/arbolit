@@ -22,7 +22,7 @@ export default function Home() {
         <AboutBanner />
         <OurAdvantages />
         <ArbolitCompound />
-        <SliderWrapper title="сертификаты" variant="сertificate">
+        <SliderWrapper title="сертификаты" variant="certificate">
           {new Array(5).fill('').map((elem, index) => (
             <CertificateCard key={index} />
           ))}
@@ -33,7 +33,11 @@ export default function Home() {
           ))}
         </SliderWrapper>
         <ContactsBlock />
-        <FeedbackForm />
+        <FeedbackForm
+          title="связаться с нами"
+          description="Оставьте свои контактные данные и мы ответим на все интересующие вас
+            вопросы"
+        />
       </div>
     </>
   );

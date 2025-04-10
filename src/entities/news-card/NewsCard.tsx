@@ -7,7 +7,7 @@ export const NewsCard = () => {
   return (
     <div className={s.container}>
       <div className={s.imageContainer}>
-        <Image src={'/news.jfif'} fill alt="news" />
+        <Image src={'/news.png'} fill alt="news" />
         <div className={s.overlay}>
           <Button fullWidth>Подробнее</Button>
         </div>
