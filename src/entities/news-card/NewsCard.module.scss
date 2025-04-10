@@ -5,6 +5,13 @@
   width: 650px;
   align-items: start;
 
+  &.low {
+    .imageContainer {
+      width: 650px;
+      height: 292px;
+    }
+  }
+
   & > span {
     color: var(--white);
     background-color: var(--grey-3);
@@ -17,6 +24,7 @@
     height: 650px;
     border-radius: 12px;
     overflow: hidden;
+    flex: 1 1 auto;
 
     & > img {
       object-fit: cover;

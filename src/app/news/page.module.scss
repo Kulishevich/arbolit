@@ -1,0 +1,79 @@
+@import '../../shared/config/styles/functions.scss';
+
+.container {
+  max-width: 1322px;
+  margin: 0 auto;
+}
+
+main .hero {
+  margin-bottom: 48px;
+}
+
+.news {
+  margin-top: 36px;
+  margin-bottom: 48px;
+  display: flex;
+  gap: 22px;
+}
+
+.news > div {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.pagination {
+  margin-bottom: 160px;
+}
+
+@media (max-width: 1490px) {
+  .container {
+    max-width: vw-1490(1322);
+  }
+
+  main .hero {
+    margin-bottom: vw-1490(48);
+  }
+
+  .news {
+    gap: vw-1490(22);
+    margin-top: vw-1490(36);
+    margin-bottom: vw-1490(48);
+  }
+
+  .news > div {
+    gap: vw-1490(22);
+  }
+
+  .pagination {
+    margin-bottom: vw-1490(160);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: calc(100% - 40px);
+  }
+
+  main .hero {
+    margin-bottom: 48px;
+  }
+
+  .news {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+  }
+
+  .news > div {
+    gap: 24px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .pagination {
+    margin-bottom: 72px;
+  }
+}

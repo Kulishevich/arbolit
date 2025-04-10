@@ -47,7 +47,7 @@ main .hero {
   color: var(--text);
 }
 
-.textBlock:first-of-type p:first-of-type {
+.subtitle {
   margin-bottom: 16px;
   font-size: 24px;
 }
@@ -123,7 +123,7 @@ main .hero {
     font-size: vw-1490(18);
   }
 
-  .textBlock:first-of-type p:first-of-type {
+  .subtitle {
     margin-bottom: vw-1490(16);
     font-size: vw-1490(24);
   }
@@ -189,7 +189,7 @@ main .hero {
     font-size: 16px;
   }
 
-  .textBlock:first-of-type p:first-of-type {
+  .subtitle {
     margin-bottom: 16px;
     font-size: 18px;
     text-align: center;

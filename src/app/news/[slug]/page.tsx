@@ -3,16 +3,39 @@ import styles from './page.module.scss';
 import PageInfo from '@/features/PageInfo/PageInfo';
 import clsx from 'clsx';
 import { FeedbackForm } from '@/widgets/feedback-form';
-import EyeIcon from '@/shared/assets/icons/EyeIcon';
 import { parseDate } from '@/shared/lib/utils/parcsDate';
 import Image from 'next/image';
 import { ContentBlockT, NewT } from '@/shared/types';
 import { Button } from '@/shared/ui/button';
 import { ArrowLeftIcon } from '@/shared/assets/icons';
 
-const page = async () => {
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  const news: NewT = await fetch(
+    `${process.env.API_URL}/news/${params.slug.split('_')[1]}`
+  )
+    .then((res) => res.json())
+    .catch(() => undefined);
+
+  return news
+    ? {
+        title: news.title,
+        description: news.subtitle,
+        keywords: news.title ?? '',
+        openGraph: {
+          title: news.title,
+          description: news.subtitle,
+        },
+      }
+    : {};
+};
+
+const page = async ({ params }: { params: { slug: string } }) => {
   const info: NewT = await fetch(
-    'https://arbolitapi.webspaceteam.site/api/v1/news/2'
+    `${process.env.API_URL}/news/${params.slug.split('_')[1]}`
   )
     .then((res) => res.json())
     .catch(() => undefined);
@@ -30,13 +53,16 @@ const page = async () => {
           <div className={clsx('button-secondary', styles.date)}>
             {parseDate(info?.publication_date)}
           </div>
-          <div className={clsx(styles.views)}>
+          {/*   <div className={clsx(styles.views)}>
             <EyeIcon />
             {info?.subtitle} просмотров
-          </div>
+          </div> */}
         </div>
 
         <div className={styles.content}>
+          <div className={clsx(styles.subtitle, 'body-1')}>
+            {info?.subtitle}
+          </div>
           {info?.content_blocks.map((elem: ContentBlockT, index: number) => {
             if (elem.type === 'text' && elem.content) {
               return (

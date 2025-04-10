@@ -1,0 +1,110 @@
+@import '../shared/config/styles/functions.scss';
+
+.container {
+  margin-top: 56px;
+  display: flex;
+  justify-content: space-between;
+  width: 1322px;
+  margin: 0 auto;
+}
+
+.caption {
+  flex: 0 0 706px;
+  margin-top: 84px;
+}
+
+.text {
+  margin-bottom: 32px;
+  span {
+    font-weight: 700;
+  }
+}
+
+.button {
+  max-width: 260px;
+}
+
+.image {
+  width: 605px;
+  height: 657px;
+}
+
+.imageMobile {
+  display: none;
+}
+
+@media (max-width: 1490px) {
+  .container {
+    width: vw-1490(1322);
+    margin-top: vw-1490(56);
+  }
+
+  .caption {
+    margin-top: vw-1490(84);
+    flex: 0 0 vw-1490(706);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text {
+    margin-bottom: vw-1490(32);
+  }
+
+  .button {
+    max-width: vw-1490(260);
+  }
+
+  .image {
+    width: vw-1490(605);
+    height: vw-1490(657);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 118px;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .caption {
+    margin-top: 48px;
+    flex: initial;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .text {
+    margin-bottom: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    span {
+      display: flex;
+      text-align: center;
+      align-items: center;
+    }
+  }
+
+  .button {
+    max-width: 335px;
+    width: 100%;
+  }
+
+  .image {
+    display: none;
+  }
+
+  .imageMobile {
+    display: block;
+    width: 311px;
+    height: 380px;
+    object-fit: cover;
+  }
+}

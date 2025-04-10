@@ -10,9 +10,14 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@/shared/assets/icons';
 interface Props {
   totalPages: string;
   currentPage?: string;
+  className?: string;
 }
 
-export const Pagination = ({ totalPages, currentPage = '1' }: Props) => {
+export const Pagination = ({
+  totalPages,
+  currentPage = '1',
+  className,
+}: Props) => {
   const [paginationPages, setPaginationPages] = useState<number[]>([]);
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -46,7 +51,7 @@ export const Pagination = ({ totalPages, currentPage = '1' }: Props) => {
   }
 
   return (
-    <div className={s.container}>
+    <div className={cn(s.container, className)}>
       <Button
         variant={'icon'}
         className={s.button}

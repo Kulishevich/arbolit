@@ -1,4 +1,3 @@
-'use client';
 import AboutBanner from '@/widgets/AboutBanner/AboutBanner';
 import s from './page.module.scss';
 import ArbolitCharacteristicsBlock from '@/widgets/ArbolitCharacteristicsBlock/ArbolitCharacteristicsBlock';
@@ -11,8 +10,15 @@ import { SliderWrapper } from '@/entities/slider-wrapper';
 import { CertificateCard } from '@/entities/certificate-card';
 import { NewsCard } from '@/entities/news-card';
 import ContactsBlock from '@/widgets/ContactsBlock/ContactsBlock';
+import { NewT } from '@/shared/types';
 
-export default function Home() {
+export default async function Home() {
+  const news: { current_page: number; data: NewT[] } = await fetch(
+    `${process.env.API_URL}/news?page=1&per_page=6`
+  )
+    .then((res) => res.json())
+    .catch(() => undefined);
+
   return (
     <>
       <MainHero />
@@ -22,14 +28,14 @@ export default function Home() {
         <AboutBanner />
         <OurAdvantages />
         <ArbolitCompound />
-        <SliderWrapper title="сертификаты" variant="сertificate">
+        <SliderWrapper title="сертификаты" variant="certificate">
           {new Array(5).fill('').map((elem, index) => (
             <CertificateCard key={index} />
           ))}
         </SliderWrapper>
         <SliderWrapper title="последние новости" variant="news">
-          {new Array(5).fill('').map((elem, index) => (
-            <NewsCard key={index} />
+          {news.data.map((item) => (
+            <NewsCard key={item.id} {...item} isLow />
           ))}
         </SliderWrapper>
         <ContactsBlock />

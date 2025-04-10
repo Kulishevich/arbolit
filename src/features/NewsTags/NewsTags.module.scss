@@ -1,0 +1,48 @@
+@import '../../shared/config/styles/functions.scss';
+
+.tags {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 16px 11px;
+  min-width: 201px;
+  border: 1px solid rgba(37, 43, 51, 0.1);
+  border-radius: 6px;
+  color: var(--text);
+  background-color: var(--white);
+
+  &.active,
+  &:hover {
+    border: 1px solid var(--blue);
+    color: var(--text);
+    background-color: var(--white);
+  }
+}
+
+@media (max-width: 1490px) {
+  .tags {
+    gap: vw-1490(24);
+  }
+
+  .tag {
+    padding: vw-1490(16) vw-1490(11);
+    min-width: vw-1490(201);
+    border-radius: vw-1490(6);
+  }
+}
+
+@media (max-width: 768px) {
+  .tags {
+    gap: 16px;
+  }
+
+  .tag {
+    padding: 16px;
+    min-width: 158px;
+    border-radius: 6px;
+  }
+}

@@ -6,6 +6,7 @@ export type NewT = {
   publication_date: string;
   subtitle: string;
   title: string;
+  tags: string[];
 };
 
 export type ContentBlockT = {
