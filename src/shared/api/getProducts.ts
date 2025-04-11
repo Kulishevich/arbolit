@@ -11,6 +11,7 @@ export async function getProducts(): Promise<ProductT[] | null> {
 
     return products;
   } catch (e) {
+    console.log(e);
     return null;
   }
 }
