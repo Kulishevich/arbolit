@@ -64,9 +64,10 @@
   display: flex;
   gap: 24px;
   margin-bottom: 32px;
+  flex-wrap: wrap;
 }
 
-.tab {
+.tabs .tab {
   padding: 16px 11px;
   min-width: 201px;
   background: var(--white);
@@ -74,8 +75,8 @@
   color: var(--text);
 }
 
-.tab:hover,
-.tab.active {
+.tabs .tab:hover,
+.tabs .tab.active {
   border-color: var(--blue);
   background: var(--white);
   color: var(--text);
@@ -150,11 +151,17 @@
   .content li {
     margin-bottom: vw-1490(2);
   }
+
+  .tabs .tab {
+    padding: vw-1490(16) vw-1490(11);
+    min-width: vw-1490(201);
+  }
 }
 
 @media (max-width: 768px) {
   .container {
     max-width: calc(100% - 40px);
+    margin-top: 24px;
   }
 
   .product {
@@ -233,5 +240,11 @@
 
   .content li {
     margin-bottom: 2px;
+  }
+
+  .tabs .tab {
+    padding: 16px;
+    max-width: 158px;
+    flex: 1 1 100%;
   }
 }

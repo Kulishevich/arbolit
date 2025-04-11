@@ -18,11 +18,14 @@ const NewsTags = ({ tags }: NewsTagsProps) => {
     const params = new URLSearchParams(searchParams.toString());
     if (currentTag === tag) {
       params.delete('tag');
+      params.delete('page');
     } else {
       if (tag) {
         params.set('tag', tag);
+        params.delete('page');
       } else {
         params.delete('tag');
+        params.delete('page');
       }
     }
     router.push(`/news?${params.toString()}`);

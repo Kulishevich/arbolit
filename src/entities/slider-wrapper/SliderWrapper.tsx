@@ -30,7 +30,9 @@ export const SliderWrapper = ({
   return (
     <div className={s.container}>
       {title && <h2 className="h2">{title}</h2>}
-      <Slider itemWidth={itemWidth()}>{children}</Slider>
+      <Slider middleArrows={variant === 'reviews'} itemWidth={itemWidth()}>
+        {children}
+      </Slider>
     </div>
   );
 };
