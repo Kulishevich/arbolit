@@ -12,9 +12,11 @@ import brickWall from '@/shared/assets/images/brick-wall.svg';
 export const FeedbackForm = ({
   title,
   description,
+  type = 'feedback',
 }: {
   title: string;
   description: string;
+  type?: 'delivery' | 'feedback';
 }) => {
   return (
     <div className={s.container}>
@@ -24,10 +26,17 @@ export const FeedbackForm = ({
           <p className="body-1">{description}</p>
         </div>
         <div className={s.form}>
+          {type === 'delivery' && (
+            <>
+              <TextField placeholder="Пункт назначения" />
+              <TextField placeholder="Количество блоков" />
+            </>
+          )}
           <TextField placeholder="Имя" />
           <TextField placeholder="Телефон" />
-          <TextArea placeholder="Комментарий" />
+          {type === 'feedback' && <TextArea placeholder="Комментарий" />}
           <Checkbox label="Согласие на обработку персональных данных" />
+
           <Button>Отправить</Button>
         </div>
       </div>
