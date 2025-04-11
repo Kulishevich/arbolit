@@ -1,13 +1,18 @@
+'use client';
 import React from 'react';
 import s from './FeedbackForm.module.scss';
-import { TextField } from '@/shared/ui/text-field';
-import { Checkbox } from '@/shared/ui/checkbox';
 import { Button } from '@/shared/ui/button';
 import Image from 'next/image';
 import { SocialMedia } from '@/entities/social-media';
-import { TextArea } from '@/shared/ui/text-area';
 import background from '@/shared/assets/images/feedback-background.svg';
 import brickWall from '@/shared/assets/images/brick-wall.svg';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { FeedbackFormScheme } from '@/shared/validation/feedback-scheme-creator';
+import { ControlledTextField } from '@/shared/ui/controlled-textfiled';
+import { ControlledTextArea } from '@/shared/ui/controlled-text-area';
+import { ControlledCheckbox } from '@/shared/ui/controlled-checkbox';
+import { useForm } from 'react-hook-form';
+import { createOrder } from '@/shared/api/createOrder';
 
 export const FeedbackForm = ({
   title,
@@ -18,6 +23,35 @@ export const FeedbackForm = ({
   description: string;
   type?: 'delivery' | 'feedback';
 }) => {
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isValid },
+  } = useForm({
+    defaultValues: {
+      name: '',
+      phone: '',
+      comment: '',
+      isChecked: false,
+      address: '',
+      count: '',
+    },
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
+    resolver: zodResolver(FeedbackFormScheme(type)),
+  });
+
+  const formHandler = handleSubmit(async (data) => {
+    console.log(data);
+    try {
+      await createOrder(data);
+      reset();
+    } catch (e) {
+      console.error(e);
+    }
+  });
+
   return (
     <div className={s.container}>
       <div className={s.content}>
@@ -28,16 +62,44 @@ export const FeedbackForm = ({
         <div className={s.form}>
           {type === 'delivery' && (
             <>
-              <TextField placeholder="Пункт назначения" />
-              <TextField placeholder="Количество блоков" />
+              <ControlledTextField
+                placeholder="Пункт назначения"
+                control={control}
+                name="address"
+              />
+              <ControlledTextField
+                placeholder="Количество блоков"
+                control={control}
+                name="count"
+              />
             </>
           )}
-          <TextField placeholder="Имя" />
-          <TextField placeholder="Телефон" />
-          {type === 'feedback' && <TextArea placeholder="Комментарий" />}
-          <Checkbox label="Согласие на обработку персональных данных" />
+          <ControlledTextField
+            placeholder="Имя"
+            control={control}
+            name="name"
+          />
+          <ControlledTextField
+            placeholder="Телефон"
+            control={control}
+            name="phone"
+          />
+          {type === 'feedback' && (
+            <ControlledTextArea
+              placeholder="Комментарий"
+              control={control}
+              name="comment"
+            />
+          )}
+          <ControlledCheckbox
+            label="Согласие на обработку персональных данных"
+            control={control}
+            name="isChecked"
+          />
 
-          <Button>Отправить</Button>
+          <Button disabled={!isValid} onClick={formHandler}>
+            Отправить
+          </Button>
         </div>
       </div>
       <div className={s.imageContainer}>
