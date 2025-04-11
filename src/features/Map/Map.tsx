@@ -1,10 +1,8 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import mapStyles from '@/shared/assets/maps.json';
 import clsx from 'clsx';
 import styles from './Map.module.scss';
 import Marker from '@/entities/Marker/Marker';
-import type { VectorCustomization } from '@yandex/ymaps3-types';
 
 declare global {
   interface Window {
@@ -33,12 +31,7 @@ function Map({ className }: { className?: string }) {
             location: { center: [27.56272, 53.900846], zoom: 16 },
             mode: 'vector',
           },
-          [
-            new YMapDefaultSchemeLayer({
-              customization: mapStyles as VectorCustomization,
-            }),
-            new YMapDefaultFeaturesLayer({}),
-          ]
+          [new YMapDefaultSchemeLayer({}), new YMapDefaultFeaturesLayer({})]
         );
 
         map.addChild(
