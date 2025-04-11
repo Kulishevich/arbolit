@@ -28,7 +28,7 @@ function Map({ className }: { className?: string }) {
         const map = new YMap(
           mapRef.current,
           {
-            location: { center: [27.56272, 53.900846], zoom: 16 },
+            location: { center: [37.681559, 55.773251], zoom: 16 },
             mode: 'vector',
           },
           [new YMapDefaultSchemeLayer({}), new YMapDefaultFeaturesLayer({})]
@@ -37,7 +37,7 @@ function Map({ className }: { className?: string }) {
         map.addChild(
           new YMapMarker(
             {
-              coordinates: [27.56272, 53.900846],
+              coordinates: [37.681559, 55.773251],
               draggable: false,
               mapFollowsOnDrag: true,
             },

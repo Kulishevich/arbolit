@@ -25,3 +25,4 @@ export { default as SuccessIcon } from './SuccessIcon';
 export { default as QuotesIcon } from './QuotesIcon';
 export { default as ArrowDownIcon } from './ArrowDownIcon';
 export { default as BurgerMenuIcon } from './BurgerMenuIcon';
+export { default as CloseIcon } from './CloseIcon';
