@@ -6,6 +6,7 @@ import { SocialMedia } from '@/entities/social-media';
 import Link from 'next/link';
 import { paths } from '@/shared/config/constants/paths';
 import { HeaderDropdown } from '@/shared/ui/header-dropdown';
+import { ProductT } from '@/shared/types';
 
 const catalog = [
   'Арболитовый блок стандартный конструкционный',
@@ -26,7 +27,7 @@ const aboutCompany = [
   },
 ];
 
-export const Footer = () => {
+export const Footer = ({ products }: { products: ProductT[] | null }) => {
   return (
     <div className={s.container}>
       <div className={s.content}>
@@ -40,9 +41,13 @@ export const Footer = () => {
           <div className={s.catalog}>
             <p className="body-6">каталог</p>
             <div>
-              {catalog.map((category, index) => (
-                <Link href="/" className="body-2" key={index}>
-                  {category}
+              {products?.map((product, index) => (
+                <Link
+                  href={`/catalog/${product.slug}_${product.id}`}
+                  className="body-2"
+                  key={index}
+                >
+                  {product.name}
                 </Link>
               ))}
             </div>

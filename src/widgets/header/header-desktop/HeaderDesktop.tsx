@@ -5,10 +5,10 @@ import { Logo } from '@/entities/logo';
 import { LocationIcon, PhoneIcon } from '@/shared/assets/icons';
 import { Button } from '@/shared/ui/button';
 import Link from 'next/link';
-import { Dropdown } from '@/shared/ui/Dropdown';
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import { paths } from '@/shared/config/constants/paths';
 import { HeaderDropdown } from '@/shared/ui/header-dropdown';
+import { ProductT } from '@/shared/types';
 
 const aboutCompany = [
   {
@@ -21,7 +21,17 @@ const aboutCompany = [
   },
 ];
 
-export const HeaderDesktop = () => {
+export const HeaderDesktop = ({
+  products,
+}: {
+  products: ProductT[] | null;
+}) => {
+  const catalogProducts =
+    products?.map((elem) => ({
+      name: elem.name,
+      href: `/catalog/${elem.slug}_${elem.id}`,
+    })) || [];
+
   return (
     <div className={s.container}>
       <div className={s.info}>
@@ -51,7 +61,7 @@ export const HeaderDesktop = () => {
         <HeaderDropdown
           title="Каталог"
           href={paths.catalog}
-          items={aboutCompany}
+          items={catalogProducts}
           className="t-header"
         />
         <HeaderDropdown

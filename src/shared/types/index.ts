@@ -15,7 +15,6 @@ export type ContentBlockT = {
   images: { content: string }[] | undefined;
 };
 
-
 export type DesignSettingsT = {
   logo_path: string;
   favicon_path: string;
@@ -32,14 +31,14 @@ export type DesignSettingsT = {
   viber: string;
   company_info: string;
   bank_details: string;
-}
+};
 
 export type ReviewT = {
   id: number;
   title: string;
   description: string;
   photo_path: string;
-}
+};
 
 export type ProductT = {
   id: number;
@@ -56,7 +55,7 @@ export type ProductT = {
   created_at: string;
   updated_at: string;
   photo_path: string;
-}
+};
 
 export type SpecificationT = {
   id: number;
@@ -74,15 +73,19 @@ export type SpecificationT = {
     value: string;
     created_at: string;
     updated_at: string;
-  }
-}
-
+  };
+};
 
 export type ImageResponseT = {
   id: number;
   title: string;
   photo_path: string;
-}
+};
 
-
-
+export type OrderT = {
+  name: string;
+  email: string;
+  phone: string;
+  city: string;
+  comment: string;
+};

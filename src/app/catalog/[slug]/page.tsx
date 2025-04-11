@@ -17,7 +17,7 @@ const page = async ({ params }: Props) => {
   )
     .then((res) => res.json())
     .catch(() => undefined);
-
+  console.log(product);
   return (
     <main className={styles.container}>
       <Breadcrumbs />
