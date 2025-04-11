@@ -22,8 +22,12 @@ export const Dropdown = ({
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content className={styles.content} sideOffset={5}>
-          {items.map((elem) => (
-            <DropdownMenu.Item className={clsx(styles.item, 'body-3')} asChild>
+          {items.map((elem, index) => (
+            <DropdownMenu.Item
+              className={clsx(styles.item, 'body-3')}
+              asChild
+              key={index}
+            >
               <Link href={elem.href}>{elem.name}</Link>
             </DropdownMenu.Item>
           ))}

@@ -7,19 +7,20 @@ import { Button } from '@/shared/ui/button';
 import Link from 'next/link';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
+import { paths } from '@/shared/config/constants/paths';
 
 const aboutCompany = [
   {
     name: 'О нас',
-    href: '/about',
+    href: paths.about,
   },
   {
     name: 'Отзывы',
-    href: '/reviews',
+    href: paths.reviews,
   },
   {
     name: 'Сертификаты',
-    href: '/certificate',
+    href: paths.certificate,
   },
 ];
 

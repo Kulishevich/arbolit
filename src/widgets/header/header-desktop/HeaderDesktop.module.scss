@@ -9,15 +9,8 @@
 .info {
   display: flex;
 
-  & > div:nth-child(1) {
+  & > a:nth-child(1) {
     margin-right: 340px;
-  }
-
-  & > div:nth-child(2) {
-    margin-right: 42px;
-  }
-  & > div:nth-child(3) {
-    margin-right: 49px;
   }
 }
 
@@ -32,6 +25,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
+
+  margin-right: 42px;
+
+  & > svg {
+    color: var(--grey-1);
+  }
   & > p {
     width: 209px;
   }
@@ -41,6 +40,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
+
+  margin-right: auto;
+
+  & > svg {
+    color: var(--grey-1);
+  }
   & > div {
     display: flex;
     flex-direction: column;

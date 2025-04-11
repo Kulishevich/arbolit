@@ -6,4 +6,6 @@ export const paths = {
   delivery: '/delivery',
   contacts: '/contacts',
   policy: '/policy',
+  about: '/about',
+  certificate: '/certificate',
 };

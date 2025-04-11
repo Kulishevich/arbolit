@@ -1,12 +1,13 @@
 'use client';
 import React, { ReactNode, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import s from './FeedbackPopup.module.scss';
 import { TextField } from '@/shared/ui/text-field';
 import { TextArea } from '@/shared/ui/text-area';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { Button } from '@/shared/ui/button';
 import Image from 'next/image';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import s from './FeedbackPopup.module.scss';
 
 export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,9 @@ export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
     >
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Overlay className={s.overlay}>
+        <VisuallyHidden>
+          <Dialog.Title>Форма обратной связи</Dialog.Title>
+        </VisuallyHidden>
         <Dialog.Content className={s.content}>
           <div className={s.form}>
             <div>

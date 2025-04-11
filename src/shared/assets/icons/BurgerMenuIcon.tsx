@@ -17,19 +17,19 @@ const BurgerMenuIcon = (
       d="M24 6H2"
       stroke="#FCFCFC"
       strokeWidth="1.5"
-      stroke-linecap="round"
+      strokeLinecap="round"
     />
     <path
       d="M24 12H2"
       stroke="#FCFCFC"
       strokeWidth="1.5"
-      stroke-linecap="round"
+      strokeLinecap="round"
     />
     <path
       d="M24 19H2"
       stroke="#FCFCFC"
       strokeWidth="1.5"
-      stroke-linecap="round"
+      strokeLinecap="round"
     />
   </svg>
 );
