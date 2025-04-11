@@ -6,6 +6,7 @@ import { SocialMedia } from '@/entities/social-media';
 import Link from 'next/link';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { paths } from '@/shared/config/constants/paths';
+import { HeaderDropdown } from '@/shared/ui/header-dropdown';
 
 const catalog = [
   'Арболитовый блок стандартный конструкционный',
@@ -53,7 +54,7 @@ export const Footer = () => {
               <Link className="body-2" href={navigation[0].path}>
                 {navigation[0].title}
               </Link>
-              <Dropdown
+              <HeaderDropdown
                 title="О компании"
                 items={aboutCompany}
                 className="body-2"

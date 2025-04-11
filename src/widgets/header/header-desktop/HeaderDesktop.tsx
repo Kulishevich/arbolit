@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import { paths } from '@/shared/config/constants/paths';
+import { HeaderDropdown } from '@/shared/ui/header-dropdown';
 
 const aboutCompany = [
   {
@@ -47,8 +48,12 @@ export const HeaderDesktop = () => {
         <Link className="t-header" href={navigation[0].path}>
           {navigation[0].title}
         </Link>
-        <Dropdown title="Каталог" items={aboutCompany} className="t-header" />
-        <Dropdown
+        <HeaderDropdown
+          title="Каталог"
+          items={aboutCompany}
+          className="t-header"
+        />
+        <HeaderDropdown
           title="О компании"
           items={aboutCompany}
           className="t-header"

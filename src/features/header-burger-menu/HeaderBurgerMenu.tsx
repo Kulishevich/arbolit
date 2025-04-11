@@ -71,6 +71,9 @@ export const HeaderBurgerMenu = () => {
               {navigation[0].title}
             </Link>
             <CollapseHeader title={'Каталог'}>
+              <Link href={paths.catalog} className="body-2">
+                Каталог
+              </Link>
               {categories.map((category, index) => (
                 <Link className="body-2" key={index} href={'/'}>
                   {category}

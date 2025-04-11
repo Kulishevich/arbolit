@@ -8,4 +8,5 @@ export const paths = {
   policy: '/policy',
   about: '/about',
   certificate: '/certificate',
+  catalog: '/catalog',
 };
