@@ -263,6 +263,10 @@
     bottom: -16px;
   }
 
+  .bgMobile {
+    display: block;
+  }
+
   .standalone {
     &.wrapper {
       max-width: calc(100% - 40px);
