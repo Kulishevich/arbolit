@@ -32,10 +32,6 @@ const aboutCompany = [
     href: paths.about,
   },
   {
-    name: 'Отзывы',
-    href: paths.reviews,
-  },
-  {
     name: 'Сертификаты',
     href: paths.certificate,
   },

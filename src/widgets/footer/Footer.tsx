@@ -18,15 +18,11 @@ const catalog = [
 const aboutCompany = [
   {
     name: 'О нас',
-    href: '/about',
-  },
-  {
-    name: 'Отзывы',
-    href: '/reviews',
+    href: paths.about,
   },
   {
     name: 'Сертификаты',
-    href: '/certificate',
+    href: paths.certificate,
   },
 ];
 
