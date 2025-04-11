@@ -34,6 +34,12 @@
     bottom: -72px;
     left: 112px;
     transform: translate(0, 0);
+
+    &.middleArrows {
+      left: 0;
+      bottom: 166px;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -48,5 +54,11 @@
     bottom: -72px;
     right: 112px;
     transform: translate(0, 0);
+
+    &.middleArrows {
+      right: 0;
+      bottom: 166px;
+      transform: translateY(0);
+    }
   }
 }

@@ -3,13 +3,14 @@ import React, { ReactNode, useRef } from 'react';
 import s from './Slider.module.scss';
 import { Button } from '../button';
 import { ArrowLeftIcon, ArrowRightIcon } from '@/shared/assets/icons';
-
+import clsx from 'clsx';
 type SliderProps = {
   children: ReactNode;
   itemWidth: number;
+  middleArrows?: boolean;
 };
 
-export const Slider = ({ children, itemWidth }: SliderProps) => {
+export const Slider = ({ children, itemWidth, middleArrows }: SliderProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -28,7 +29,7 @@ export const Slider = ({ children, itemWidth }: SliderProps) => {
     <div className={s.container}>
       <Button
         variant="icon"
-        className={s.iconLeft}
+        className={clsx(s.iconLeft, { [s.middleArrows]: middleArrows })}
         onClick={() => scroll('left')}
       >
         <ArrowLeftIcon />
@@ -39,7 +40,7 @@ export const Slider = ({ children, itemWidth }: SliderProps) => {
       </div>
       <Button
         variant="icon"
-        className={s.iconRight}
+        className={clsx(s.iconRight, { [s.middleArrows]: middleArrows })}
         onClick={() => scroll('right')}
       >
         <ArrowRightIcon />

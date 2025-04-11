@@ -15,6 +15,7 @@ const page = async () => {
       </PagesHero>
       <div className={s.container}>
         <FeedbackForm
+          type="delivery"
           title="Расчёт стоимости доставки"
           description="Заполните форму для расчёта итоговой стоимости транспортировки арболита от производства до вашего места строительства"
         />

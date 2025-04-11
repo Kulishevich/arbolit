@@ -189,7 +189,6 @@
 @media (max-width: 768px) {
   .wrapper {
     width: 100%;
-    max-width: calc(100% - 40px);
   }
 
   .title {
@@ -214,7 +213,7 @@
   .image {
     height: 417px;
     max-width: 417px;
-    width: 100%;
+    width: calc(100% + 40px);
     object-fit: cover;
   }
 
@@ -231,6 +230,10 @@
   .item:nth-child(5),
   .item:nth-child(6) {
     width: 100%;
+  }
+
+  .item .line {
+    display: none;
   }
 }
 
