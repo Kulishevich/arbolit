@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import * as Dialog from '@radix-ui/react-dialog';
 import s from './HeaderBurgerMenu.module.scss';
 import { Button } from '@/shared/ui/button';
 import { navigation } from '@/shared/config/constants/navigation';
 import Link from 'next/link';
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import {
   BurgerMenuIcon,
   CloseIcon,

@@ -8,14 +8,6 @@ import { paths } from '@/shared/config/constants/paths';
 import { HeaderDropdown } from '@/shared/ui/header-dropdown';
 import { ProductT } from '@/shared/types';
 
-const catalog = [
-  'Арболитовый блок стандартный конструкционный',
-  'Арболитовый блок теплоизоляционный',
-  'Блок под армопояс',
-  'Арболитовый блок перегородочный',
-  'Блок с односторонним отделочным слоем',
-];
-
 const aboutCompany = [
   {
     name: 'О нас',
