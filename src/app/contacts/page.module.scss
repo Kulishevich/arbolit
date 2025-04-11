@@ -20,6 +20,16 @@
   gap: 6px;
 }
 
+.caption p:has(strong) {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.caption p {
+  margin-bottom: 6px;
+}
+
 @media (max-width: 1490px) {
   .container {
     max-width: vw-1490(1322);
@@ -37,6 +47,16 @@
   .info {
     gap: vw-1490(6);
     margin-top: vw-1490(16);
+  }
+
+  .caption p:has(strong) {
+    margin-top: vw-1490(32);
+    margin-bottom: vw-1490(16);
+    font-weight: 700;
+  }
+
+  .caption p {
+    margin-bottom: vw-1490(6);
   }
 }
 
@@ -63,5 +83,15 @@
     margin-top: 12px;
     gap: 6px;
     text-align: center;
+  }
+
+  .caption p:has(strong) {
+    margin-top: 20px;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+
+  .caption p {
+    margin-bottom: 6px;
   }
 }

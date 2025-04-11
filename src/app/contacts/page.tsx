@@ -5,8 +5,15 @@ import PageInfo from '@/features/PageInfo/PageInfo';
 import ContactsBlock from '@/widgets/ContactsBlock/ContactsBlock';
 import clsx from 'clsx';
 import { FeedbackForm } from '@/widgets/feedback-form';
+import { DesignSettingsT } from '@/shared/types';
 
 const page = async () => {
+  const info: DesignSettingsT = await fetch(
+    `${process.env.API_URL}/design/settings`
+  )
+    .then((res) => res.json())
+    .catch(() => undefined);
+
   return (
     <main>
       <PagesHero image={contacts}>
@@ -21,23 +28,10 @@ const page = async () => {
         <section className={styles.requisites}>
           <h2 className={clsx('h2', styles.title)}>Реквизиты компании</h2>
 
-          <div className={clsx('body-1', styles.name)}>ООО “ДОМРЕМОНТ”</div>
-
-          <div className={clsx('body-1', styles.info)}>
-            <div className={styles.infoItem}>ИНН 781000531645</div>
-
-            <div className={styles.infoItem}>ОГРНИП 311784703100791</div>
-
-            <div className={styles.infoItem}>Р/счет 40802810632250001887</div>
-
-            <div className={styles.infoItem}>
-              Филиал «Санкт-Петербургский» АО «АЛЬФА-БАНК»
-            </div>
-
-            <div className={styles.infoItem}>К/счет 30101810600000000786</div>
-
-            <div className={styles.infoItem}>БИК 044030786</div>
-          </div>
+          <div
+            className={clsx('body-1', styles.caption)}
+            dangerouslySetInnerHTML={{ __html: info.company_info }}
+          ></div>
         </section>
 
         <FeedbackForm
