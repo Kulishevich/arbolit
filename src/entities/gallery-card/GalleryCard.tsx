@@ -20,8 +20,17 @@ export const GalleryCard = () => {
         aria-label="Увеличенное изображение"
       >
         <Dialog.Overlay className={s.overlay}>
-          <Dialog.Content className={s.content}>
-            <Image src={'/gallery.png'} fill alt="gallery" />
+          <Dialog.Content
+            className={s.content}
+            onClick={() => setIsOpen(false)}
+          >
+            <Image
+              src={'/gallery.png'}
+              width={426}
+              height={240}
+              alt="gallery"
+              onClick={(e) => e.stopPropagation()}
+            />
           </Dialog.Content>
         </Dialog.Overlay>
       </Dialog.Root>
