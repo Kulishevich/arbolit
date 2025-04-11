@@ -73,3 +73,11 @@
     color: var(--red);
   }
 }
+
+.error {
+  border: 1px solid var(--red);
+}
+
+.errorMessage {
+  color: var(--red);
+}

@@ -1,16 +1,41 @@
 'use client';
 import React, { ReactNode, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { TextField } from '@/shared/ui/text-field';
-import { TextArea } from '@/shared/ui/text-area';
-import { Checkbox } from '@/shared/ui/checkbox';
+import { useForm } from 'react-hook-form';
 import { Button } from '@/shared/ui/button';
 import Image from 'next/image';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { ControlledTextField } from '@/shared/ui/controlled-textfiled';
+import { ControlledTextArea } from '@/shared/ui/controlled-text-area';
+import { ControlledCheckbox } from '@/shared/ui/controlled-checkbox';
+import { createOrder } from '@/shared/api/createOrder';
+import { zodResolver } from '@hookform/resolvers/zod';
 import s from './FeedbackPopup.module.scss';
+import { FeedbackFormScheme } from '../../shared/validation/feedback-scheme-creator';
 
 export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { control, handleSubmit, reset } = useForm({
+    defaultValues: {
+      name: '',
+      phone: '',
+      comment: '',
+      isChecked: false,
+    },
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
+    resolver: zodResolver(FeedbackFormScheme('feedback')),
+  });
+
+  const formHandler = handleSubmit(async (data) => {
+    try {
+      await createOrder(data);
+      reset();
+    } catch (e) {
+      console.log(e);
+    }
+  });
 
   return (
     <Dialog.Root
@@ -32,11 +57,27 @@ export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
                 вас вопросы
               </p>
             </div>
-            <TextField placeholder="Имя" />
-            <TextField placeholder="Телефон" />
-            <TextArea placeholder="Комментарий" />
-            <Checkbox label="Согласие на обработку персональных данных" />
-            <Button>Отправить</Button>
+            <ControlledTextField
+              placeholder="Имя"
+              name="name"
+              control={control}
+            />
+            <ControlledTextField
+              placeholder="Телефон"
+              name="phone"
+              control={control}
+            />
+            <ControlledTextArea
+              placeholder="Комментарий"
+              name="comment"
+              control={control}
+            />
+            <ControlledCheckbox
+              control={control}
+              label="Согласие на обработку персональных данных"
+              name="isChecked"
+            />
+            <Button onClick={formHandler}>Отправить</Button>
           </div>
           <Image
             src="/brick-wall.svg"
