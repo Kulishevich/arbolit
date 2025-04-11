@@ -2,31 +2,40 @@
 import React, { useState } from 'react';
 import s from './HeaderDropdown.module.scss';
 import Link from 'next/link';
-import { paths } from '@/shared/config/constants/paths';
 import { ArrowDownIcon } from '@/shared/assets/icons';
 import clsx from 'clsx';
+import { useBreakpoint } from '@/shared/lib/hooks/useBreakpoint';
 
 export const HeaderDropdown = ({
   title,
   items,
   className,
+  href,
 }: {
   title: string;
   items: { name: string; href: string }[];
   className: string;
+  href: string;
 }) => {
   const [isHover, setIsHover] = useState(false);
-
+  const { isMobile } = useBreakpoint();
   return (
     <div
       className={s.container}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <Link href={paths.catalog} className={clsx(s.link, className)}>
-        {title}
-        <ArrowDownIcon />
-      </Link>
+      {!isMobile ? (
+        <Link href={href} className={clsx(s.link, className)}>
+          {title}
+          <ArrowDownIcon />
+        </Link>
+      ) : (
+        <p className={clsx(s.link, className)}>
+          {title}
+          <ArrowDownIcon />
+        </p>
+      )}
 
       {isHover && (
         <div className={s.navigation}>

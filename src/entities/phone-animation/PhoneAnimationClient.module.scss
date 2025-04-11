@@ -1,20 +1,21 @@
 .container {
-    position: fixed;
-    right: 10px;
-    bottom: 10px;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 100px;  
-    border-radius: 50%; 
-    cursor: pointer; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
 }
 
 .phone {
-    flex-shrink: 0;
-    width: 356px;
-    height: 178px;
-    pointer-events: none;
+  flex-shrink: 0;
+  width: 356px;
+  height: 178px;
+  pointer-events: none;
 }

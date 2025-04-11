@@ -55,19 +55,21 @@ export const HeaderBurgerMenu = () => {
   }, [isOpen]);
 
   return (
-    <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
-      <Dialog.Trigger asChild className={s.trigger}>
-        <Button className={s.burgerButton}>
-          {isOpen ? <CloseIcon /> : <BurgerMenuIcon />}
-        </Button>
-      </Dialog.Trigger>
-      <VisuallyHidden>
-        <Dialog.Title>Мобильное меню</Dialog.Title>
-      </VisuallyHidden>
-      <Dialog.Content className={s.content}>
-        <div className={s.wrapper}>
+    <div className={s.container}>
+      <Button
+        className={s.burgerButton}
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        {isOpen ? <CloseIcon /> : <BurgerMenuIcon />}
+      </Button>
+      {isOpen && (
+        <div className={s.content}>
           <div className={s.navigation}>
-            <Link className="h2" href={navigation[0].path}>
+            <Link
+              className="h2"
+              href={navigation[0].path}
+              onClick={() => setIsOpen(false)}
+            >
               {navigation[0].title}
             </Link>
             <CollapseHeader title={'Каталог'}>
@@ -75,20 +77,35 @@ export const HeaderBurgerMenu = () => {
                 Каталог
               </Link>
               {categories.map((category, index) => (
-                <Link className="body-2" key={index} href={'/'}>
+                <Link
+                  className="body-2"
+                  key={index}
+                  href={'/'}
+                  onClick={() => setIsOpen(false)}
+                >
                   {category}
                 </Link>
               ))}
             </CollapseHeader>
             <CollapseHeader title={'О компании'}>
               {aboutCompany.map((elem, index) => (
-                <Link className="body-2" key={index} href={elem.href}>
+                <Link
+                  className="body-2"
+                  key={index}
+                  href={elem.href}
+                  onClick={() => setIsOpen(false)}
+                >
                   {elem.name}
                 </Link>
               ))}
             </CollapseHeader>
             {navigation.slice(1).map((nav, index) => (
-              <Link className="h2" href={nav.path} key={index}>
+              <Link
+                className="h2"
+                href={nav.path}
+                key={index}
+                onClick={() => setIsOpen(false)}
+              >
                 {nav.title}
               </Link>
             ))}
@@ -109,7 +126,7 @@ export const HeaderBurgerMenu = () => {
             <Button variant="callback">Обратный звонок</Button>
           </FeedbackPopup>
         </div>
-      </Dialog.Content>
-    </Dialog.Root>
+      )}
+    </div>
   );
 };

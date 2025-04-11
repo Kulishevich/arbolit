@@ -1,36 +1,35 @@
+.container {
+  .burgerButton {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    background-color: var(--green);
+    border-radius: 50%;
+  }
+}
+
 .content {
   position: absolute;
   top: 57px;
   left: 0;
-  z-index: 1000;
+  z-index: 999;
   width: 100vw;
   height: calc(100vh - 57px);
+  padding: 36px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   background-color: var(--white);
   overflow: hidden;
   overflow-y: auto;
   animation: fadeIn 0.3s ease-out;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 35px auto;
-}
-
-.trigger.burgerButton {
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 42px;
-  height: 42px;
-
-  border: none;
-  background-color: var(--green);
-  border-radius: 50%;
 }
 
 .navigation {

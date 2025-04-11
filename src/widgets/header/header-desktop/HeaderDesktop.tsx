@@ -50,10 +50,12 @@ export const HeaderDesktop = () => {
         </Link>
         <HeaderDropdown
           title="Каталог"
+          href={paths.catalog}
           items={aboutCompany}
           className="t-header"
         />
         <HeaderDropdown
+          href={paths.about}
           title="О компании"
           items={aboutCompany}
           className="t-header"

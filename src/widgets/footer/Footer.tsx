@@ -4,7 +4,6 @@ import { Logo } from '@/entities/logo';
 import { navigation } from '@/shared/config/constants/navigation';
 import { SocialMedia } from '@/entities/social-media';
 import Link from 'next/link';
-import { Dropdown } from '@/shared/ui/Dropdown';
 import { paths } from '@/shared/config/constants/paths';
 import { HeaderDropdown } from '@/shared/ui/header-dropdown';
 
@@ -56,6 +55,7 @@ export const Footer = () => {
               </Link>
               <HeaderDropdown
                 title="О компании"
+                href={paths.about}
                 items={aboutCompany}
                 className="body-2"
               />
