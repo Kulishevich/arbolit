@@ -35,6 +35,10 @@
   margin-bottom: 6px;
 }
 
+.container.active svg {
+  color: var(--green);
+}
+
 @media (max-width: 1490px) {
   .container {
     padding: vw-1490(16);
@@ -63,9 +67,5 @@
 
   .container.active {
     border-color: var(--green);
-  }
-
-  .container.active svg {
-    color: var(--green);
   }
 }

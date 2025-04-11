@@ -28,7 +28,9 @@ function ArbolitCharacteristic({
       const elementCenter = rect.top + rect.height / 2;
       const screenCenter = windowHeight / 2;
 
-      setIsActive(Math.abs(elementCenter - screenCenter) < rect.height / 2);
+      if (Math.abs(elementCenter - screenCenter) < rect.height / 2) {
+        setIsActive(true);
+      }
     };
 
     window.addEventListener('scroll', checkPosition);
