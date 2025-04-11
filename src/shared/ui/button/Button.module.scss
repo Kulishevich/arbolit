@@ -211,6 +211,12 @@
   }
 }
 
+a.secondary {
+  &:hover {
+    color: var(--white);
+  }
+}
+
 .fullWidth {
   width: 100%;
 }

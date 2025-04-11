@@ -35,7 +35,9 @@ export const ItemCard = () => {
               9000 ₽ / <span className="h4">m3</span>
             </p>
             <div>
-              <Button variant="secondary">подробнее</Button>
+              <Button variant="secondary" as="a" href="/catalog/test_1">
+                подробнее
+              </Button>
               <Button
                 onClick={() =>
                   showToast({
