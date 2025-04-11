@@ -2,14 +2,13 @@
 import { ItemCard } from '@/entities/item-card';
 import React from 'react';
 import s from './CatalogList.module.scss';
+import { ProductT } from '@/shared/types';
 
-const items = new Array(4).fill('');
-
-export const CatalogList = () => {
+export const CatalogList = ({ products }: { products: ProductT[] }) => {
   return (
     <div className={s.container}>
-      {items.map((_, index) => (
-        <ItemCard key={index} />
+      {products.map((product, index) => (
+        <ItemCard key={index} product={product} />
       ))}
     </div>
   );

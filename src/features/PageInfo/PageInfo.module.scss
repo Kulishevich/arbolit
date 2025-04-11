@@ -3,7 +3,7 @@
 .container {
   background: var(--bg);
   border-radius: 8px;
-  max-width: 518px;
+  max-width: 535px;
   padding: 32px;
   color: var(--text);
   display: flex;
@@ -22,7 +22,7 @@
 
 @media (max-width: 1490px) {
   .container {
-    max-width: vw-1490(518);
+    max-width: vw-1490(535);
     padding: vw-1490(32);
     border-radius: vw-1490(8);
     height: vw-1490(296);

@@ -50,7 +50,7 @@ const page = async ({ params }: Props) => {
               </div>
 
               <div className={clsx(styles.price, 'h2')}>
-                7900 Р. / <span>m3</span>
+                {product.price} ₽. / <span>m3</span>
               </div>
               <Button className={styles.button}>Заказать</Button>
             </div>

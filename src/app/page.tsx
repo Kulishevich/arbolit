@@ -10,11 +10,16 @@ import { SliderWrapper } from '@/entities/slider-wrapper';
 import { CertificateCard } from '@/entities/certificate-card';
 import { NewsCard } from '@/entities/news-card';
 import ContactsBlock from '@/widgets/ContactsBlock/ContactsBlock';
-import { NewT } from '@/shared/types';
+import { ImageResponseT, NewT } from '@/shared/types';
 
 export default async function Home() {
   const news: { current_page: number; data: NewT[] } = await fetch(
     `${process.env.API_URL}/news?page=1&per_page=6`
+  )
+    .then((res) => res.json())
+    .catch(() => undefined);
+  const certificates: ImageResponseT[] = await fetch(
+    `${process.env.API_URL}/certificates`
   )
     .then((res) => res.json())
     .catch(() => undefined);
@@ -29,8 +34,8 @@ export default async function Home() {
         <OurAdvantages />
         <ArbolitCompound />
         <SliderWrapper title="сертификаты" variant="certificate">
-          {new Array(5).fill('').map((elem, index) => (
-            <CertificateCard key={index} />
+          {certificates.map((certificate) => (
+            <CertificateCard key={certificate.id} certificate={certificate} />
           ))}
         </SliderWrapper>
         <SliderWrapper title="последние новости" variant="news">

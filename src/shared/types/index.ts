@@ -76,3 +76,13 @@ export type SpecificationT = {
     updated_at: string;
   }
 }
+
+
+export type ImageResponseT = {
+  id: number;
+  title: string;
+  photo_path: string;
+}
+
+
+

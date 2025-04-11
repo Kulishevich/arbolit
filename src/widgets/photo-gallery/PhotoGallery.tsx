@@ -1,19 +1,20 @@
 import { GalleryCard } from '@/entities/gallery-card';
 import React from 'react';
-import { Pagination } from '@/shared/ui/pagination';
 import s from './PhotoGallery.module.scss';
+import { ImageResponseT } from '@/shared/types';
 
-const items = new Array(9).fill('');
+export const PhotoGallery = async () => {
+  const photos: ImageResponseT[] = await fetch(`${process.env.API_URL}/gallery`)
+    .then((res) => res.json())
+    .catch(() => undefined);
 
-export const PhotoGallery = () => {
   return (
     <div className={s.container}>
       <div className={s.galleryList}>
-        {items.map((_, index) => (
-          <GalleryCard key={index} />
-        ))}
+        {photos &&
+          photos.map((elem, index) => <GalleryCard key={index} photo={elem} />)}
       </div>
-      <Pagination totalPages="10" />
+      {/* <Pagination totalPages="10" /> */}
     </div>
   );
 };

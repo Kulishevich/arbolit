@@ -1,19 +1,24 @@
 import { CertificateCard } from '@/entities/certificate-card';
-import { Pagination } from '@/shared/ui/pagination';
 import React from 'react';
 import s from './CertificatesList.module.scss';
+import { ImageResponseT } from '@/shared/types';
 
-const certificates = new Array(12).fill('');
+export const CertificatesList = async () => {
+  const certificates: ImageResponseT[] = await fetch(
+    `${process.env.API_URL}/certificates`
+  )
+    .then((res) => res.json())
+    .catch(() => undefined);
 
-export const CertificatesList = () => {
   return (
     <div className={s.container}>
       <div className={s.galleryList}>
-        {certificates.map((_, index) => (
-          <CertificateCard key={index} />
-        ))}
+        {certificates &&
+          certificates.map((elem, index) => (
+            <CertificateCard key={index} certificate={elem} />
+          ))}
       </div>
-      <Pagination totalPages="10" />
+      {/* <Pagination totalPages="10" /> */}
     </div>
   );
 };

@@ -3,16 +3,22 @@ import React, { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import Image from 'next/image';
 import s from './GalleryCard.module.scss';
+import { ImageResponseT } from '@/shared/types';
 
-export const GalleryCard = () => {
+export const GalleryCard = ({ photo }: { photo: ImageResponseT }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={s.container}>
       <div className={s.imageContainer} onClick={() => setIsOpen(true)}>
-        <Image src={'/gallery.png'} fill alt="gallery" />
+        <Image
+          src={`${process.env.STORE_URL}/${photo.photo_path}`}
+          width={424}
+          height={240}
+          alt={photo.title}
+        />
       </div>
-      <p className="h5">коттедж из арболита в подмосковье</p>
+      <p className="h5">{photo.title}</p>
 
       <Dialog.Root
         open={isOpen}
@@ -25,10 +31,10 @@ export const GalleryCard = () => {
             onClick={() => setIsOpen(false)}
           >
             <Image
-              src={'/gallery.png'}
-              width={426}
+              src={`${process.env.STORE_URL}/${photo.photo_path}`}
+              width={424}
               height={240}
-              alt="gallery"
+              alt={photo.title}
               onClick={(e) => e.stopPropagation()}
             />
           </Dialog.Content>

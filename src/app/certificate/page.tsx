@@ -1,5 +1,5 @@
 import PagesHero from '@/widgets/PagesHero/PagesHero';
-import certificates from '../../../public/certificates.png';
+import certificatesBg from '../../../public/certificates.png';
 import PageInfo from '@/features/PageInfo/PageInfo';
 import { FeedbackForm } from '@/widgets/feedback-form';
 import s from './page.module.scss';
@@ -9,7 +9,7 @@ import { Suspense } from 'react';
 const page = async () => {
   return (
     <main>
-      <PagesHero image={certificates}>
+      <PagesHero image={certificatesBg}>
         <PageInfo
           title="Сертификаты"
           text="Мы имеем все сертификаты, подтверждающие качество нашей продукции и нашу компетентность"
