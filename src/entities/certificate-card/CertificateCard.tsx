@@ -29,7 +29,7 @@ export const CertificateCard = ({
             onClick={() => setIsOpen(false)}
           >
             <Image
-              src={certificate.photo_path}
+              src={`${process.env.STORE_URL}/${certificate.photo_path}`}
               width={314}
               height={444}
               alt={certificate.title}
