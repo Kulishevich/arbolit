@@ -14,6 +14,7 @@ import { ControlledCheckbox } from '@/shared/ui/controlled-checkbox';
 import { useForm } from 'react-hook-form';
 import { createOrder } from '@/shared/api/createOrder';
 import { SettingT } from '@/shared/types';
+import { showToast } from '@/shared/ui/toast';
 
 export const FeedbackForm = ({
   title,
@@ -58,7 +59,17 @@ export const FeedbackForm = ({
     try {
       await createOrder(reqData);
       reset();
+      showToast({
+        title: 'Ваша заявка получена!',
+        message: 'Скоро наш менеджер свяжется с вами.',
+        variant: 'success',
+      });
     } catch (e) {
+      showToast({
+        title: 'Ваша заявка не получена...',
+        message: 'Пожалуйста, повторите попытку ещё раз.',
+        variant: 'error',
+      });
       console.error(e);
     }
   });

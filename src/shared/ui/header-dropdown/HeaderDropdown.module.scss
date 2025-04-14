@@ -21,6 +21,7 @@
   border: 1px solid var(--green);
   background-color: var(--white);
 
+  animation: fadeIn 0.3s ease-out;
   @media (max-width: 1490px) {
     top: vw-1490(25);
   }
@@ -38,5 +39,14 @@
   &:hover {
     cursor: pointer;
     color: var(--green);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
