@@ -2,7 +2,6 @@ import React from 'react';
 import s from './ItemCard.module.scss';
 import Image from 'next/image';
 import { Button } from '@/shared/ui/button';
-import { showToast } from '@/shared/ui/toast';
 import { ProductT } from '@/shared/types';
 import { FeedbackPopup } from '../feedback-popup/FeedbackPopup';
 

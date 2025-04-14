@@ -1,10 +1,10 @@
 import PagesHero from '@/widgets/PagesHero/PagesHero';
 import certificatesBg from '../../../public/certificates.png';
 import PageInfo from '@/features/PageInfo/PageInfo';
-import { FeedbackForm } from '@/widgets/feedback-form';
 import s from './page.module.scss';
 import { CertificatesList } from '@/widgets/certificates-list';
 import { Suspense } from 'react';
+import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 
 const page = async () => {
   return (
@@ -19,7 +19,7 @@ const page = async () => {
         <Suspense fallback={<h3 className="h3">Загрузка сертификатов...</h3>}>
           <CertificatesList />
         </Suspense>
-        <FeedbackForm
+        <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
         />

@@ -30,7 +30,11 @@ export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
   });
 
   const formHandler = handleSubmit(async (data) => {
-    const { isChecked, ...dataWithoutChecked } = data;
+    const dataWithoutChecked = {
+      name: data.name,
+      phone: data.phone,
+      comment: data.comment,
+    };
     try {
       await createOrder(dataWithoutChecked);
       reset();

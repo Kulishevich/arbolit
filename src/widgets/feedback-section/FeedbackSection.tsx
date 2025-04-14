@@ -13,6 +13,11 @@ export default async function FeedbackSection({
   const setting = await getSetting();
 
   return (
-    <FeedbackForm title="Заголовок" description="Описание" setting={setting} />
+    <FeedbackForm
+      title={title}
+      description={description}
+      type={type}
+      setting={setting}
+    />
   );
 }
