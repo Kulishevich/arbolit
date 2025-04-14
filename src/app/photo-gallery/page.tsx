@@ -2,9 +2,9 @@ import PagesHero from '@/widgets/PagesHero/PagesHero';
 import photoGallery from '../../../public/photo-gallery.png';
 import PageInfo from '@/features/PageInfo/PageInfo';
 import s from './page.module.scss';
-import { FeedbackForm } from '@/widgets/feedback-form';
 import { PhotoGallery } from '@/widgets/photo-gallery';
 import { Suspense } from 'react';
+import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 
 const page = async () => {
   return (
@@ -19,7 +19,7 @@ const page = async () => {
         <Suspense fallback={<h3 className="h3">Загрузка галереи...</h3>}>
           <PhotoGallery />
         </Suspense>
-        <FeedbackForm
+        <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
         />

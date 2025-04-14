@@ -9,15 +9,22 @@
     gap: 2px;
   }
 
+  .imageContainer {
+    position: relative;
+    width: 55px;
+    height: 55px;
+
+    @media (max-width: 768px) {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
   @media (max-width: 768px) {
     gap: 6px;
 
     & > div {
       gap: 0;
-    }
-    & > svg {
-      width: 33px;
-      height: 36px;
     }
   }
 }

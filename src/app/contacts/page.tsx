@@ -4,15 +4,11 @@ import contacts from '@/shared/assets/images/contacts-bg.png';
 import PageInfo from '@/features/PageInfo/PageInfo';
 import ContactsBlock from '@/widgets/ContactsBlock/ContactsBlock';
 import clsx from 'clsx';
-import { FeedbackForm } from '@/widgets/feedback-form';
-import { DesignSettingsT } from '@/shared/types';
+import { getSetting } from '@/shared/api/getSetting';
+import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 
 const page = async () => {
-  const info: DesignSettingsT = await fetch(
-    `${process.env.API_URL}/design/settings`
-  )
-    .then((res) => res.json())
-    .catch(() => undefined);
+  const setting = await getSetting();
 
   return (
     <main>
@@ -23,18 +19,19 @@ const page = async () => {
         />
       </PagesHero>
       <div className={styles.container}>
-        <ContactsBlock isTitle={false} />
+        <ContactsBlock isTitle={false} setting={setting} />
 
         <section className={styles.requisites}>
           <h2 className={clsx('h2', styles.title)}>Реквизиты компании</h2>
-
-          <div
-            className={clsx('body-1', styles.caption)}
-            dangerouslySetInnerHTML={{ __html: info.company_info }}
-          ></div>
+          {!!setting?.company_info && (
+            <div
+              className={clsx('body-1', styles.caption)}
+              dangerouslySetInnerHTML={{ __html: setting?.company_info }}
+            ></div>
+          )}
         </section>
 
-        <FeedbackForm
+        <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
         />

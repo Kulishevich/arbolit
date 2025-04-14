@@ -1,10 +1,10 @@
 import PagesHero from '@/widgets/PagesHero/PagesHero';
 import certificates from '../../../public/certificates.png';
 import PageInfo from '@/features/PageInfo/PageInfo';
-import { FeedbackForm } from '@/widgets/feedback-form';
 import s from './page.module.scss';
 import { CatalogList } from '@/widgets/catalog-list';
 import { ProductT } from '@/shared/types';
+import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 
 const page = async () => {
   const products: { data: ProductT[] } = await fetch(
@@ -23,7 +23,7 @@ const page = async () => {
       </PagesHero>
       <div className={s.container}>
         <CatalogList products={products.data} />
-        <FeedbackForm
+        <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
         />

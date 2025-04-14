@@ -5,19 +5,25 @@ import { PhoneIcon } from '@/shared/assets/icons';
 import { Button } from '@/shared/ui/button';
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import { HeaderBurgerMenu } from '@/features/header-burger-menu';
-import { ProductT } from '@/shared/types';
+import { ProductT, SettingT } from '@/shared/types';
 
-export const HeaderMobile = ({ products }: { products: ProductT[] | null }) => {
+export const HeaderMobile = ({
+  products,
+  setting,
+}: {
+  products: ProductT[] | null;
+  setting: SettingT | null;
+}) => {
   return (
     <div className={s.container}>
-      <Logo />
+      <Logo logo={setting?.logo_path} />
       <div>
         <FeedbackPopup>
           <Button className={s.phoneButton}>
             <PhoneIcon />
           </Button>
         </FeedbackPopup>
-        <HeaderBurgerMenu products={products} />
+        <HeaderBurgerMenu products={products} setting={setting} />
       </div>
     </div>
   );

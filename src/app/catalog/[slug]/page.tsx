@@ -1,11 +1,11 @@
 import styles from './page.module.scss';
 import clsx from 'clsx';
-import { FeedbackForm } from '@/widgets/feedback-form';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { Button } from '@/shared/ui/button';
 import { ProductT } from '@/shared/types';
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
+import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -80,7 +80,7 @@ const page = async ({ params }: Props) => {
         </>
       )}
 
-      <FeedbackForm
+      <FeedbackSection
         title="связаться с нами"
         description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
       />

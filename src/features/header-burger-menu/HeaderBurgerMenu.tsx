@@ -12,7 +12,7 @@ import {
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import { CollapseHeader } from '@/shared/ui/collapse-header';
 import { paths } from '@/shared/config/constants/paths';
-import { ProductT } from '@/shared/types';
+import { ProductT, SettingT } from '@/shared/types';
 
 const aboutCompany = [
   {
@@ -27,8 +27,10 @@ const aboutCompany = [
 
 export const HeaderBurgerMenu = ({
   products,
+  setting,
 }: {
   products: ProductT[] | null;
+  setting: SettingT | null;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -105,13 +107,17 @@ export const HeaderBurgerMenu = ({
           <div className={s.info}>
             <div>
               <LocationIcon />
-              <p className="body-3">г. Москва, ул. Ленина, 1</p>
+              <p className="body-3">{setting?.address}</p>
             </div>
             <div>
               <PhoneIcon />
-              <p className="body-3">
-                +7 925 511-51-56 <br /> +7 495 744 72 60
-              </p>
+              <div className={s.phones}>
+                {setting?.phones.map((phone, index) => (
+                  <p className="body-3" key={index}>
+                    {phone}
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
           <FeedbackPopup>

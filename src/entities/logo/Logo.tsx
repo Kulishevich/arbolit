@@ -1,13 +1,17 @@
-import { HouseIcon } from '@/shared/assets/icons';
 import React from 'react';
 import s from './Logo.module.scss';
 import Link from 'next/link';
 import { paths } from '@/shared/config/constants/paths';
+import Image from 'next/image';
 
-export const Logo = () => {
+export const Logo = ({ logo }: { logo: string | undefined }) => {
   return (
     <Link href={paths.home} className={s.logo}>
-      <HouseIcon />
+      <div className={s.imageContainer}>
+        {!!logo && (
+          <Image src={`${process.env.STORE_URL}/${logo}`} fill alt="logo" />
+        )}
+      </div>
       <div>
         <h5 className="h5">ООО &quot;Домремонт&quot;</h5>
         <p className="body-5">Арболитовые блоки</p>

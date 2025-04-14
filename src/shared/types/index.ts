@@ -69,6 +69,24 @@ export type MetadataT = {
   updated_at: string;
 };
 
+export type SettingT = {
+  logo_path: string;
+  favicon_path: string;
+  contacts_enabled: true;
+  privacy_policy_enabled: true;
+  privacy_policy_text: string;
+  address: string;
+  phones: string[];
+  email: string;
+  working_hours: string | null;
+  instagram: string;
+  telegram: string;
+  whatsapp: string;
+  viber: string;
+  company_info: string;
+  bank_details: string | null;
+};
+
 export type SpecificationT = {
   id: number;
   name: string;

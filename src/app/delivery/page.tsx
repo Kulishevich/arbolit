@@ -2,7 +2,7 @@ import PagesHero from '@/widgets/PagesHero/PagesHero';
 import delivery from '../../../public/delivery-bg.png';
 import PageInfo from '@/features/PageInfo/PageInfo';
 import s from './page.module.scss';
-import { FeedbackForm } from '@/widgets/feedback-form';
+import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 
 const page = async () => {
   return (
@@ -14,7 +14,7 @@ const page = async () => {
         />
       </PagesHero>
       <div className={s.container}>
-        <FeedbackForm
+        <FeedbackSection
           type="delivery"
           title="Расчёт стоимости доставки"
           description="Заполните форму для расчёта итоговой стоимости транспортировки арболита от производства до вашего места строительства"

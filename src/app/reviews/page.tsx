@@ -2,10 +2,11 @@ import PagesHero from '@/widgets/PagesHero/PagesHero';
 import styles from './page.module.scss';
 import reviewsBg from '@/shared/assets/images/reviews.png';
 import PageInfo from '@/features/PageInfo/PageInfo';
-import { FeedbackForm } from '@/widgets/feedback-form';
 import { SliderWrapper } from '@/entities/slider-wrapper';
 import { ReviewCard } from '@/entities/review-card';
 import { ReviewT } from '@/shared/types';
+import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
+
 const page = async () => {
   const reviews: ReviewT[] | undefined = await fetch(
     `${process.env.API_URL}/reviews`
@@ -34,7 +35,7 @@ const page = async () => {
             ))}
         </SliderWrapper>
 
-        <FeedbackForm
+        <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
         />

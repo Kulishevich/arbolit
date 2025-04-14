@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import { paths } from '@/shared/config/constants/paths';
 import { HeaderDropdown } from '@/shared/ui/header-dropdown';
-import { ProductT } from '@/shared/types';
+import { ProductT, SettingT } from '@/shared/types';
 
 const aboutCompany = [
   {
@@ -23,8 +23,10 @@ const aboutCompany = [
 
 export const HeaderDesktop = ({
   products,
+  setting,
 }: {
   products: ProductT[] | null;
+  setting: SettingT | null;
 }) => {
   const catalogProducts =
     products?.map((elem) => ({
@@ -35,18 +37,19 @@ export const HeaderDesktop = ({
   return (
     <div className={s.container}>
       <div className={s.info}>
-        <Logo />
+        <Logo logo={setting?.logo_path} />
         <div className={s.address}>
           <LocationIcon />
-          <p className="body-4">
-            105005, г. Москва, Бакунинская ул., д. 10-12 стр. 4.
-          </p>
+          <p className="body-4">{setting?.address}</p>
         </div>
         <div className={s.phones}>
           <PhoneIcon />
           <div>
-            <p className="body-3">+7 925 511-51-56</p>
-            <p className="body-3">+7 495 744 72 60</p>
+            {setting?.phones.map((phone, index) => (
+              <p className="body-3" key={index}>
+                {phone}
+              </p>
+            ))}
           </div>
         </div>
         <FeedbackPopup>

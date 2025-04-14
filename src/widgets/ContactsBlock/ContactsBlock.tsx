@@ -3,19 +3,17 @@ import styles from './ContactsBlock.module.scss';
 import Map from '@/features/Map/Map';
 import Link from 'next/link';
 import { Button } from '@/shared/ui/button/Button';
-import { DesignSettingsT } from '@/shared/types';
+import { SettingT } from '@/shared/types';
 
 interface ContactsBlockProps {
   isTitle?: boolean;
+  setting: SettingT | null;
 }
 
-const ContactsBlock = async ({ isTitle = true }: ContactsBlockProps) => {
-  const info: DesignSettingsT = await fetch(
-    `${process.env.API_URL}/design/settings`
-  )
-    .then((res) => res.json())
-    .catch(() => undefined);
-
+const ContactsBlock = async ({
+  isTitle = true,
+  setting,
+}: ContactsBlockProps) => {
   return (
     <section className={styles.wrapper}>
       {isTitle && (
@@ -26,7 +24,7 @@ const ContactsBlock = async ({ isTitle = true }: ContactsBlockProps) => {
           <div className={styles.infoItem}>
             <div className={clsx('body-2', styles.infoItemTitle)}>Адрес</div>
             <div className={clsx('body-1', styles.infoItemContent)}>
-              {info && info.address}
+              {setting && setting.address}
             </div>
           </div>
           <div className={styles.infoItem}>
@@ -34,8 +32,8 @@ const ContactsBlock = async ({ isTitle = true }: ContactsBlockProps) => {
               Контакты для связи
             </div>
             <div className={styles.infoItemContent}>
-              {info &&
-                info.phones.map((phone) => (
+              {setting &&
+                setting.phones.map((phone) => (
                   <Link
                     key={phone}
                     className={clsx('body-1', styles.link)}
@@ -44,12 +42,12 @@ const ContactsBlock = async ({ isTitle = true }: ContactsBlockProps) => {
                     {phone}
                   </Link>
                 ))}
-              {info && (
+              {setting && (
                 <Link
                   className={clsx('body-1', styles.link)}
-                  href={`mailto:${info.email}`}
+                  href={`mailto:${setting.email}`}
                 >
-                  {info.email}
+                  {setting.email}
                 </Link>
               )}
             </div>
@@ -59,23 +57,27 @@ const ContactsBlock = async ({ isTitle = true }: ContactsBlockProps) => {
               Мессенджеры
             </div>
             <div className={styles.infoItemContent}>
-              {info && info.telegram && (
+              {setting && setting.telegram && (
                 <Button
                   variant="callback"
-                  as="a"
-                  href={info.telegram}
+                  as={Link}
+                  href={`https://t.me/${setting?.telegram}`}
                   target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Telegram"
                   className={styles.button}
                 >
                   telegram
                 </Button>
               )}
-              {info && info.whatsapp && (
+              {setting && setting.whatsapp && (
                 <Button
                   variant="callback"
-                  as="a"
-                  href={info.whatsapp}
+                  as={Link}
+                  href={`https://wa.me/${setting?.whatsapp}`}
                   target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
                   className={styles.button}
                 >
                   whatsapp

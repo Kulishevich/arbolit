@@ -1,12 +1,12 @@
 import PagesHero from '@/widgets/PagesHero/PagesHero';
 import styles from './page.module.scss';
 import PageInfo from '@/features/PageInfo/PageInfo';
-import { FeedbackForm } from '@/widgets/feedback-form';
 import newsBg from '@/shared/assets/images/news.png';
 import { NewT } from '@/shared/types';
 import NewsTags from '@/features/NewsTags/NewsTags';
 import { NewsCard } from '@/entities/news-card';
 import { Pagination } from '@/shared/ui/pagination';
+import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 
 const page = async ({
   searchParams,
@@ -72,7 +72,7 @@ const page = async ({
           totalPages={Math.ceil(news.total / 6).toString()}
         />
 
-        <FeedbackForm
+        <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
         />

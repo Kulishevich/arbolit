@@ -3,7 +3,6 @@ import s from './page.module.scss';
 import ArbolitCharacteristicsBlock from '@/widgets/ArbolitCharacteristicsBlock/ArbolitCharacteristicsBlock';
 import AdvantagesBlock from '@/widgets/AdvantagesBlock/AdvantagesBlock';
 import ArbolitCompound from '@/widgets/ArbolitCompound/ArbolitCompound';
-import { FeedbackForm } from '@/widgets/feedback-form';
 import MainHero from '@/widgets/MainHero/MainHero';
 import OurAdvantages from '@/widgets/OurAdwantages/OurAdwantages';
 import { SliderWrapper } from '@/entities/slider-wrapper';
@@ -11,6 +10,8 @@ import { CertificateCard } from '@/entities/certificate-card';
 import { NewsCard } from '@/entities/news-card';
 import ContactsBlock from '@/widgets/ContactsBlock/ContactsBlock';
 import { ImageResponseT, NewT } from '@/shared/types';
+import { getSetting } from '@/shared/api/getSetting';
+import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 
 export default async function Home() {
   const news: { current_page: number; data: NewT[] } = await fetch(
@@ -23,6 +24,8 @@ export default async function Home() {
   )
     .then((res) => res.json())
     .catch(() => undefined);
+
+  const setting = await getSetting();
 
   return (
     <>
@@ -43,8 +46,8 @@ export default async function Home() {
             <NewsCard key={item.id} {...item} isLow />
           ))}
         </SliderWrapper>
-        <ContactsBlock />
-        <FeedbackForm
+        <ContactsBlock setting={setting} />
+        <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас
             вопросы"

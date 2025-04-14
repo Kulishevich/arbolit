@@ -13,15 +13,18 @@ import { ControlledTextArea } from '@/shared/ui/controlled-text-area';
 import { ControlledCheckbox } from '@/shared/ui/controlled-checkbox';
 import { useForm } from 'react-hook-form';
 import { createOrder } from '@/shared/api/createOrder';
+import { SettingT } from '@/shared/types';
 
 export const FeedbackForm = ({
   title,
   description,
   type = 'feedback',
+  setting,
 }: {
   title: string;
   description: string;
   type?: 'delivery' | 'feedback';
+  setting: SettingT | null;
 }) => {
   const {
     control,
@@ -122,11 +125,14 @@ export const FeedbackForm = ({
           </p>
           <div className={s.contacts}>
             <div className={s.phones}>
-              <p className="h4">+7 925 511-51-56</p>
-              <p className="h4">+7 495 744 72 60</p>
+              {setting?.phones.map((phone, index) => (
+                <p className="h4" key={index}>
+                  {phone}
+                </p>
+              ))}
             </div>
-            <p className="h4">info@domremont.ru</p>
-            <SocialMedia className={s.socialMedia} />
+            <p className="h4">{setting?.email}</p>
+            <SocialMedia className={s.socialMedia} setting={setting} />
           </div>
         </div>
       </div>

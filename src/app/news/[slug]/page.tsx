@@ -2,12 +2,12 @@ import PagesHero from '@/widgets/PagesHero/PagesHero';
 import styles from './page.module.scss';
 import PageInfo from '@/features/PageInfo/PageInfo';
 import clsx from 'clsx';
-import { FeedbackForm } from '@/widgets/feedback-form';
 import { parseDate } from '@/shared/lib/utils/parcsDate';
 import Image from 'next/image';
 import { ContentBlockT, NewT } from '@/shared/types';
 import { Button } from '@/shared/ui/button';
 import { ArrowLeftIcon } from '@/shared/assets/icons';
+import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -87,7 +87,7 @@ const page = async ({ params }: Props) => {
           </Button>
         </div>
 
-        <FeedbackForm
+        <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
         />

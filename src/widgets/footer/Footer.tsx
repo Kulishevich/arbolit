@@ -6,7 +6,7 @@ import { SocialMedia } from '@/entities/social-media';
 import Link from 'next/link';
 import { paths } from '@/shared/config/constants/paths';
 import { HeaderDropdown } from '@/shared/ui/header-dropdown';
-import { ProductT } from '@/shared/types';
+import { ProductT, SettingT } from '@/shared/types';
 
 const aboutCompany = [
   {
@@ -19,12 +19,18 @@ const aboutCompany = [
   },
 ];
 
-export const Footer = ({ products }: { products: ProductT[] | null }) => {
+export const Footer = ({
+  products,
+  setting,
+}: {
+  products: ProductT[] | null;
+  setting: SettingT | null;
+}) => {
   return (
     <div className={s.container}>
       <div className={s.content}>
         <div className={s.logoContainer}>
-          <Logo />
+          <Logo logo={setting?.logo_path} />
           <p className="body-4">
             Высокие стандарты качества в создании арболитовых блоков
           </p>
@@ -67,11 +73,14 @@ export const Footer = ({ products }: { products: ProductT[] | null }) => {
 
         <div className={s.contacts}>
           <div className={s.phones}>
-            <p className="h4">+7 925 511-51-56</p>
-            <p className="h4">+7 495 744 72 60</p>
+            {setting?.phones.map((phone, index) => (
+              <p className="h4" key={index}>
+                {phone}
+              </p>
+            ))}
           </div>
-          <p className="h4">info@domremont.ru</p>
-          <SocialMedia />
+          <p className="h4">{setting?.email}</p>
+          <SocialMedia setting={setting} />
         </div>
       </div>
       <div className={s.info}>
