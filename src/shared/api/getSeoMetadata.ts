@@ -7,9 +7,8 @@ export async function getSeoMetadata(tag: string): Promise<MetadataT | null> {
     });
 
     const res = await data.json();
-    const products = res.data;
 
-    return products;
+    return res;
   } catch (e) {
     console.log(e);
     return null;
