@@ -1,5 +1,4 @@
 import { getSeoMetadata } from '@/shared/api/getSeoMetadata';
-import { NewT } from '@/shared/types';
 
 export const generateMetadata = async ({
   params,
@@ -8,21 +7,15 @@ export const generateMetadata = async ({
 }) => {
   const { slug: newsSlug } = await params;
 
-  const news: NewT = await fetch(
-    `${process.env.API_URL}/news/${newsSlug.split('_')[1]}`
-  )
-    .then((res) => res.json())
-    .catch(() => undefined);
-
   const seo = await getSeoMetadata(`/news/${newsSlug}`);
 
   return {
-    title: seo?.title ?? news.title,
-    description: seo?.description ?? news.subtitle.substring(0, 140),
+    title: seo?.title ?? 'Арболит',
+    description: seo?.description ?? 'Арболит',
     keywords: seo?.keywords,
     openGraph: {
-      title: seo?.og_title ?? news.title,
-      description: seo?.og_description ?? news.subtitle.substring(0, 140),
+      title: seo?.og_title ?? 'Арболит',
+      description: seo?.og_description ?? 'Арболит',
     },
   };
 };

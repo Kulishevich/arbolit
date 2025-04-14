@@ -1,3 +1,4 @@
+import { getSeoMetadata } from '@/shared/api/getSeoMetadata';
 import { ProductT } from '@/shared/types';
 
 export const generateMetadata = async ({
@@ -12,17 +13,17 @@ export const generateMetadata = async ({
     .then((res) => res.json())
     .catch(() => undefined);
 
-  return product
-    ? {
-        title: product.name,
-        description: product.description.substring(0, 140),
-        keywords: product.name ?? '',
-        openGraph: {
-          title: product.name,
-          description: product.description.substring(0, 140),
-        },
-      }
-    : {};
+  const seo = await getSeoMetadata(`/catalog/${catalogSlug}`);
+
+  return {
+    title: seo?.title ?? product.name,
+    description: seo?.description ?? product.description.substring(0, 140),
+    keywords: seo?.keywords,
+    openGraph: {
+      title: seo?.og_title ?? product.name,
+      description: seo?.og_description ?? product.description.substring(0, 140),
+    },
+  };
 };
 
 export default async function CatalogLayout({

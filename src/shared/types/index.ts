@@ -57,6 +57,18 @@ export type ProductT = {
   photo_path: string;
 };
 
+export type MetadataT = {
+  id: number;
+  name: string;
+  title: string;
+  description: string;
+  keywords: string;
+  og_title: string;
+  og_description: string;
+  created_at: string;
+  updated_at: string;
+};
+
 export type SpecificationT = {
   id: number;
   name: string;
