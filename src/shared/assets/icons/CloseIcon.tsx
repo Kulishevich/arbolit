@@ -13,8 +13,8 @@ const CloseIcon = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
     <path
       d="M22.9772 3.02254L3.05477 22.945M3.05469 3.02246L22.9772 22.945"
       stroke="white"
-      stroke-width="1.5"
-      stroke-linecap="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
     />
   </svg>
 );

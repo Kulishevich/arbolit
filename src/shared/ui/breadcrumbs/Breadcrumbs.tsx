@@ -7,9 +7,10 @@ import Link from 'next/link';
 
 interface Props {
   className?: string;
+  dynamicPath?: { name: string; href: string };
 }
 
-export const Breadcrumbs = ({ className }: Props) => {
+export const Breadcrumbs = ({ className, dynamicPath }: Props) => {
   const pathname = usePathname();
   const pathNames = pathname.split('/');
 
@@ -25,10 +26,20 @@ export const Breadcrumbs = ({ className }: Props) => {
         return { href: '/catalog', name: 'Каталог' };
       case 'policy':
         return { href: '/policy', name: 'Политика конфиденциальности' };
-      case 'delivery-and-payment':
+      case 'delivery':
         return {
-          href: '/delivery-and-payment',
+          href: '/delivery',
           name: 'Доставка',
+        };
+      case 'reviews':
+        return {
+          href: '/reviews',
+          name: 'Отзывы',
+        };
+      case 'photo-gallery':
+        return {
+          href: '/photo-gallery',
+          name: 'Фотогалерея',
         };
       default:
         break;
@@ -40,7 +51,7 @@ export const Breadcrumbs = ({ className }: Props) => {
       <ul className={cn(s.list, className)}>
         {pathNames.map((pathName, idx) => {
           const path = handlePathName(pathName);
-          const segments = pathname.split('/').filter(Boolean); // удалит пустые строки
+          const segments = pathname.split('/').filter(Boolean);
           const isCurrentPage = segments[segments.length - 1] === pathName;
           const isNotEmpty = !!path && Boolean(idx);
 
@@ -56,6 +67,14 @@ export const Breadcrumbs = ({ className }: Props) => {
             </li>
           );
         })}
+        {!!dynamicPath && (
+          <li className={s.elem}>
+            <ArrowRightIcon className={s.icon} />
+            <Link href={dynamicPath?.href || '/'} className={'body-5'}>
+              {dynamicPath?.name}
+            </Link>
+          </li>
+        )}
       </ul>
     </div>
   );

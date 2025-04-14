@@ -8,5 +8,9 @@ import { ProductT } from '@/shared/types';
 export const Header = ({ products }: { products: ProductT[] | null }) => {
   const { isMobile } = useBreakpoint();
 
-  return isMobile ? <HeaderMobile /> : <HeaderDesktop products={products} />;
+  return isMobile ? (
+    <HeaderMobile products={products} />
+  ) : (
+    <HeaderDesktop products={products} />
+  );
 };

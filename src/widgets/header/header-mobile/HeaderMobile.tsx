@@ -5,8 +5,9 @@ import { PhoneIcon } from '@/shared/assets/icons';
 import { Button } from '@/shared/ui/button';
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import { HeaderBurgerMenu } from '@/features/header-burger-menu';
+import { ProductT } from '@/shared/types';
 
-export const HeaderMobile = () => {
+export const HeaderMobile = ({ products }: { products: ProductT[] | null }) => {
   return (
     <div className={s.container}>
       <Logo />
@@ -16,7 +17,7 @@ export const HeaderMobile = () => {
             <PhoneIcon />
           </Button>
         </FeedbackPopup>
-        <HeaderBurgerMenu />
+        <HeaderBurgerMenu products={products} />
       </div>
     </div>
   );

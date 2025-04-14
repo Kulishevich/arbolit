@@ -18,10 +18,15 @@ const page = async ({ params }: Props) => {
   )
     .then((res) => res.json())
     .catch(() => undefined);
-  console.log(product);
+
   return (
     <main className={styles.container}>
-      <Breadcrumbs />
+      <Breadcrumbs
+        dynamicPath={{
+          name: product.name,
+          href: `/catalog/${product.slug}_${product.id}`,
+        }}
+      />
 
       {product && (
         <>

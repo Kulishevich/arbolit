@@ -12,17 +12,7 @@ import {
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import { CollapseHeader } from '@/shared/ui/collapse-header';
 import { paths } from '@/shared/config/constants/paths';
-
-const categories = [
-  'Мебель',
-  'Фурнитура',
-  'Декор для дома',
-  'Ароматы для дома',
-  'Мебель',
-  'Фурнитура',
-  'Декор для дома',
-  'Ароматы для дома',
-];
+import { ProductT } from '@/shared/types';
 
 const aboutCompany = [
   {
@@ -35,7 +25,11 @@ const aboutCompany = [
   },
 ];
 
-export const HeaderBurgerMenu = () => {
+export const HeaderBurgerMenu = ({
+  products,
+}: {
+  products: ProductT[] | null;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -74,14 +68,14 @@ export const HeaderBurgerMenu = () => {
               <Link href={paths.catalog} className="body-2">
                 Каталог
               </Link>
-              {categories.map((category, index) => (
+              {products?.map((category, index) => (
                 <Link
                   className="body-2"
                   key={index}
-                  href={'/'}
+                  href={`/catalog/${category.slug}_${category.id}`}
                   onClick={() => setIsOpen(false)}
                 >
-                  {category}
+                  {category.name}
                 </Link>
               ))}
             </CollapseHeader>

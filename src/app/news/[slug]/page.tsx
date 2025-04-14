@@ -28,7 +28,14 @@ const page = async ({ params }: Props) => {
         className={styles.hero}
         image={`${process.env.STORE_URL}/${info?.photo_path}`}
       >
-        <PageInfo isWide title={info?.title} />
+        <PageInfo
+          isWide
+          title={info?.title}
+          dynamicPath={{
+            name: info.title,
+            href: `/news/${info.title}_${info.id}`,
+          }}
+        />
       </PagesHero>
       <div className={styles.container}>
         <div className={styles.info}>
