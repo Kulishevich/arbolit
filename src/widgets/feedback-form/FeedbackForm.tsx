@@ -43,9 +43,17 @@ export const FeedbackForm = ({
   });
 
   const formHandler = handleSubmit(async (data) => {
-    console.log(data);
+    const reqData = {
+      name: data.name,
+      phone: data.phone,
+      comment:
+        type === 'feedback'
+          ? data.comment
+          : `Пункт назначения: ${data.address}, Кол-во блоков: ${data.count}`,
+    };
+
     try {
-      await createOrder(data);
+      await createOrder(reqData);
       reset();
     } catch (e) {
       console.error(e);

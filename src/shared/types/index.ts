@@ -84,8 +84,6 @@ export type ImageResponseT = {
 
 export type OrderT = {
   name: string;
-  email?: string;
   phone: string;
-  city?: string;
   comment: string;
 };

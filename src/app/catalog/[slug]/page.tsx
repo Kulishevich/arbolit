@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { Button } from '@/shared/ui/button';
 import { ProductT } from '@/shared/types';
+import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -52,7 +53,9 @@ const page = async ({ params }: Props) => {
               <div className={clsx(styles.price, 'h2')}>
                 {product.price} ₽. / <span>m3</span>
               </div>
-              <Button className={styles.button}>Заказать</Button>
+              <FeedbackPopup>
+                <Button className={styles.button}>Заказать</Button>
+              </FeedbackPopup>
             </div>
           </section>
           <section className={styles.description}>

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Button } from '@/shared/ui/button';
 import { showToast } from '@/shared/ui/toast';
 import { ProductT } from '@/shared/types';
+import { FeedbackPopup } from '../feedback-popup/FeedbackPopup';
 
 export const ItemCard = ({ product }: { product: ProductT }) => {
   return (
@@ -38,17 +39,9 @@ export const ItemCard = ({ product }: { product: ProductT }) => {
               >
                 подробнее
               </Button>
-              <Button
-                onClick={() =>
-                  showToast({
-                    title: 'Ваша заявка получена!',
-                    variant: 'success',
-                    message: 'Скоро наш менеджер свяжется с вами.',
-                  })
-                }
-              >
-                заказать
-              </Button>
+              <FeedbackPopup>
+                <Button>заказать</Button>
+              </FeedbackPopup>
             </div>
           </div>
         </div>

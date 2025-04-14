@@ -12,6 +12,7 @@ import { createOrder } from '@/shared/api/createOrder';
 import { zodResolver } from '@hookform/resolvers/zod';
 import s from './FeedbackPopup.module.scss';
 import { FeedbackFormScheme } from '../../shared/validation/feedback-scheme-creator';
+import { showToast } from '@/shared/ui/toast';
 
 export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,9 +30,11 @@ export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
   });
 
   const formHandler = handleSubmit(async (data) => {
+    const { isChecked, ...dataWithoutChecked } = data;
     try {
-      await createOrder(data);
+      await createOrder(dataWithoutChecked);
       reset();
+      showToast({ title: 'Запрос отправлен', variant: 'success' });
     } catch (e) {
       console.log(e);
     }

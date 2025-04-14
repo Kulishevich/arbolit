@@ -6,6 +6,7 @@ import brick from '@/shared/assets/images/brick.png';
 import arbolitBrick from '@/shared/assets/images/arbolit-brick.png';
 import { CheckboxCrossIcon, CheckboxOkIcon } from '@/shared/assets/icons';
 import { Button } from '@/shared/ui/button';
+import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 
 const AdvantagesBlock = () => {
   return (
@@ -92,7 +93,9 @@ const AdvantagesBlock = () => {
             </div>
           </div>
           <div className={clsx('h3', styles.price)}>от 9000 ₽ /м3</div>
-          <Button className={styles.button}>заказать арболит</Button>
+          <FeedbackPopup>
+            <Button className={styles.button}>заказать арболит</Button>
+          </FeedbackPopup>
         </div>
 
         <div className={styles.item}>
