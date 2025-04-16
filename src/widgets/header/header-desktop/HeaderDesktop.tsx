@@ -45,11 +45,18 @@ export const HeaderDesktop = ({
         <div className={s.phones}>
           <PhoneIcon />
           <div>
-            {setting?.phones.map((phone, index) => (
-              <p className="body-3" key={index}>
-                {phone}
-              </p>
-            ))}
+            {setting?.phones.map((phone, index) => {
+              const cleanedPhone = phone.replace(/[^+\d]/g, '');
+              return (
+                <Link
+                  href={`tel:${cleanedPhone}`}
+                  className="body-3"
+                  key={index}
+                >
+                  {phone}
+                </Link>
+              );
+            })}
           </div>
         </div>
         <FeedbackPopup>

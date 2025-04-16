@@ -51,7 +51,6 @@ export const Footer = ({
             </div>
           </div>
           <div className={s.navigation}>
-            <p className="body-6">клиенту</p>
             <div>
               <Link className="body-2" href={navigation[0].path}>
                 {navigation[0].title}
@@ -73,13 +72,18 @@ export const Footer = ({
 
         <div className={s.contacts}>
           <div className={s.phones}>
-            {setting?.phones.map((phone, index) => (
-              <p className="h4" key={index}>
-                {phone}
-              </p>
-            ))}
+            {setting?.phones.map((phone, index) => {
+              const cleanedPhone = phone.replace(/[^+\d]/g, '');
+              return (
+                <Link href={`tel:${cleanedPhone}`} className="h4" key={index}>
+                  {phone}
+                </Link>
+              );
+            })}
           </div>
-          <p className="h4">{setting?.email}</p>
+          <Link href={`mailto:${setting?.email}`} className="h4">
+            {setting?.email}
+          </Link>
           <SocialMedia setting={setting} />
         </div>
       </div>

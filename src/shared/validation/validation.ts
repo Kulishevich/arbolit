@@ -16,4 +16,11 @@ export const checkedScheme = () =>
     });
 
 export const phoneScheme = () =>
-  z.string().trim().min(1, { message: validation.requiredField });
+  z
+    .string()
+    .trim()
+    .min(1, { message: validation.requiredField })
+    .regex(/^[0-9+\-\s()]*$/, {
+      message:
+        'Номер может содержать только цифры, пробелы, скобки, тире и знак +',
+    });

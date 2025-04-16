@@ -15,6 +15,7 @@ import { useForm } from 'react-hook-form';
 import { createOrder } from '@/shared/api/createOrder';
 import { SettingT } from '@/shared/types';
 import { showToast } from '@/shared/ui/toast';
+import Link from 'next/link';
 
 export const FeedbackForm = ({
   title,
@@ -136,13 +137,18 @@ export const FeedbackForm = ({
           </p>
           <div className={s.contacts}>
             <div className={s.phones}>
-              {setting?.phones.map((phone, index) => (
-                <p className="h4" key={index}>
-                  {phone}
-                </p>
-              ))}
+              {setting?.phones.map((phone, index) => {
+                const cleanedPhone = phone.replace(/[^+\d]/g, '');
+                return (
+                  <Link href={`tel:${cleanedPhone}`} className="h4" key={index}>
+                    {phone}
+                  </Link>
+                );
+              })}
             </div>
-            <p className="h4">{setting?.email}</p>
+            <Link href={`mailto:${setting?.email}`} className="h4">
+              {setting?.email}
+            </Link>
             <SocialMedia className={s.socialMedia} setting={setting} />
           </div>
         </div>

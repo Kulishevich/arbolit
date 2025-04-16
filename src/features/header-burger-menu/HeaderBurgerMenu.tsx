@@ -112,11 +112,18 @@ export const HeaderBurgerMenu = ({
             <div>
               <PhoneIcon />
               <div className={s.phones}>
-                {setting?.phones.map((phone, index) => (
-                  <p className="body-3" key={index}>
-                    {phone}
-                  </p>
-                ))}
+                {setting?.phones.map((phone, index) => {
+                  const cleanedPhone = phone.replace(/[^+\d]/g, '');
+                  return (
+                    <Link
+                      href={`tel:${cleanedPhone}`}
+                      className="body-3"
+                      key={index}
+                    >
+                      {phone}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>

@@ -15,15 +15,17 @@ export const HeaderMobile = ({
   setting: SettingT | null;
 }) => {
   return (
-    <div className={s.container}>
-      <Logo logo={setting?.logo_path} />
-      <div>
-        <FeedbackPopup>
-          <Button className={s.phoneButton}>
-            <PhoneIcon />
-          </Button>
-        </FeedbackPopup>
-        <HeaderBurgerMenu products={products} setting={setting} />
+    <div className={s.wrapper}>
+      <div className={s.container}>
+        <Logo logo={setting?.logo_path} />
+        <div>
+          <FeedbackPopup>
+            <Button className={s.phoneButton}>
+              <PhoneIcon />
+            </Button>
+          </FeedbackPopup>
+          <HeaderBurgerMenu products={products} setting={setting} />
+        </div>
       </div>
     </div>
   );

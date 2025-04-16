@@ -15,7 +15,7 @@ export const SocialMedia = ({
   return (
     <div className={clsx(s.container, className)}>
       <Link
-        href={`viber://chat?number=%2B${setting?.viber}`}
+        href={`viber://chat?number=%2B${setting?.viber.replace(/^\+/, '')}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Viber"

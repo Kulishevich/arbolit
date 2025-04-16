@@ -13,6 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import s from './FeedbackPopup.module.scss';
 import { FeedbackFormScheme } from '../../shared/validation/feedback-scheme-creator';
 import { showToast } from '@/shared/ui/toast';
+import { CloseIcon } from '@/shared/assets/icons';
 
 export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -114,6 +115,9 @@ export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
               alt="feedback"
               className={s.image}
             />
+            <Dialog.DialogClose className={s.closeButton}>
+              <CloseIcon />
+            </Dialog.DialogClose>
           </Dialog.Content>
         </Dialog.Overlay>
       </Dialog.Portal>

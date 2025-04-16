@@ -1,9 +1,19 @@
+.wrapper {
+  position: sticky;
+  top: 0;
+  left: 50%;
+  // transform: translateX(-50%);
+  z-index: 10;
+  background-color: var(--white);
+  width: 100vw;
+}
 .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 335px;
-  margin: 12px auto 16px;
+  margin: 0 auto;
+  padding: 12px 0 18px;
 
   & > div {
     display: flex;
