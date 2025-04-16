@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import s from './CertificateCard.module.scss';
 import * as Dialog from '@radix-ui/react-dialog';
 import { ImageResponseT } from '@/shared/types';
+import { CloseIcon } from '@/shared/assets/icons';
 
 export const CertificateCard = ({
   certificate,
@@ -36,6 +37,9 @@ export const CertificateCard = ({
               onClick={(e) => e.stopPropagation()}
             />
           </Dialog.Content>
+          <Dialog.DialogClose className={s.closeButton}>
+            <CloseIcon />
+          </Dialog.DialogClose>
         </Dialog.Overlay>
       </Dialog.Root>
     </div>

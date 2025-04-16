@@ -4,6 +4,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import Image from 'next/image';
 import s from './GalleryCard.module.scss';
 import { ImageResponseT } from '@/shared/types';
+import { CloseIcon } from '@/shared/assets/icons';
 
 export const GalleryCard = ({ photo }: { photo: ImageResponseT }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +39,9 @@ export const GalleryCard = ({ photo }: { photo: ImageResponseT }) => {
               onClick={(e) => e.stopPropagation()}
             />
           </Dialog.Content>
+          <Dialog.DialogClose className={s.closeButton}>
+            <CloseIcon />
+          </Dialog.DialogClose>
         </Dialog.Overlay>
       </Dialog.Root>
     </div>
