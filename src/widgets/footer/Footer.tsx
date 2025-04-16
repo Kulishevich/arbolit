@@ -93,7 +93,7 @@ export const Footer = ({
           Политика обработки персональных данных
         </Link>
         <p className="body-5">
-          Дизайн и разработка: <Link href="/">Cropas.by</Link>
+          Дизайн и разработка: <Link href="https://cropas.by/">Cropas.by</Link>
         </p>
       </div>
     </div>
