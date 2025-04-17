@@ -35,6 +35,25 @@
       color: var(--green);
     }
   }
+
+  &:active {
+    & > p {
+      color: var(--green);
+    }
+    & > svg {
+      color: var(--green);
+    }
+  }
+
+  &:focus-visible {
+    & > p {
+      color: var(--green);
+    }
+    & > svg {
+      color: var(--green);
+    }
+  }
+
   &[data-state='open'] {
     & > svg {
       transform: rotate(180deg);

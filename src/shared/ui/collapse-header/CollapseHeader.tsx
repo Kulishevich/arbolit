@@ -19,7 +19,7 @@ export const CollapseHeader = ({
       className={s.rootState}
     >
       <Collapsible.Trigger className={s.trigger}>
-        <h2 className="h2">{title}</h2>
+        <p className="h2">{title}</p>
         <ArrowDownIcon />
       </Collapsible.Trigger>
       <Collapsible.Content className={s.content}>
