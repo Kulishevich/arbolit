@@ -1,18 +1,23 @@
 @import '../../../shared/config/styles/functions.scss';
 
-.container {
+.wrapper {
   position: sticky;
+  width: 100%;
+  background-color: var(--white);
   top: 0;
   left: 0;
   z-index: 10;
+  padding: 20px 10px;
+  box-shadow: 0 10px 10px 0 rgba(37, 43, 51, 0.05);
+}
+
+.container {
   width: 1322px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 24px;
   background-color: var(--white);
-  padding: 20px 10px;
-  border-radius: 0 0 2px 2px;
 }
 
 .info {
