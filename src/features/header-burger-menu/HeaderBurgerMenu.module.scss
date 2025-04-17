@@ -48,11 +48,15 @@
   margin: 32px 0 24px;
 
   & > div {
-    display: flex;
-    gap: 10px;
+    position: relative;
     align-items: center;
+    width: fit-content;
 
     & > svg {
+      top: 50%;
+      transform: translateY(-50%);
+      left: -30px;
+      position: absolute;
       color: var(--grey-2);
     }
   }
