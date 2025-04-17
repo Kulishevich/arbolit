@@ -6,11 +6,13 @@
   left: 0;
   z-index: 10;
   width: 1322px;
-  margin: 24px auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 24px;
   background-color: var(--white);
+  padding: 20px 10px;
+  border-radius: 0 0 2px 2px;
 }
 
 .info {
@@ -62,7 +64,7 @@
 
 .navigation {
   display: flex;
-  gap: 72px;
+  justify-content: space-between;
 
   & > a {
     text-decoration: none;
