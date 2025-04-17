@@ -1,13 +1,15 @@
+@import '../../shared/config/styles/functions.scss';
+
 .container {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: vw-1490(48);
 }
 
 .galleryList {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px 22px;
+  gap: vw-1490(32) vw-1490(22);
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);

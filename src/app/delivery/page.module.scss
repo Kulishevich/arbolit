@@ -1,5 +1,7 @@
+@import '../../shared/config/styles/functions.scss';
+
 .container {
-  width: 1322px;
+  width: vw-1490(1322);
   margin: 0 auto;
 
   @media (max-width: 768px) {

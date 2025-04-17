@@ -1,9 +1,11 @@
+@import '../../shared/config/styles/functions.scss';
+
 .container {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: vw-1490(24);
 
-  padding: 32px;
+  padding: vw-1490(32);
   border-radius: 12px;
   background-color: var(--white);
   border: 1px solid #252b331a;
@@ -25,7 +27,7 @@
 }
 .content {
   display: flex;
-  gap: 48px;
+  gap: vw-1490(48);
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -34,8 +36,8 @@
 }
 .imageContainer {
   position: relative;
-  width: 426px;
-  height: 426px;
+  width: vw-1490(426);
+  height: vw-1490(426);
   border-radius: 12px;
   overflow: hidden;
   background-color: #f8f8f9;
@@ -52,23 +54,23 @@
 .info {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: vw-1490(32);
 }
 
 .characteristic {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: vw-1490(10);
 }
 .price {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: vw-1490(16);
 
   & > div {
     display: grid;
-    grid-template-columns: repeat(2, 260px);
-    gap: 16px;
+    grid-template-columns: repeat(2, vw-1490(260));
+    gap: vw-1490(16);
 
     @media (max-width: 768px) {
       grid-template-columns: repeat(1, 271px);

@@ -1,13 +1,15 @@
+@import '../../../shared/config/styles/functions.scss';
+
 .container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: vw-1490(12);
   width: 100%;
 }
 
 .input {
   box-sizing: border-box;
-  padding: 18px 6px 18px 16px;
+  padding: vw-1490(18) vw-1490(6) vw-1490(18) vw-1490(16);
   width: 100%;
   color: var(--text);
   border: none;

@@ -1,6 +1,8 @@
+@import '../../shared/config/styles/functions.scss';
+
 .container {
   display: flex;
-  gap: 92px;
+  gap: vw-1490(92);
   margin: 0 auto;
 
   align-items: end;
@@ -15,9 +17,9 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: vw-1490(36);
 
-  width: 614px;
+  width: vw-1490(614);
   @media (max-width: 768px) {
     width: 335px;
     gap: 20px;
@@ -27,7 +29,7 @@
 .title {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: vw-1490(16);
 
   @media (max-width: 768px) {
     text-align: center;
@@ -38,11 +40,11 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: vw-1490(24);
   align-items: start;
 
   & > button {
-    width: 260px;
+    width: vw-1490(260);
   }
 
   @media (max-width: 768px) {
@@ -55,13 +57,13 @@
 
 .imageContainer {
   position: relative;
-  width: 616px;
-  height: 546px;
+  width: vw-1490(616);
+  height: vw-1490(546);
 
   & > .brickWall {
     position: absolute;
-    width: 370px;
-    height: 370px;
+    width: vw-1490(370);
+    height: vw-1490(370);
     bottom: 0;
     right: 0;
     @media (max-width: 768px) {
@@ -85,20 +87,20 @@
 .info {
   position: absolute;
   z-index: 10;
-  top: 48px;
-  left: 42px;
+  top: vw-1490(48);
+  left: vw-1490(42);
   color: var(--bg);
 
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: vw-1490(64);
 
   & > p:nth-child(1) {
     opacity: 0.6;
   }
 
   & > p:nth-child(2) {
-    width: 506px;
+    width: vw-1490(506);
     @media (max-width: 768px) {
       width: 304px;
       margin: 24px 0 42px;
@@ -121,7 +123,7 @@
 .contacts {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: vw-1490(24);
   a {
     color: var(--white);
     &:hover {
@@ -136,7 +138,7 @@
 .phones {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: vw-1490(12);
 
   @media (max-width: 768px) {
     gap: 4px;
@@ -145,9 +147,9 @@
 
 .socialMedia {
   & > a {
-    width: 58px;
-    height: 58px;
-    padding: 13px;
+    width: vw-1490(58);
+    height: vw-1490(58);
+    padding: vw-1490(13);
     border-radius: 4px;
     background-color: #fcfcfc1a;
   }

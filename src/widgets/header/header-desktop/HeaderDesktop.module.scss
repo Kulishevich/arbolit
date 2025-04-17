@@ -6,17 +6,17 @@
   background-color: var(--white);
   top: 0;
   left: 0;
-  z-index: 10;
-  padding: 20px 10px;
+  z-index: 100;
+  padding: vw-1490(20) vw-1490(10);
   box-shadow: 0 10px 10px 0 rgba(37, 43, 51, 0.05);
 }
 
 .container {
-  width: 1322px;
+  width: vw-1490(1322);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: vw-1490(24);
   background-color: var(--white);
 }
 
@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   & > a:nth-child(1) {
-    margin-right: 340px;
+    margin-right: vw-1490(340);
   }
 }
 
@@ -38,22 +38,22 @@
 .address {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: vw-1490(10);
 
-  margin-right: 42px;
+  margin-right: vw-1490(42);
 
   & > svg {
     color: var(--grey-1);
   }
   & > p {
-    width: 209px;
+    width: vw-1490(209);
   }
 }
 
 .phones {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: vw-1490(10);
 
   margin-right: auto;
 
@@ -73,9 +73,5 @@
 
   & > a {
     text-decoration: none;
-  }
-
-  @media (max-width: 1490px) {
-    gap: vw-1490(72);
   }
 }

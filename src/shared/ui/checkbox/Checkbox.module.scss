@@ -1,6 +1,8 @@
+@import '../../../shared/config/styles/functions.scss';
+
 .container {
   display: flex;
-  gap: 8px;
+  gap: vw-1490(8);
   align-items: center;
   justify-content: flex-start;
 }
@@ -13,8 +15,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 32px;
-  height: 32px;
+  width: vw-1490(32);
+  height: vw-1490(32);
 
   background-color: var(--white);
   border: 1px solid #252b3333;
@@ -36,8 +38,8 @@
   }
 
   &[data-state='checked'] {
-    width: 32px;
-    height: 32px;
+    width: vw-1490(32);
+    height: vw-1490(32);
     background-color: var(--green);
     border-radius: 2px;
     border: none;
@@ -56,8 +58,8 @@
 }
 
 .icon {
-  width: 18px;
-  height: 18px;
+  width: vw-1490(18);
+  height: vw-1490(18);
 }
 
 .label {

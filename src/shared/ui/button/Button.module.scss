@@ -1,3 +1,5 @@
+@import '../../../shared/config/styles/functions.scss';
+
 .button {
   cursor: pointer;
 
@@ -31,7 +33,7 @@
 .primary {
   color: var(--white);
   background-color: var(--green);
-  padding: 18px 16px;
+  padding: vw-1490(18) vw-1490(16);
 
   &:hover {
     background-color: var(--green-2);
@@ -94,7 +96,7 @@
 .callback {
   color: var(--green);
   border: 1px solid var(--green);
-  padding: 16px;
+  padding: vw-1490(16);
 
   &:hover {
     color: var(--green-2);
@@ -124,8 +126,8 @@
   color: var(--green);
   background-color: var(--white);
   border: 1px solid var(--green);
-  height: 51px;
-  width: 51px;
+  height: vw-1490(51);
+  width: vw-1490(51);
 
   &:hover {
     color: var(--white);
@@ -155,7 +157,7 @@
 .link {
   color: var(--grey-3);
   text-decoration: underline;
-  gap: 12px;
+  gap: vw-1490(12);
 
   & > svg {
     color: var(--green);
@@ -190,7 +192,7 @@
 }
 
 .secondary {
-  padding: 18px 16px;
+  padding: vw-1490(18) vw-1490(16);
   color: var(--white);
   background-color: var(--grey-3);
 

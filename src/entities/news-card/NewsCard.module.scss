@@ -1,14 +1,16 @@
+@import '../../shared/config/styles/functions.scss';
+
 .container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: 650px;
+  gap: vw-1490(16);
+  width: vw-1490(650);
   align-items: start;
 
   &.low {
     .imageContainer {
-      width: 650px;
-      height: 292px;
+      width: vw-1490(650);
+      height: vw-1490(292);
       @media (max-width: 768px) {
         width: 335px;
         height: 286px;
@@ -19,13 +21,13 @@
   & > span {
     color: var(--white);
     background-color: var(--grey-3);
-    padding: 8px 16px;
+    padding: vw-1490(8) vw-1490(16);
     border-radius: 6px;
   }
   .imageContainer {
     position: relative;
-    width: 650px;
-    height: 650px;
+    width: vw-1490(650);
+    height: vw-1490(650);
     border-radius: 12px;
     overflow: hidden;
     flex: 1 1 auto;
@@ -46,6 +48,7 @@
   &:hover {
     .imageContainer {
       box-shadow: 0px 12px 26px 0px #252b330d;
+      z-index: 1;
     }
     .overlay {
       display: flex;

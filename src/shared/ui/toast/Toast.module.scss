@@ -1,6 +1,8 @@
+@import '../../../shared/config/styles/functions.scss';
+
 .rootClass {
   position: relative;
-  padding: 32px;
+  padding: vw-1490(32);
   border-radius: 6px;
 
   display: flex;
@@ -8,9 +10,9 @@
   align-items: center;
   text-align: center;
   gap: 8px;
-  width: 426px;
+  width: vw-1490(426);
   & > svg {
-    margin-bottom: 12px;
+    margin-bottom: vw-1490(12);
   }
 
   &.success {
@@ -28,7 +30,7 @@
   .title {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: vw-1490(8);
   }
 
   @media (max-width: 768px) {

@@ -1,12 +1,14 @@
+@import '../../shared/config/styles/functions.scss';
+
 .container {
-  width: 1322px;
+  width: vw-1490(1322);
   margin: 0 auto;
 
   display: flex;
   flex-direction: column;
 
-  margin-top: 160px;
-  margin-bottom: 39px;
+  margin-top: vw-1490(160);
+  margin-bottom: vw-1490(39);
   @media (max-width: 768px) {
     width: 335px;
     margin-top: 72px;
@@ -16,11 +18,11 @@
 
 .content {
   display: flex;
-  padding: 24px 0 48px;
+  padding: vw-1490(24) 0 vw-1490(48);
 
   & > div {
     &:nth-child(1) {
-      margin-right: 70px;
+      margin-right: vw-1490(70);
       @media (max-width: 768px) {
         margin-right: 0;
         order: 0;
@@ -45,8 +47,8 @@
 .logoContainer {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  width: 266px;
+  gap: vw-1490(24);
+  width: vw-1490(266);
 
   @media (max-width: 768px) {
     align-items: center;
@@ -58,7 +60,7 @@
 
 .catalogAndNavigation {
   display: flex;
-  gap: 92px;
+  gap: vw-1490(92);
 
   @media (max-width: 768px) {
     gap: 29px;
@@ -68,15 +70,15 @@
 .catalog {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: vw-1490(20);
 
-  width: 278px;
+  width: vw-1490(278);
   color: var(--text);
 
   & > div {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: vw-1490(16);
 
     & > a {
       text-decoration: none;
@@ -95,14 +97,14 @@
 .navigation {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: vw-1490(20);
 
   color: var(--text);
 
   & > div {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: vw-1490(16);
 
     & > a {
       text-decoration: none;
@@ -118,10 +120,10 @@
 }
 
 .contacts {
-  width: 344px;
+  width: vw-1490(344);
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: vw-1490(24);
 
   @media (max-width: 768px) {
     width: 198px;
@@ -133,7 +135,7 @@
 .phones {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: vw-1490(12);
 }
 
 .info {

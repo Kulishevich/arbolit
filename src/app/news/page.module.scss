@@ -1,29 +1,29 @@
 @import '../../shared/config/styles/functions.scss';
 
 .container {
-  max-width: 1322px;
+  max-width: vw-1490(1322);
   margin: 0 auto;
 }
 
 main .hero {
-  margin-bottom: 48px;
+  margin-bottom: vw-1490(48);
 }
 
 .news {
-  margin-top: 36px;
-  margin-bottom: 48px;
+  margin-top: vw-1490(36);
+  margin-bottom: vw-1490(48);
   display: flex;
-  gap: 22px;
+  gap: vw-1490(22);
 }
 
 .news > div {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: vw-1490(22);
 }
 
 .pagination {
-  margin-bottom: 160px;
+  margin-bottom: vw-1490(160);
 }
 
 @media (max-width: 1490px) {

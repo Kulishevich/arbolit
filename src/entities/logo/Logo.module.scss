@@ -1,7 +1,9 @@
+@import '../../shared/config/styles/functions.scss';
+
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: vw-1490(10);
 
   & > div {
     display: flex;
@@ -11,8 +13,8 @@
 
   .imageContainer {
     position: relative;
-    width: 55px;
-    height: 55px;
+    width: vw-1490(55);
+    height: vw-1490(55);
 
     @media (max-width: 768px) {
       width: 36px;

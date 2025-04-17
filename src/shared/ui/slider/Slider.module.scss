@@ -1,6 +1,8 @@
+@import '../../../shared/config/styles/functions.scss';
+
 .container {
   position: relative;
-  width: 1322px;
+  width: vw-1490(1322);
 
   @media (max-width: 768px) {
     width: 336px;
@@ -11,7 +13,7 @@
 .itemsContainer {
   width: 100%;
   display: flex;
-  gap: 22px;
+  gap: vw-1490(22);
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
@@ -26,7 +28,7 @@
 
 .iconLeft {
   position: absolute;
-  left: -90px;
+  left: vw-1490(-90);
   bottom: 50%;
   transform: translateY(50%);
 
@@ -45,7 +47,7 @@
 
 .iconRight {
   position: absolute;
-  right: -90px;
+  right: vw-1490(-90);
 
   bottom: 50%;
   transform: translateY(50%);
