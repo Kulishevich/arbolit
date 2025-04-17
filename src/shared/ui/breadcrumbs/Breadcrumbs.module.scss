@@ -34,18 +34,15 @@
     }
   }
 }
-.link {
-  text-decoration: none;
-  color: var(--text);
-  &:hover {
-    color: var(--green);
-  }
-}
 .icon {
   flex-shrink: 0;
   color: var(--green);
   width: 10px;
   height: 10px;
+}
+
+.lastItem {
+  pointer-events: none;
 }
 
 .li {

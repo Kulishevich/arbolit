@@ -45,36 +45,29 @@ export const Breadcrumbs = ({ className, dynamicPath }: Props) => {
         break;
     }
   }
+  const pathArr = [
+    ...pathNames.map((elem) => handlePathName(elem)),
+    !!dynamicPath && dynamicPath,
+  ].filter((elem) => !!elem);
 
   return (
     <div className={s.container}>
       <ul className={cn(s.list, className)}>
-        {pathNames.map((pathName, idx) => {
-          const path = handlePathName(pathName);
-          const segments = pathname.split('/').filter(Boolean);
-          const isCurrentPage = segments[segments.length - 1] === pathName;
-          const isNotEmpty = !!path && Boolean(idx);
+        {pathArr?.map((path, idx) => {
+          const lastItem = idx === pathArr.length - 1;
 
           return (
             <li className={s.elem} key={idx}>
-              {isNotEmpty && <ArrowRightIcon className={s.icon} />}
+              {!!idx && <ArrowRightIcon className={s.icon} />}
               <Link
                 href={path?.href || '/'}
-                className={cn(!isCurrentPage && s.link, 'body-5')}
+                className={cn(lastItem && s.lastItem, 'body-5')}
               >
                 {path?.name}
               </Link>
             </li>
           );
         })}
-        {!!dynamicPath && (
-          <li className={s.elem}>
-            <ArrowRightIcon className={s.icon} />
-            <Link href={dynamicPath?.href || '/'} className={'body-5'}>
-              {dynamicPath?.name}
-            </Link>
-          </li>
-        )}
       </ul>
     </div>
   );
