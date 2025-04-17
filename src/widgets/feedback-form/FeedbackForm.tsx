@@ -106,6 +106,7 @@ export const FeedbackForm = ({
             placeholder="Телефон"
             control={control}
             name="phone"
+            type="tel"
           />
           {type === 'feedback' && (
             <ControlledTextArea
@@ -120,9 +121,7 @@ export const FeedbackForm = ({
             name="isChecked"
           />
 
-          <Button disabled={!isValid} onClick={formHandler}>
-            Отправить
-          </Button>
+          <Button onClick={formHandler}>Отправить</Button>
         </div>
       </div>
       <div className={s.imageContainer}>

@@ -1,11 +1,16 @@
 @import '../../../shared/config/styles/functions.scss';
 
 .container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
   width: 1322px;
   margin: 24px auto;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  background-color: var(--white);
 }
 
 .info {

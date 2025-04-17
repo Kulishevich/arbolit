@@ -19,6 +19,7 @@ export const ControlledTextField = <T extends FieldValues>({
   name,
   rules,
   shouldUnregister,
+  type,
   ...props
 }: ControlledTextFieldProps<T>) => {
   const {
@@ -33,12 +34,23 @@ export const ControlledTextField = <T extends FieldValues>({
     shouldUnregister,
   });
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+
+    if (type === 'tel') {
+      const cleaned = inputValue.replace(/[^\d\s()+-]/g, '');
+      onChange(cleaned);
+    } else {
+      onChange(inputValue);
+    }
+  };
+
   return (
     <TextField
       {...props}
       errorMessage={errorMessage ?? error?.message}
       onBlur={onBlur}
-      onChange={onChange}
+      onChange={handleChange}
       ref={ref}
       value={value ?? ''}
       {...field}

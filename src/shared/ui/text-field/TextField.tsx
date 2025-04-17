@@ -68,6 +68,8 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
           placeholder={placeholder}
           ref={ref}
           value={value}
+          inputMode={props.type === 'tel' ? 'numeric' : undefined}
+          pattern={props.type === 'tel' ? '[0-9]*' : undefined}
           {...rest}
         />
         {errorMessage && (

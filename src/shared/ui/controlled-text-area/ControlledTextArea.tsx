@@ -2,12 +2,12 @@ import {
   FieldValues,
   UseControllerProps,
   useController,
-} from "react-hook-form";
-import { TextArea, TextAreaProps } from "../text-area";
+} from 'react-hook-form';
+import { TextArea, TextAreaProps } from '../text-area';
 
 export type ControlledTextAreaProps<T extends FieldValues> = Omit<
   TextAreaProps,
-  "defaultValue" | "name" | "onBlur" | "onChange" | "value"
+  'defaultValue' | 'name' | 'onBlur' | 'onChange' | 'value'
 > &
   UseControllerProps<T>;
 

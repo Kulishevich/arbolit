@@ -25,8 +25,8 @@ export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
       comment: '',
       isChecked: false,
     },
-    mode: 'onTouched',
-    reValidateMode: 'onChange',
+    mode: 'onChange',
+    reValidateMode: 'onSubmit',
     resolver: zodResolver(FeedbackFormScheme('feedback')),
   });
 
@@ -88,6 +88,7 @@ export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
                 placeholder="Телефон"
                 name="phone"
                 control={control}
+                type="tel"
               />
               <ControlledTextArea
                 placeholder="Комментарий"
