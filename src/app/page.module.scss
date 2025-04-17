@@ -1,8 +1,10 @@
+@import '../shared/config/styles/functions.scss';
+
 .container {
   display: flex;
   flex-direction: column;
-  gap: 160px;
-  width: 1322px;
+  gap: vw-1490(160);
+  width: vw-1490(1322);
   margin: 0 auto;
 
   @media (max-width: 768px) {
