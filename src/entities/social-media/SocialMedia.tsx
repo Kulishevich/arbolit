@@ -1,4 +1,4 @@
-import { TelegramIcon, ViberIcon, WhatsappIcon } from '@/shared/assets/icons';
+import { TelegramIcon, WhatsappIcon } from '@/shared/assets/icons';
 import React from 'react';
 import clsx from 'clsx';
 import s from './SocialMedia.module.scss';

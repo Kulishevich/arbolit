@@ -28,12 +28,7 @@ export const FeedbackForm = ({
   type?: 'delivery' | 'feedback';
   setting: SettingT | null;
 }) => {
-  const {
-    control,
-    handleSubmit,
-    reset,
-    formState: { isValid },
-  } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       name: '',
       phone: '',
