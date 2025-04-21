@@ -12,6 +12,7 @@ import ContactsBlock from '@/widgets/ContactsBlock/ContactsBlock';
 import { ImageResponseT, NewT } from '@/shared/types';
 import { getSetting } from '@/shared/api/getSetting';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
+import SeoText from '@/widgets/SeoText/SeoText';
 
 export default async function Home() {
   const news: { current_page: number; data: NewT[] } = await fetch(
@@ -47,6 +48,7 @@ export default async function Home() {
           ))}
         </SliderWrapper>
         <ContactsBlock setting={setting} />
+        <SeoText page="main" />
         <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас

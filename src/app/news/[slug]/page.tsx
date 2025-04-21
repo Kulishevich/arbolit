@@ -8,6 +8,7 @@ import { ContentBlockT, NewT } from '@/shared/types';
 import { Button } from '@/shared/ui/button';
 import { ArrowLeftIcon } from '@/shared/assets/icons';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
+import SeoText from '@/widgets/SeoText/SeoText';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -86,6 +87,7 @@ const page = async ({ params }: Props) => {
             назад к новостям
           </Button>
         </div>
+        <SeoText page={newsSlug} />
 
         <FeedbackSection
           title="связаться с нами"

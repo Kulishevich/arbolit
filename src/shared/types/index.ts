@@ -117,3 +117,11 @@ export type OrderT = {
   phone: string;
   comment: string;
 };
+
+
+export type SeoTextT = {
+  id: number;
+  page: string;
+  content: string;
+};
+

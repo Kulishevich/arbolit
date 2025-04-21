@@ -6,6 +6,7 @@ import { Button } from '@/shared/ui/button';
 import { ProductT } from '@/shared/types';
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
+import SeoText from '@/widgets/SeoText/SeoText';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -80,6 +81,7 @@ const page = async ({ params }: Props) => {
         </>
       )}
 
+      <SeoText page={catalogSlug} />
       <FeedbackSection
         title="связаться с нами"
         description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"

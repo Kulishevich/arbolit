@@ -1,0 +1,119 @@
+@import '../../shared/config/styles/functions';
+
+.wrapper {
+  max-width: 1322px;
+  margin: 0 auto;
+  width: 100%;
+  color: var(--text);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 36px;
+
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 140%;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: 8px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 12px;
+
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 140%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  ul {
+    margin-left: 26px;
+    margin-bottom: 20px;
+
+    li {
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 140%;
+    }
+  }
+}
+
+@media (max-width: 1490px) {
+  .wrapper {
+    max-width: vw-1490(1322);
+
+    h2 {
+      text-align: center;
+      margin-bottom: vw-1490(36);
+
+      font-size: vw-1490(48);
+    }
+
+    p {
+      margin-bottom: vw-1490(8);
+      font-size: vw-1490(24);
+    }
+
+    h3 {
+      margin-top: vw-1490(20);
+      margin-bottom: vw-1490(12);
+
+      font-size: vw-1490(28);
+    }
+
+    ul {
+      margin-left: vw-1490(26);
+      margin-bottom: vw-1490(20);
+
+      li {
+        font-size: vw-1490(18);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 100%;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+
+      font-size: 24px;
+    }
+
+    p {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 12px;
+
+      font-size: 20px;
+    }
+
+    ul {
+      margin-left: 26px;
+      margin-bottom: 20px;
+
+      li {
+        font-size: 16px;
+      }
+    }
+  }
+}

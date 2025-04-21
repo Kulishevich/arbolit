@@ -7,7 +7,7 @@ import NewsTags from '@/features/NewsTags/NewsTags';
 import { NewsCard } from '@/entities/news-card';
 import { Pagination } from '@/shared/ui/pagination';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
-
+import SeoText from '@/widgets/SeoText/SeoText';
 const page = async ({
   searchParams,
 }: {
@@ -71,7 +71,7 @@ const page = async ({
           currentPage={pageNumber}
           totalPages={Math.ceil(news.total / 6).toString()}
         />
-
+        <SeoText page="news" />
         <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"

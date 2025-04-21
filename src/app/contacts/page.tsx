@@ -6,6 +6,7 @@ import ContactsBlock from '@/widgets/ContactsBlock/ContactsBlock';
 import clsx from 'clsx';
 import { getSetting } from '@/shared/api/getSetting';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
+import SeoText from '@/widgets/SeoText/SeoText';
 
 const page = async () => {
   const setting = await getSetting();
@@ -30,7 +31,7 @@ const page = async () => {
             ></div>
           )}
         </section>
-
+        <SeoText page="contacts" />
         <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"

@@ -5,7 +5,7 @@ import s from './page.module.scss';
 import { CatalogList } from '@/widgets/catalog-list';
 import { ProductT } from '@/shared/types';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
-
+import SeoText from '@/widgets/SeoText/SeoText';
 const page = async () => {
   const products: { data: ProductT[] } = await fetch(
     `${process.env.API_URL}/products`
@@ -23,6 +23,7 @@ const page = async () => {
       </PagesHero>
       <div className={s.container}>
         <CatalogList products={products.data} />
+        <SeoText page="catalog" />
         <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"

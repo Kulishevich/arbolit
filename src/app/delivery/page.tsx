@@ -3,7 +3,7 @@ import delivery from '../../../public/delivery-bg.png';
 import PageInfo from '@/features/PageInfo/PageInfo';
 import s from './page.module.scss';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
-
+import SeoText from '@/widgets/SeoText/SeoText';
 const page = async () => {
   return (
     <main>
@@ -14,6 +14,7 @@ const page = async () => {
         />
       </PagesHero>
       <div className={s.container}>
+        <SeoText page="delivery" />
         <FeedbackSection
           type="delivery"
           title="Расчёт стоимости доставки"

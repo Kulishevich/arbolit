@@ -5,6 +5,7 @@ import PageInfo from '@/features/PageInfo/PageInfo';
 import AboutBanner from '@/widgets/AboutBanner/AboutBanner';
 import OurAdvantages from '@/widgets/OurAdwantages/OurAdwantages';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
+import SeoText from '@/widgets/SeoText/SeoText';
 
 const page = async () => {
   return (
@@ -19,6 +20,7 @@ const page = async () => {
         <AboutBanner isBanner={false} />
         <OurAdvantages />
 
+        <SeoText page="about" />
         <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"

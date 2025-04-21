@@ -6,6 +6,7 @@ import { SliderWrapper } from '@/entities/slider-wrapper';
 import { ReviewCard } from '@/entities/review-card';
 import { ReviewT } from '@/shared/types';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
+import SeoText from '@/widgets/SeoText/SeoText';
 
 const page = async () => {
   const reviews: ReviewT[] | undefined = await fetch(
@@ -35,6 +36,7 @@ const page = async () => {
             ))}
         </SliderWrapper>
 
+        <SeoText page="reviews" />
         <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"

@@ -5,6 +5,7 @@ import s from './page.module.scss';
 import { CertificatesList } from '@/widgets/certificates-list';
 import { Suspense } from 'react';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
+import SeoText from '@/widgets/SeoText/SeoText';
 
 const page = async () => {
   return (
@@ -19,6 +20,7 @@ const page = async () => {
         <Suspense fallback={<h3 className="h3">Загрузка сертификатов...</h3>}>
           <CertificatesList />
         </Suspense>
+        <SeoText page="certificate" />
         <FeedbackSection
           title="связаться с нами"
           description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
