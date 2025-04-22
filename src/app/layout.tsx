@@ -22,6 +22,7 @@ const notoSans = Noto_Sans({
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getSeoMetadata('home');
+  const setting = await getSetting();
 
   return {
     title: data?.title ?? 'Арболит',
@@ -32,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: data?.og_description ?? data?.description,
     },
     icons: {
-      icon: `${process.env.STORE_URL}/design/Z9lRYbNHzqhzbx61LC9PTf6CMbtUZATNiIPd7rzG.ico`,
+      icon: `${process.env.STORE_URL}/${setting?.favicon_path}`,
     },
   };
 }
