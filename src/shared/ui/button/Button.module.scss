@@ -54,13 +54,17 @@
     background-color: var(--grey-2);
     opacity: 0.5;
   }
+
+  @media (max-width: 768px) {
+    padding: 18px 16px;
+  }
 }
 
 .primary_with_icon {
   color: var(--white);
   background-color: var(--green);
-  padding: 6px 6px 6px 16px;
-  gap: 8px;
+  padding: vw-1490(6) vw-1490(6) vw-1490(6) vw-1490(16);
+  gap: vw-1490(8);
 
   & > svg {
     color: var(--green);
@@ -91,6 +95,11 @@
       color: var(--text);
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 6px 6px 6px 16px;
+    gap: 8px;
+  }
 }
 
 .callback {
@@ -119,6 +128,9 @@
     color: var(--text);
     border: 1px solid var(--text);
     opacity: 0.5;
+  }
+  @media (max-width: 768px) {
+    padding: 16px;
   }
 }
 
@@ -151,6 +163,11 @@
     color: var(--text);
     opacity: 0.5;
     border: none;
+  }
+
+  @media (max-width: 768px) {
+    width: 51px;
+    height: 51px;
   }
 }
 
@@ -189,6 +206,10 @@
       color: var(--text);
     }
   }
+
+  @media (max-width: 768px) {
+    gap: 12px;
+  }
 }
 
 .secondary {
@@ -212,6 +233,10 @@
 
   &:disabled {
     opacity: 0.5;
+  }
+
+  @media (max-width: 768px) {
+    padding: 18px 16px;
   }
 }
 

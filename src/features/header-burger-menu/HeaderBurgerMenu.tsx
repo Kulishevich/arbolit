@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import s from './HeaderBurgerMenu.module.scss';
 import { Button } from '@/shared/ui/button';
 import { navigation } from '@/shared/config/constants/navigation';
@@ -33,20 +33,6 @@ export const HeaderBurgerMenu = ({
   setting: SettingT | null;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const html = document.documentElement;
-
-    if (isOpen) {
-      html.style.overflow = 'hidden';
-    } else {
-      html.style.overflow = '';
-    }
-
-    return () => {
-      html.style.overflow = '';
-    };
-  }, [isOpen]);
 
   return (
     <div className={s.container}>

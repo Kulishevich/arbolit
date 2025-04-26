@@ -86,7 +86,7 @@
 
 .info {
   position: absolute;
-  z-index: 10;
+  z-index: 2;
   top: vw-1490(48);
   left: vw-1490(42);
   color: var(--bg);
@@ -152,5 +152,11 @@
     padding: vw-1490(13);
     border-radius: 4px;
     background-color: #fcfcfc1a;
+
+    @media (max-width: 768px) {
+      width: 58px;
+      height: 58px;
+      padding: 13px;
+    }
   }
 }

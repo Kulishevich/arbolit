@@ -13,6 +13,13 @@
   border-radius: 50%;
   cursor: pointer;
   z-index: 1000;
+
+  @media (max-width: 768px) {
+    right: 10px;
+    bottom: 10px;
+    width: 100px;
+    height: 100px;
+  }
 }
 
 .phone {
@@ -20,4 +27,9 @@
   width: vw-1490(356);
   height: vw-1490(178);
   pointer-events: none;
+
+  @media (max-width: 768px) {
+    width: 356px;
+    height: 178px;
+  }
 }

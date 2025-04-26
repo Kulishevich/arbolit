@@ -5,6 +5,10 @@
   flex-direction: column;
   gap: vw-1490(12);
   width: 100%;
+
+  @media (max-width: 768px) {
+    gap: 12px;
+  }
 }
 
 .input {
@@ -32,6 +36,8 @@
   &::placeholder {
     opacity: 0.5;
   }
+
+  padding: 18px 6px 18px 16px;
 }
 
 .error {
