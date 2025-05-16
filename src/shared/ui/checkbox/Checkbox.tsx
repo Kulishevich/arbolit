@@ -54,6 +54,7 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
         {!!label && (
           <Link
             href={paths.policy}
+            target="_blank"
             className={clsx(
               s.label,
               disabled && s.disabled,
