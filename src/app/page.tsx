@@ -13,6 +13,7 @@ import { ImageResponseT, NewT } from '@/shared/types';
 import { getSetting } from '@/shared/api/getSetting';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
+import { getBlockStatus } from '@/shared/api/getBlockStatus';
 
 export default async function Home() {
   const news: { current_page: number; data: NewT[] } = await fetch(
@@ -27,6 +28,7 @@ export default async function Home() {
     .catch(() => undefined);
 
   const setting = await getSetting();
+  const blockStatus = await getBlockStatus();
 
   return (
     <>
@@ -42,11 +44,13 @@ export default async function Home() {
             <CertificateCard key={certificate.id} certificate={certificate} />
           ))}
         </SliderWrapper>
-        <SliderWrapper title="последние новости" variant="news">
-          {news.data.map((item) => (
-            <NewsCard key={item.id} {...item} isLow />
-          ))}
-        </SliderWrapper>
+        {blockStatus?.news_section_enabled && (
+          <SliderWrapper title="последние новости" variant="news">
+            {news.data.map((item) => (
+              <NewsCard key={item.id} {...item} isLow />
+            ))}
+          </SliderWrapper>
+        )}
         <ContactsBlock setting={setting} />
         <SeoText page="main" />
         <FeedbackSection

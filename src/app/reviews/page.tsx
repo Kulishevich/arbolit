@@ -7,6 +7,8 @@ import { ReviewCard } from '@/entities/review-card';
 import { ReviewT } from '@/shared/types';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
+import { getBlockStatus } from '@/shared/api/getBlockStatus';
+import { redirect } from 'next/navigation';
 
 const page = async () => {
   const reviews: ReviewT[] | undefined = await fetch(
@@ -14,6 +16,12 @@ const page = async () => {
   )
     .then((res) => res.json())
     .catch(() => undefined);
+
+  const blockStatus = await getBlockStatus();
+
+  if (!blockStatus?.reviews_section_enabled) {
+    redirect('/');
+  }
 
   return (
     <main>

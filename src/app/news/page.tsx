@@ -8,6 +8,8 @@ import { NewsCard } from '@/entities/news-card';
 import { Pagination } from '@/shared/ui/pagination';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
+import { getBlockStatus } from '@/shared/api/getBlockStatus';
+import { redirect } from 'next/navigation';
 const page = async ({
   searchParams,
 }: {
@@ -26,6 +28,12 @@ const page = async ({
   const allNews: NewT[] = await fetch(`${process.env.API_URL}/news/all`)
     .then((res) => res.json())
     .catch(() => undefined);
+
+  const blockStatus = await getBlockStatus();
+
+  if (!blockStatus?.news_section_enabled) {
+    redirect('/');
+  }
 
   return (
     <main>

@@ -9,6 +9,7 @@ import PhoneAnimation from '@/entities/phone-animation/PhoneAnimation';
 import { getProducts } from '@/shared/api/getProducts';
 import { getSeoMetadata } from '@/shared/api/getSeoMetadata';
 import { getSetting } from '@/shared/api/getSetting';
+import { getBlockStatus } from '@/shared/api/getBlockStatus';
 
 const manropeSans = Manrope({
   variable: '--font-family',
@@ -45,6 +46,7 @@ export default async function RootLayout({
 }>) {
   const products = await getProducts();
   const setting = await getSetting();
+  const blockStatus = await getBlockStatus();
 
   return (
     <html lang="en">
@@ -53,9 +55,17 @@ export default async function RootLayout({
           src={`https://api-maps.yandex.ru/v3/?apikey=${process.env.NEXT_PUBLIC_YANDEX_API_KEY}&lang=ru_RU`}
           strategy="beforeInteractive"
         />
-        <Header products={products} setting={setting} />
+        <Header
+          products={products}
+          setting={setting}
+          blockStatus={blockStatus}
+        />
         {children}
-        <Footer products={products} setting={setting} />
+        <Footer
+          products={products}
+          setting={setting}
+          blockStatus={blockStatus}
+        />
         <PhoneAnimation />
         <Toaster />
       </body>

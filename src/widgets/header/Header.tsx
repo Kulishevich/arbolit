@@ -1,22 +1,29 @@
-'use client';
 import React from 'react';
 import { HeaderDesktop } from './header-desktop';
-import { useBreakpoint } from '@/shared/lib/hooks/useBreakpoint';
 import { HeaderMobile } from './header-mobile';
-import { ProductT, SettingT } from '@/shared/types';
+import { ProductT, SettingT, StatusBlockT } from '@/shared/types';
 
 export const Header = ({
   products,
   setting,
+  blockStatus,
 }: {
   products: ProductT[] | null;
   setting: SettingT | null;
+  blockStatus: StatusBlockT | null;
 }) => {
-  const { isMobile } = useBreakpoint();
-
-  return isMobile ? (
-    <HeaderMobile products={products} setting={setting} />
-  ) : (
-    <HeaderDesktop products={products} setting={setting} />
+  return (
+    <>
+      <HeaderDesktop
+        products={products}
+        setting={setting}
+        blockStatus={blockStatus}
+      />
+      <HeaderMobile
+        products={products}
+        setting={setting}
+        blockStatus={blockStatus}
+      />
+    </>
   );
 };

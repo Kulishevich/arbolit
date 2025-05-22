@@ -6,7 +6,7 @@ import { SocialMedia } from '@/entities/social-media';
 import Link from 'next/link';
 import { paths } from '@/shared/config/constants/paths';
 import { HeaderDropdown } from '@/shared/ui/header-dropdown';
-import { ProductT, SettingT } from '@/shared/types';
+import { ProductT, SettingT, StatusBlockT } from '@/shared/types';
 
 const aboutCompany = [
   {
@@ -22,9 +22,11 @@ const aboutCompany = [
 export const Footer = ({
   products,
   setting,
+  blockStatus,
 }: {
   products: ProductT[] | null;
   setting: SettingT | null;
+  blockStatus: StatusBlockT | null;
 }) => {
   return (
     <div className={s.container}>
@@ -61,7 +63,22 @@ export const Footer = ({
                 items={aboutCompany}
                 className="body-2"
               />
-              {navigation.slice(1).map((elem, index) => (
+              {blockStatus?.reviews_section_enabled && (
+                <Link className="body-2" href={navigation[1].path}>
+                  {navigation[1].title}
+                </Link>
+              )}
+              {blockStatus?.gallery_section_enabled && (
+                <Link className="body-2" href={navigation[2].path}>
+                  {navigation[2].title}
+                </Link>
+              )}
+              {blockStatus?.news_section_enabled && (
+                <Link className="body-2" href={navigation[3].path}>
+                  {navigation[3].title}
+                </Link>
+              )}
+              {navigation.slice(4).map((elem, index) => (
                 <Link className="body-2" href={elem.path} key={index}>
                   {elem.title}
                 </Link>

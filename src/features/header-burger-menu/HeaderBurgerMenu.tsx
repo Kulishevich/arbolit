@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import s from './HeaderBurgerMenu.module.scss';
 import { Button } from '@/shared/ui/button';
@@ -12,7 +13,7 @@ import {
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import { CollapseHeader } from '@/shared/ui/collapse-header';
 import { paths } from '@/shared/config/constants/paths';
-import { ProductT, SettingT } from '@/shared/types';
+import { ProductT, SettingT, StatusBlockT } from '@/shared/types';
 
 const aboutCompany = [
   {
@@ -28,9 +29,11 @@ const aboutCompany = [
 export const HeaderBurgerMenu = ({
   products,
   setting,
+  blockStatus,
 }: {
   products: ProductT[] | null;
   setting: SettingT | null;
+  blockStatus: StatusBlockT | null;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -76,7 +79,22 @@ export const HeaderBurgerMenu = ({
                 </Link>
               ))}
             </CollapseHeader>
-            {navigation.slice(1).map((nav, index) => (
+            {blockStatus?.reviews_section_enabled && (
+              <Link className="h2" href={navigation[1].path}>
+                {navigation[1].title}
+              </Link>
+            )}
+            {blockStatus?.gallery_section_enabled && (
+              <Link className="h2" href={navigation[2].path}>
+                {navigation[2].title}
+              </Link>
+            )}
+            {blockStatus?.news_section_enabled && (
+              <Link className="h2" href={navigation[3].path}>
+                {navigation[3].title}
+              </Link>
+            )}
+            {navigation.slice(4).map((nav, index) => (
               <Link
                 className="h2"
                 href={nav.path}

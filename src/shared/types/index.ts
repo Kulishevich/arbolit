@@ -87,6 +87,12 @@ export type SettingT = {
   bank_details: string | null;
 };
 
+export type StatusBlockT = {
+  news_section_enabled: true;
+  gallery_section_enabled: true;
+  reviews_section_enabled: true;
+};
+
 export type SpecificationT = {
   id: number;
   name: string;
@@ -118,10 +124,8 @@ export type OrderT = {
   comment: string;
 };
 
-
 export type SeoTextT = {
   id: number;
   page: string;
   content: string;
 };
-

@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import { paths } from '@/shared/config/constants/paths';
 import { HeaderDropdown } from '@/shared/ui/header-dropdown';
-import { ProductT, SettingT } from '@/shared/types';
+import { ProductT, SettingT, StatusBlockT } from '@/shared/types';
 
 const aboutCompany = [
   {
@@ -24,9 +24,11 @@ const aboutCompany = [
 export const HeaderDesktop = ({
   products,
   setting,
+  blockStatus,
 }: {
   products: ProductT[] | null;
   setting: SettingT | null;
+  blockStatus: StatusBlockT | null;
 }) => {
   const catalogProducts =
     products?.map((elem) => ({
@@ -81,7 +83,23 @@ export const HeaderDesktop = ({
             items={aboutCompany}
             className="t-header"
           />
-          {navigation.slice(1).map((nav, index) => (
+          {blockStatus?.reviews_section_enabled && (
+            <Link className="t-header" href={navigation[1].path}>
+              {navigation[1].title}
+            </Link>
+          )}
+          {blockStatus?.gallery_section_enabled && (
+            <Link className="t-header" href={navigation[2].path}>
+              {navigation[2].title}
+            </Link>
+          )}
+          {blockStatus?.news_section_enabled && (
+            <Link className="t-header" href={navigation[3].path}>
+              {navigation[3].title}
+            </Link>
+          )}
+
+          {navigation.slice(4).map((nav, index) => (
             <Link className="t-header" key={index} href={nav.path}>
               {nav.title}
             </Link>

@@ -6,8 +6,16 @@ import { PhotoGallery } from '@/widgets/photo-gallery';
 import { Suspense } from 'react';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
+import { getBlockStatus } from '@/shared/api/getBlockStatus';
+import { redirect } from 'next/navigation';
 
 const page = async () => {
+  const blockStatus = await getBlockStatus();
+
+  if (!blockStatus?.gallery_section_enabled) {
+    redirect('/');
+  }
+
   return (
     <main>
       <PagesHero image={photoGallery}>
