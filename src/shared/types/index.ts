@@ -93,6 +93,20 @@ export type StatusBlockT = {
   reviews_section_enabled: true;
 };
 
+export type MaterialAdvantagesT = {
+  material: string;
+  advantages: AdvantageT[];
+};
+
+export type AdvantageT = {
+  id: 1;
+  material: string;
+  property: string;
+  value: string;
+  created_at: string;
+  updated_at: string;
+};
+
 export type SpecificationT = {
   id: number;
   name: string;

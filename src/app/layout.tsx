@@ -62,6 +62,11 @@ export default async function RootLayout({
           `}
         </Script>
         {/* End Google Tag Manager */}
+        <meta name="yandex-verification" content="7bff8869bacf9f20" />
+        <meta
+          name="google-site-verification"
+          content="jdzk3m9f97Z7R-7HvTXJJIobqehlyrKXJtkgIgQye6s"
+        />
       </head>
       <body className={`${manropeSans.variable} ${notoSans.variable}`}>
         {/* Google Tag Manager (noscript) */}

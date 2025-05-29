@@ -14,6 +14,7 @@ import { getSetting } from '@/shared/api/getSetting';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
 import { getBlockStatus } from '@/shared/api/getBlockStatus';
+import { getMaterialAdvantages } from '@/shared/api/getMaterialAdvantages';
 
 export default async function Home() {
   const news: { current_page: number; data: NewT[] } = await fetch(
@@ -29,21 +30,24 @@ export default async function Home() {
 
   const setting = await getSetting();
   const blockStatus = await getBlockStatus();
+  const advantages = await getMaterialAdvantages();
 
   return (
     <>
       <MainHero />
       <div className={s.container}>
-        <AdvantagesBlock />
+        <AdvantagesBlock advantages={advantages} />
         <ArbolitCharacteristicsBlock />
         <AboutBanner />
         <OurAdvantages />
         <ArbolitCompound />
-        <SliderWrapper title="сертификаты" variant="certificate">
-          {certificates.map((certificate) => (
-            <CertificateCard key={certificate.id} certificate={certificate} />
-          ))}
-        </SliderWrapper>
+        {!!certificates?.length && (
+          <SliderWrapper title="сертификаты" variant="certificate">
+            {certificates?.map((certificate) => (
+              <CertificateCard key={certificate.id} certificate={certificate} />
+            ))}
+          </SliderWrapper>
+        )}
         {blockStatus?.news_section_enabled && (
           <SliderWrapper title="последние новости" variant="news">
             {news.data.map((item) => (

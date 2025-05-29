@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
       },
       {
+        hostname: 'api.domremont.com',
+        protocol: 'https',
+      },
+      {
         hostname: 'webspaceteam.site',
         protocol: 'https',
       },

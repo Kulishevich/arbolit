@@ -7,8 +7,19 @@ import arbolitBrick from '@/shared/assets/images/arbolit-brick.png';
 import { CheckboxCrossIcon, CheckboxOkIcon } from '@/shared/assets/icons';
 import { Button } from '@/shared/ui/button';
 import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
+import { MaterialAdvantagesT } from '@/shared/types';
 
-const AdvantagesBlock = () => {
+const AdvantagesBlock = ({
+  advantages,
+}: {
+  advantages: MaterialAdvantagesT[] | null;
+}) => {
+  const arbolitData = advantages?.find((elem) => elem.material === 'arbolit');
+  const gasosilicateData = advantages?.find(
+    (elem) => elem.material === 'gasosilicate'
+  );
+  const brickData = advantages?.find((elem) => elem.material === 'brick');
+
   return (
     <section className={styles.wrapper}>
       <h2 className={clsx('h2', styles.title)}>Преимущества арболита</h2>
@@ -17,36 +28,14 @@ const AdvantagesBlock = () => {
           <Image src={gas} alt="Газобетон" />
           <div className={clsx('h4', styles.name)}>Газосиликатный</div>
           <div className={styles.checkList}>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxCrossIcon />
-              <div>
-                Теплопроводимость: <span>0,08-0,17</span>
+            {gasosilicateData?.advantages.map((elem, index) => (
+              <div className={clsx('body-2', styles.listItem)} key={index}>
+                <CheckboxCrossIcon />
+                <div>
+                  {elem.property}: <span>{elem.value}</span>
+                </div>
               </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxCrossIcon />
-              <div>
-                Норматив. толщина стены: <span>от 300 мм</span>
-              </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxCrossIcon />
-              <div>
-                Плотность: <span>500-850 кг/м3</span>
-              </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxCrossIcon />
-              <div>
-                Теплопроводимость: <span> 0,08-0,17</span>
-              </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxCrossIcon />
-              <div>
-                Норматив. толщина стены: <span>от 300 мм</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -61,36 +50,15 @@ const AdvantagesBlock = () => {
             Масса: <span>25 кг</span> (один блок)
           </div>
           <div className={styles.checkList}>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxOkIcon />
-              <div>
-                Теплопроводимость: <span>0,08-0,17</span>
+            {arbolitData?.advantages.map((elem, index) => (
+              <div className={clsx('body-2', styles.listItem)} key={index}>
+                <CheckboxOkIcon />
+
+                <div>
+                  {elem.property}: <span>{elem.value}</span>
+                </div>
               </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxOkIcon />
-              <div>
-                Норматив. толщина стены: <span>от 300 мм</span>
-              </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxOkIcon />
-              <div>
-                Плотность: <span>500-850 кг/м3</span>
-              </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxOkIcon />
-              <div>
-                Теплопроводимость: <span> 0,08-0,17</span>
-              </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxOkIcon />
-              <div>
-                Норматив. толщина стены: <span>от 300 мм</span>
-              </div>
-            </div>
+            ))}
           </div>
           <div className={clsx('h3', styles.price)}>от 9000 ₽ /м3</div>
           <FeedbackPopup>
@@ -102,36 +70,14 @@ const AdvantagesBlock = () => {
           <Image src={brick} alt="Кирпич" />
           <div className={clsx('h4', styles.name)}>Кирпич</div>
           <div className={styles.checkList}>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxCrossIcon />
-              <div>
-                Теплопроводимость: <span>0,08-0,17</span>
+            {brickData?.advantages.map((elem, index) => (
+              <div className={clsx('body-2', styles.listItem)} key={index}>
+                <CheckboxCrossIcon />
+                <div>
+                  {elem.property}: <span>{elem.value}</span>
+                </div>
               </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxCrossIcon />
-              <div>
-                Норматив. толщина стены: <span>от 300 мм</span>
-              </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxCrossIcon />
-              <div>
-                Плотность: <span>500-850 кг/м3</span>
-              </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxCrossIcon />
-              <div>
-                Теплопроводимость: <span> 0,08-0,17</span>
-              </div>
-            </div>
-            <div className={clsx('body-2', styles.listItem)}>
-              <CheckboxCrossIcon />
-              <div>
-                Норматив. толщина стены: <span>от 300 мм</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
