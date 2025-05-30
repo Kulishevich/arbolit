@@ -14,12 +14,12 @@ const AdvantagesBlock = ({
 }: {
   advantages: MaterialAdvantagesT[] | null;
 }) => {
-  const arbolitData = advantages?.find((elem) => elem.material === 'arbolit');
-  const gasosilicateData = advantages?.find(
+  const arbolitData = advantages?.filter((elem) => elem.material === 'arbolit');
+  const gasosilicateData = advantages?.filter(
     (elem) => elem.material === 'gasosilicate'
   );
-  const brickData = advantages?.find((elem) => elem.material === 'brick');
-
+  const brickData = advantages?.filter((elem) => elem.material === 'brick');
+  console.log(arbolitData);
   return (
     <section className={styles.wrapper}>
       <h2 className={clsx('h2', styles.title)}>Преимущества арболита</h2>
@@ -28,7 +28,7 @@ const AdvantagesBlock = ({
           <Image src={gas} alt="Газобетон" />
           <div className={clsx('h4', styles.name)}>Газосиликатный</div>
           <div className={styles.checkList}>
-            {gasosilicateData?.advantages.map((elem, index) => (
+            {gasosilicateData?.map((elem, index) => (
               <div className={clsx('body-2', styles.listItem)} key={index}>
                 <CheckboxCrossIcon />
                 <div>
@@ -50,7 +50,7 @@ const AdvantagesBlock = ({
             Масса: <span>25 кг</span> (один блок)
           </div>
           <div className={styles.checkList}>
-            {arbolitData?.advantages.map((elem, index) => (
+            {arbolitData?.map((elem, index) => (
               <div className={clsx('body-2', styles.listItem)} key={index}>
                 <CheckboxOkIcon />
 
@@ -70,7 +70,7 @@ const AdvantagesBlock = ({
           <Image src={brick} alt="Кирпич" />
           <div className={clsx('h4', styles.name)}>Кирпич</div>
           <div className={styles.checkList}>
-            {brickData?.advantages.map((elem, index) => (
+            {brickData?.map((elem, index) => (
               <div className={clsx('body-2', styles.listItem)} key={index}>
                 <CheckboxCrossIcon />
                 <div>

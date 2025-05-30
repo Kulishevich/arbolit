@@ -94,17 +94,12 @@ export type StatusBlockT = {
 };
 
 export type MaterialAdvantagesT = {
-  material: string;
-  advantages: AdvantageT[];
-};
-
-export type AdvantageT = {
-  id: 1;
+  created_at: string;
+  id: number;
   material: string;
   property: string;
-  value: string;
-  created_at: string;
   updated_at: string;
+  value: string;
 };
 
 export type SpecificationT = {
