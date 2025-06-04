@@ -94,6 +94,11 @@ export type StatusBlockT = {
 };
 
 export type MaterialAdvantagesT = {
+  arbolit_price: string | null;
+  advantages: AdvantageT[];
+};
+
+export type AdvantageT = {
   created_at: string;
   id: number;
   material: string;

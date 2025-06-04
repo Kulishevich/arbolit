@@ -12,14 +12,18 @@ import { MaterialAdvantagesT } from '@/shared/types';
 const AdvantagesBlock = ({
   advantages,
 }: {
-  advantages: MaterialAdvantagesT[] | null;
+  advantages: MaterialAdvantagesT | null;
 }) => {
-  const arbolitData = advantages?.filter((elem) => elem.material === 'arbolit');
-  const gasosilicateData = advantages?.filter(
+  const arbolitData = advantages?.advantages?.filter(
+    (elem) => elem.material === 'arbolit'
+  );
+  const gasosilicateData = advantages?.advantages?.filter(
     (elem) => elem.material === 'gasosilicate'
   );
-  const brickData = advantages?.filter((elem) => elem.material === 'brick');
-  console.log(arbolitData);
+  const brickData = advantages?.advantages?.filter(
+    (elem) => elem.material === 'brick'
+  );
+
   return (
     <section className={styles.wrapper}>
       <h2 className={clsx('h2', styles.title)}>Преимущества арболита</h2>
@@ -60,7 +64,9 @@ const AdvantagesBlock = ({
               </div>
             ))}
           </div>
-          <div className={clsx('h3', styles.price)}>от 9000 ₽ /м3</div>
+          <div className={clsx('h3', styles.price)}>
+            от {advantages?.arbolit_price} ₽ /м3
+          </div>
           <FeedbackPopup>
             <Button className={styles.button}>заказать арболит</Button>
           </FeedbackPopup>

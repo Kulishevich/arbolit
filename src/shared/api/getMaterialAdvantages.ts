@@ -1,8 +1,6 @@
 import { MaterialAdvantagesT } from '../types';
 
-export async function getMaterialAdvantages(): Promise<
-  MaterialAdvantagesT[] | null
-> {
+export async function getMaterialAdvantages(): Promise<MaterialAdvantagesT | null> {
   try {
     const data = await fetch(`${process.env.API_URL}/material-advantages`, {
       cache: 'no-store',
