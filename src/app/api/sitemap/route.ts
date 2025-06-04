@@ -1,10 +1,10 @@
 export async function GET() {
   const res = await fetch(`${process.env.API_URL}/seo/sitemap.xml`);
-  const text = await res.text();
+  const xml = await res.text();
 
-  return new Response(text, {
+  return new Response(xml, {
     headers: {
-      'Content-Type': 'text/plain',
+      'Content-Type': 'application/xml',
     },
   });
 }
