@@ -93,6 +93,12 @@ export type StatusBlockT = {
   reviews_section_enabled: true;
 };
 
+export type OurAdvantagesT = {
+  blocks: { title: string | null }[];
+  enabled: boolean;
+  main_text: string | null;
+};
+
 export type MaterialAdvantagesT = {
   arbolit_price: string | null;
   advantages: AdvantageT[];
