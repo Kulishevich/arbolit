@@ -1,4 +1,4 @@
-import { MaterialAdvantagesT, OurAdvantagesT } from '../types';
+import { OurAdvantagesT } from '../types';
 
 export async function getOurAdvantages(): Promise<OurAdvantagesT | null> {
   try {
