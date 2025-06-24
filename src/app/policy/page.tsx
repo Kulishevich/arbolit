@@ -8,7 +8,7 @@ import clsx from 'clsx';
 
 const page = async () => {
   const info: DesignSettingsT = await fetch(
-    'https://arbolitapi.webspaceteam.site/api/v1/design/settings'
+    `${process.env.API_URL}/design/settings`
   )
     .then((res) => res.json())
     .catch(() => undefined);
