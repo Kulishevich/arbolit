@@ -33,7 +33,7 @@ const showToast = ({
       <div className={clsx(styles.rootClass, typesClass, className)}>
         {variant === 'error' && <ErrorIcon />}
         {variant === 'success' && <SuccessIcon />}
-        <h5 className="h5">{title}</h5>
+        <p className="h5">{title}</p>
         {!!message && <p className="body-2">{message}</p>}
       </div>
     ),

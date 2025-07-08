@@ -17,6 +17,12 @@ import { SettingT } from '@/shared/types';
 import { showToast } from '@/shared/ui/toast';
 import Link from 'next/link';
 
+declare global {
+  interface Window {
+    ym?: (id: number, type: string, name: string) => void;
+  }
+}
+
 export const FeedbackForm = ({
   title,
   description,
@@ -43,6 +49,10 @@ export const FeedbackForm = ({
   });
 
   const formHandler = handleSubmit(async (data) => {
+    if (typeof window !== 'undefined' && typeof window.ym === 'function') {
+      window.ym(102330396, 'reachGoal', 'form-oc');
+    }
+
     const reqData = {
       name: data.name,
       phone: data.phone,

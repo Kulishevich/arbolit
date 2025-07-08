@@ -3,15 +3,12 @@ import certificates from '../../../public/certificates.png';
 import PageInfo from '@/features/PageInfo/PageInfo';
 import s from './page.module.scss';
 import { CatalogList } from '@/widgets/catalog-list';
-import { ProductT } from '@/shared/types';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
+import { getProducts } from '@/shared/api/getProducts';
+
 const page = async () => {
-  const products: { data: ProductT[] } = await fetch(
-    `${process.env.API_URL}/products`
-  )
-    .then((res) => res.json())
-    .catch(() => undefined);
+  const products = await getProducts();
 
   return (
     <main>
@@ -22,7 +19,7 @@ const page = async () => {
         />
       </PagesHero>
       <div className={s.container}>
-        <CatalogList products={products.data} />
+        <CatalogList products={products || []} />
         <SeoText page="catalog" />
         <FeedbackSection
           title="связаться с нами"

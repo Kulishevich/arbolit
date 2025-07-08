@@ -4,6 +4,7 @@ import s from './Breadcrumbs.module.scss';
 import { ArrowRightIcon } from '@/shared/assets/icons';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Head from 'next/head';
 
 interface Props {
   className?: string;
@@ -50,25 +51,50 @@ export const Breadcrumbs = ({ className, dynamicPath }: Props) => {
     !!dynamicPath && dynamicPath,
   ].filter((elem) => !!elem);
 
-  return (
-    <div className={s.container}>
-      <ul className={cn(s.list, className)}>
-        {pathArr?.map((path, idx) => {
-          const lastItem = idx === pathArr.length - 1;
+  const breadcrumbsJsonLd = {
+    '@context': 'http://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: pathArr.map((path, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@id': `https://domremont.com${path.href}`,
+        name: path.name,
+      },
+    })),
+  };
 
-          return (
-            <li className={s.elem} key={idx}>
-              {!!idx && <ArrowRightIcon className={s.icon} />}
-              <Link
-                href={path?.href || '/'}
-                className={cn(lastItem && s.lastItem, 'body-5')}
-              >
-                {path?.name}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+  return (
+    <>
+      {pathArr.length > 1 && (
+        <Head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(breadcrumbsJsonLd),
+            }}
+          />
+        </Head>
+      )}
+      <div className={s.container}>
+        <ul className={cn(s.list, className)}>
+          {pathArr?.map((path, idx) => {
+            const lastItem = idx === pathArr.length - 1;
+
+            return (
+              <li className={s.elem} key={idx}>
+                {!!idx && <ArrowRightIcon className={s.icon} />}
+                <Link
+                  href={path?.href || '/'}
+                  className={cn(lastItem && s.lastItem, 'body-5')}
+                >
+                  {path?.name}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </>
   );
 };

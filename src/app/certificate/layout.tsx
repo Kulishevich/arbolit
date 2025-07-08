@@ -5,12 +5,15 @@ export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoMetadata('/certificate');
 
   return {
-    title: seo?.title ?? 'Арболит',
-    description: seo?.description ?? 'Арболит',
+    title: seo?.title ?? 'Сертификаты',
+    description: seo?.description ?? 'Сертификаты',
     keywords: seo?.keywords,
     openGraph: {
       title: seo?.og_title ?? seo?.title,
       description: seo?.og_description ?? seo?.description,
+    },
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/certificate`,
     },
   };
 }

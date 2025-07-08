@@ -15,6 +15,7 @@ import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
 import { getBlockStatus } from '@/shared/api/getBlockStatus';
 import { getMaterialAdvantages } from '@/shared/api/getMaterialAdvantages';
+import Head from 'next/head';
 
 export default async function Home() {
   const news: { current_page: number; data: NewT[] } = await fetch(
@@ -34,6 +35,34 @@ export default async function Home() {
 
   return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org/',
+              '@type': 'Organization',
+              url: 'https://domremont.com/',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://api.domremont.com/storage/design/Gn9qgWXRAq57PGND4bDF4RM2jFfmXEGfGJwcqAq4.svg',
+              },
+              name: 'ООО Домремонт',
+              email: 'info@domremont.com',
+              description:
+                'Компания ООО ДОМРЕМОНТ специализируется на производстве и продаже арболитовых блоков — экологичного строительного материала, используемого для возведения теплых, прочных и безопасных домов.',
+              address: {
+                '@type': 'PostalAddress',
+                postalCode: '105005',
+                streetAddress: 'Бакунинская ул., д. 10–12',
+                addressCountry: 'RU',
+                addressLocality: 'Москва',
+                telephone: '+7 (495) 744-72-60',
+              },
+            }),
+          }}
+        />
+      </Head>
       <MainHero />
       <div className={s.container}>
         <AdvantagesBlock advantages={advantages} />

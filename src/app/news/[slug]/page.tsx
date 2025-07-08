@@ -10,7 +10,7 @@ import { ArrowLeftIcon } from '@/shared/assets/icons';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
 import { getBlockStatus } from '@/shared/api/getBlockStatus';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -30,6 +30,8 @@ const page = async ({ params }: Props) => {
   if (!blockStatus?.news_section_enabled) {
     redirect('/');
   }
+
+  if (!info) return notFound();
 
   return (
     <main>

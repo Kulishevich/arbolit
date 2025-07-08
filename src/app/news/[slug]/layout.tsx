@@ -24,6 +24,9 @@ export const generateMetadata = async ({
       title: seo?.og_title ?? news.title,
       description: seo?.og_description ?? news.subtitle.substring(0, 140),
     },
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${newsSlug}`,
+    },
   };
 };
 

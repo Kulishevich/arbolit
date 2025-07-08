@@ -35,6 +35,10 @@ export const FeedbackPopup = ({ children }: { children: ReactNode }) => {
   }, [isOpen]);
 
   const formHandler = handleSubmit(async (data) => {
+    if (typeof window !== 'undefined' && typeof window.ym === 'function') {
+      window.ym(102330396, 'reachGoal', 'form-oc');
+    }
+
     const dataWithoutChecked = {
       name: data.name,
       phone: data.phone,

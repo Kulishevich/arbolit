@@ -10,8 +10,7 @@ const MainHero = () => {
     <section className={styles.container}>
       <div className={styles.wrapper}>
         <h1 className={clsx('h1', styles.title)}>
-          Арболитовые блоки
-          <span>от производителя</span>
+          Арболитовые блоки <span>от производителя</span>
         </h1>
         <p className={clsx('body-1', styles.text)}>
           Высочайшее качество материалов по доступным ценам

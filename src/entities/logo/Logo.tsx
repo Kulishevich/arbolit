@@ -13,7 +13,7 @@ export const Logo = ({ logo }: { logo: string | undefined }) => {
         )}
       </div>
       <div>
-        <h5 className="h5">ООО &quot;Домремонт&quot;</h5>
+        <p className="h5">ООО &quot;Домремонт&quot;</p>
         <p className="body-5">Арболитовые блоки</p>
       </div>
     </Link>

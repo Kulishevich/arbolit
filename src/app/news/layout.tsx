@@ -1,21 +1,18 @@
 import { getSeoMetadata } from '@/shared/api/getSeoMetadata';
 
-export const generateMetadata = async ({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) => {
-  const { slug: newsSlug } = await params;
-
-  const seo = await getSeoMetadata(`/news/${newsSlug}`);
+export const generateMetadata = async () => {
+  const seo = await getSeoMetadata(`/news`);
 
   return {
-    title: seo?.title ?? 'Арболит',
-    description: seo?.description ?? 'Арболит',
+    title: seo?.title ?? 'Новости',
+    description: seo?.description ?? 'Новости',
     keywords: seo?.keywords,
     openGraph: {
-      title: seo?.og_title ?? 'Арболит',
-      description: seo?.og_description ?? 'Арболит',
+      title: seo?.og_title ?? 'Новости',
+      description: seo?.og_description ?? 'Новости',
+    },
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/news`,
     },
   };
 };
