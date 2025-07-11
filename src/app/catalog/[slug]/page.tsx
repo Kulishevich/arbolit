@@ -8,7 +8,7 @@ import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
 import { notFound } from 'next/navigation';
-import Head from 'next/head';
+import Script from 'next/script';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -41,14 +41,15 @@ const page = async ({ params }: Props) => {
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd),
-          }}
-        />
-      </Head>
+      <Script
+        id="product-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+
       <main className={styles.container}>
         <Breadcrumbs
           dynamicPath={{

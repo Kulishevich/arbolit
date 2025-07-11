@@ -36,6 +36,9 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: {
       icon: `${process.env.STORE_URL}/${setting?.favicon_path}`,
     },
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+    },
   };
 }
 

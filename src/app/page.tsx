@@ -15,7 +15,7 @@ import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
 import { getBlockStatus } from '@/shared/api/getBlockStatus';
 import { getMaterialAdvantages } from '@/shared/api/getMaterialAdvantages';
-import Head from 'next/head';
+import Script from 'next/script';
 
 export default async function Home() {
   const news: { current_page: number; data: NewT[] } = await fetch(
@@ -33,36 +33,41 @@ export default async function Home() {
   const blockStatus = await getBlockStatus();
   const advantages = await getMaterialAdvantages();
 
+  const logoUrl =
+    setting?.logo_path && process.env.STORE_URL
+      ? `${process.env.STORE_URL}/${setting.logo_path}`
+      : 'https://api.domremont.com/storage/design/Gn9qgWXRAq57PGND4bDF4RM2jFfmXEGfGJwcqAq4.svg';
+
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org/',
-              '@type': 'Organization',
-              url: 'https://domremont.com/',
-              logo: {
-                '@type': 'ImageObject',
-                url: 'https://api.domremont.com/storage/design/Gn9qgWXRAq57PGND4bDF4RM2jFfmXEGfGJwcqAq4.svg',
-              },
-              name: 'ООО Домремонт',
-              email: 'info@domremont.com',
-              description:
-                'Компания ООО ДОМРЕМОНТ специализируется на производстве и продаже арболитовых блоков — экологичного строительного материала, используемого для возведения теплых, прочных и безопасных домов.',
-              address: {
-                '@type': 'PostalAddress',
-                postalCode: '105005',
-                streetAddress: 'Бакунинская ул., д. 10–12',
-                addressCountry: 'RU',
-                addressLocality: 'Москва',
-                telephone: '+7 (495) 744-72-60',
-              },
-            }),
-          }}
-        />
-      </Head>
+      <Script
+        id="organization-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org/',
+            '@type': 'Organization',
+            url: 'https://domremont.com/',
+            logo: {
+              '@type': 'ImageObject',
+              url: logoUrl,
+            },
+            name: 'ООО Домремонт',
+            email: 'info@domremont.com',
+            description:
+              'Компания ООО ДОМРЕМОНТ специализируется на производстве и продаже арболитовых блоков — экологичного строительного материала, используемого для возведения теплых, прочных и безопасных домов.',
+            address: {
+              '@type': 'PostalAddress',
+              postalCode: '105005',
+              streetAddress: 'Бакунинская ул., д. 10–12',
+              addressCountry: 'RU',
+              addressLocality: 'Москва',
+              telephone: '+7 (495) 744-72-60',
+            },
+          }),
+        }}
+      />
       <MainHero />
       <div className={s.container}>
         <AdvantagesBlock advantages={advantages} />

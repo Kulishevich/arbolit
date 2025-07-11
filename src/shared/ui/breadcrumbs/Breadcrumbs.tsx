@@ -4,7 +4,7 @@ import s from './Breadcrumbs.module.scss';
 import { ArrowRightIcon } from '@/shared/assets/icons';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import Head from 'next/head';
+import Script from 'next/script';
 
 interface Props {
   className?: string;
@@ -67,14 +67,14 @@ export const Breadcrumbs = ({ className, dynamicPath }: Props) => {
   return (
     <>
       {pathArr.length > 1 && (
-        <Head>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(breadcrumbsJsonLd),
-            }}
-          />
-        </Head>
+        <Script
+          id="breadcrumb-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbsJsonLd),
+          }}
+        />
       )}
       <div className={s.container}>
         <ul className={cn(s.list, className)}>
