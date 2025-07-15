@@ -33,7 +33,7 @@ export const HeaderDesktop = ({
   const catalogProducts =
     products?.map((elem) => ({
       name: elem.name,
-      href: `/catalog/${elem.slug}_${elem.id}`,
+      href: `/catalog/${elem.slug}`,
     })) || [];
 
   return (

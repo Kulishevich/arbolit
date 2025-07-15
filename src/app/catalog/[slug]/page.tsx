@@ -17,13 +17,13 @@ type Props = {
 const page = async ({ params }: Props) => {
   const { slug: catalogSlug } = await params;
   const product: ProductT = await fetch(
-    `${process.env.API_URL}/products/${catalogSlug.split('_')[1]}`
+    `${process.env.API_URL}/products/slug/${catalogSlug}`
   )
     .then((res) => res.json())
     .catch(() => undefined);
 
   if (!product) return notFound();
-
+  console.log(product);
   const jsonLd = {
     '@context': 'http://schema.org/',
     '@type': 'Product',
@@ -34,7 +34,7 @@ const page = async ({ params }: Props) => {
       '@type': 'Offer',
       priceCurrency: 'RUB',
       price: product.price,
-      url: `https://domremont.com/catalog/${product.slug}_${product.id}`,
+      url: `https://domremont.com/catalog/${product.slug}`,
       availability: 'http://schema.org/InStock',
     },
   };
@@ -54,7 +54,7 @@ const page = async ({ params }: Props) => {
         <Breadcrumbs
           dynamicPath={{
             name: product.name,
-            href: `/catalog/${product.slug}_${product.id}`,
+            href: `/catalog/${product.slug}`,
           }}
         />
 

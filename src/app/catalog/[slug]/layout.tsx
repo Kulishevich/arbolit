@@ -8,7 +8,7 @@ export const generateMetadata = async ({
 }) => {
   const { slug: catalogSlug } = await params;
   const product: ProductT = await fetch(
-    `${process.env.API_URL}/products/${catalogSlug.split('_')[1]}`
+    `${process.env.API_URL}/products/slug/${catalogSlug}`
   )
     .then((res) => res.json())
     .catch(() => undefined);

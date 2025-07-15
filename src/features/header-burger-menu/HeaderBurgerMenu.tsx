@@ -60,7 +60,7 @@ export const HeaderBurgerMenu = ({
                 <Link
                   className="body-2"
                   key={index}
-                  href={`/catalog/${category.slug}_${category.id}`}
+                  href={`/catalog/${category.slug}`}
                   onClick={() => setIsOpen(false)}
                 >
                   {category.name}

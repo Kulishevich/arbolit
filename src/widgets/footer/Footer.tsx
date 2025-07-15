@@ -43,7 +43,7 @@ export const Footer = ({
             <div>
               {products?.map((product, index) => (
                 <Link
-                  href={`/catalog/${product.slug}_${product.id}`}
+                  href={`/catalog/${product.slug}`}
                   className="body-2"
                   key={index}
                 >

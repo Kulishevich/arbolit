@@ -34,7 +34,7 @@ export const ItemCard = ({ product }: { product: ProductT }) => {
               <Button
                 variant="secondary"
                 as="a"
-                href={`/catalog/${product.slug}_${product.id}`}
+                href={`/catalog/${product.slug}`}
               >
                 подробнее
               </Button>
