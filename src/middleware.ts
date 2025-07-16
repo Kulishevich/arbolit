@@ -5,6 +5,12 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const pathname = url.pathname;
 
+  //todo: remove
+  if (pathname === '/catalog/stenovoi-arbolitovyi-blok_1') {
+    url.pathname = '/catalog/stenovoi-arbolitovyi-blok';
+    return NextResponse.redirect(url, 301);
+  }
+
   const hasUpperCase = /[A-Z]/.test(pathname);
 
   const hasMultipleSlashes = /\/\/+/.test(pathname);
@@ -25,7 +31,6 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
-
   return NextResponse.next();
 }
 
@@ -41,4 +46,4 @@ export const config = {
      */
     '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|feed.xml).*)',
   ],
-}; 
+};
