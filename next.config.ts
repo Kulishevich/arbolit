@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
           },
         ],
         destination: 'https://:domain/:path*',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/:path*',
