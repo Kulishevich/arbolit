@@ -5,29 +5,26 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const pathname = url.pathname;
 
-  //todo: remove
-  if (pathname === '/catalog/stenovoi-arbolitovyi-blok_1') {
-    url.pathname = '/catalog/stenovoi-arbolitovyi-blok';
-    return NextResponse.redirect(url, 301);
+  let normalizedPath = pathname;
+  let needsRedirect = false;
+
+  if (/\/\/+/.test(normalizedPath)) {
+    normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
+    needsRedirect = true;
   }
 
-  const hasUpperCase = /[A-Z]/.test(pathname);
+  if (/[A-Z]/.test(normalizedPath)) {
+    normalizedPath = normalizedPath.toLowerCase();
+    needsRedirect = true;
+  }
 
-  const hasMultipleSlashes = /\/\/+/.test(pathname);
+  if (normalizedPath.length > 1 && normalizedPath.endsWith('/')) {
+    normalizedPath = normalizedPath.slice(0, -1);
+    needsRedirect = true;
+  }
 
-  if (hasUpperCase || hasMultipleSlashes) {
-    let normalizedPath = pathname;
-
-    if (hasUpperCase) {
-      normalizedPath = normalizedPath.toLowerCase();
-    }
-
-    if (hasMultipleSlashes) {
-      normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
-    }
-
+  if (needsRedirect) {
     url.pathname = normalizedPath;
-
     return NextResponse.redirect(url, 301);
   }
 

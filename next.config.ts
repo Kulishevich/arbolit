@@ -53,8 +53,8 @@ const nextConfig: NextConfig = {
             value: 'http',
           },
         ],
-        destination: 'https://:host/:path*',
-        permanent: true,
+        destination: 'https://domremont.com/:path*',
+        statusCode: 301,
       },
       {
         source: '/:path*',
@@ -65,8 +65,8 @@ const nextConfig: NextConfig = {
             value: 'off',
           },
         ],
-        destination: 'https://:host/:path*',
-        permanent: true,
+        destination: 'https://domremont.com/:path*',
+        statusCode: 301,
       },
     ];
   },
