@@ -19,6 +19,10 @@ export const Breadcrumbs = ({ className, dynamicPath }: Props) => {
     switch (path) {
       case '':
         return { href: '/', name: 'Главная' };
+      case 'about':
+        return { href: '/about', name: 'О нас' };
+      case 'certificate':
+        return { href: '/certificate', name: 'Сертификаты' };
       case 'news':
         return { href: '/news', name: 'Новости' };
       case 'contacts':
