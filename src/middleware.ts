@@ -5,26 +5,28 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const pathname = url.pathname;
 
-  const hasUpperCase = /[A-Z]/.test(pathname);
+  let normalizedPath = pathname;
+  let needsRedirect = false;
 
-  const hasMultipleSlashes = /\/\/+/.test(pathname);
-
-  if (hasUpperCase || hasMultipleSlashes) {
-    let normalizedPath = pathname;
-
-    if (hasUpperCase) {
-      normalizedPath = normalizedPath.toLowerCase();
-    }
-
-    if (hasMultipleSlashes) {
-      normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
-    }
-
-    url.pathname = normalizedPath;
-
-    return NextResponse.redirect(url, 301);
+  if (/\/\/+/.test(normalizedPath)) {
+    normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
+    needsRedirect = true;
   }
 
+  if (/[A-Z]/.test(normalizedPath)) {
+    normalizedPath = normalizedPath.toLowerCase();
+    needsRedirect = true;
+  }
+
+  if (normalizedPath.length > 1 && normalizedPath.endsWith('/')) {
+    normalizedPath = normalizedPath.slice(0, -1);
+    needsRedirect = true;
+  }
+
+  if (needsRedirect) {
+    url.pathname = normalizedPath;
+    return NextResponse.redirect(url, 301);
+  }
 
   return NextResponse.next();
 }
