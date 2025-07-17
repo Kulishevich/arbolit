@@ -49,7 +49,7 @@ export const FeedbackForm = ({
   });
 
   const formHandler = handleSubmit(async (data) => {
-    if (typeof window !== 'undefined' && typeof window.ym === 'function') {
+    if (typeof window !== 'undefined' && window.ym) {
       window.ym(102330396, 'reachGoal', 'form-oc');
     }
 
