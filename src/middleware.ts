@@ -8,6 +8,12 @@ export function middleware(request: NextRequest) {
   let normalizedPath = pathname;
   let needsRedirect = false;
 
+  //todo: remove
+  if (pathname === '/catalog/stenovoi-arbolitovyi-blok_1') {
+    url.pathname = '/catalog/stenovoi-arbolitovyi-blok';
+    return NextResponse.redirect(url, 301);
+  }
+
   if (/\/\/+/.test(normalizedPath)) {
     normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
     needsRedirect = true;
@@ -43,4 +49,4 @@ export const config = {
      */
     '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|feed.xml).*)',
   ],
-}; 
+};
