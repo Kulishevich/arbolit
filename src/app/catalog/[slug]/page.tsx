@@ -9,6 +9,7 @@ import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
+import { getSeoMetadata } from '@/shared/api/getSeoMetadata';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,14 +23,16 @@ const page = async ({ params }: Props) => {
     .then((res) => res.json())
     .catch(() => undefined);
 
+  const seo = await getSeoMetadata(`/catalog/${catalogSlug}`);
+
   if (!product) return notFound();
-  console.log(product);
+
   const jsonLd = {
     '@context': 'http://schema.org/',
     '@type': 'Product',
-    name: product.name,
+    name: seo?.title ?? product.name,
     image: `${process.env.STORE_URL}/${product.photo_path}`,
-    description: product.description,
+    description: seo?.description ?? product.description,
     offers: {
       '@type': 'Offer',
       priceCurrency: 'RUB',
