@@ -46,30 +46,7 @@ const nextConfig: NextConfig = {
         destination: 'https://:domain/:path*',
         statusCode: 301,
       },
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'header',
-            key: 'x-forwarded-proto',
-            value: 'http',
-          },
-        ],
-        destination: '/:path*',
-        statusCode: 301,
-      },
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'header',
-            key: 'x-forwarded-ssl',
-            value: 'off',
-          },
-        ],
-        destination: '/:path*',
-        statusCode: 301,
-      },
+
     ];
   },
 };

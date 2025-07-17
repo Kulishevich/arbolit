@@ -5,13 +5,23 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const pathname = url.pathname;
 
+  const proto = request.headers.get('x-forwarded-proto');
+  const ssl = request.headers.get('x-forwarded-ssl');
+
+  if (proto === 'http' || ssl === 'off') {
+    const httpsUrl = new URL(request.url);
+    httpsUrl.protocol = 'https:';
+    httpsUrl.port = '';
+    return NextResponse.redirect(httpsUrl.toString(), 301);
+  }
+
   let normalizedPath = pathname;
   let needsRedirect = false;
 
   //todo: remove
   if (pathname === '/catalog/stenovoi-arbolitovyi-blok_1') {
     url.pathname = '/catalog/stenovoi-arbolitovyi-blok';
-    return NextResponse.redirect(url, 301);
+    return NextResponse.redirect(url, { status: 301 });
   }
 
   if (/\/\/+/.test(normalizedPath)) {
