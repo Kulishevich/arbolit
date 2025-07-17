@@ -25,7 +25,7 @@ export function middleware(request: NextRequest) {
 
   if (needsRedirect) {
     url.pathname = normalizedPath;
-    return NextResponse.redirect(url, 301);
+    return NextResponse.redirect(url, { status: 301 });
   }
 
   return NextResponse.next();

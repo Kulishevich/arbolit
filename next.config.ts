@@ -2,6 +2,8 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
+  trailingSlash: false,
+  skipMiddlewareUrlNormalize: true,
   env: {
     API_URL: process.env.API_URL,
     STORE_URL: process.env.STORE_URL,
@@ -53,7 +55,7 @@ const nextConfig: NextConfig = {
             value: 'http',
           },
         ],
-        destination: 'https://domremont.com/:path*',
+        destination: '/:path*',
         statusCode: 301,
       },
       {
@@ -65,7 +67,7 @@ const nextConfig: NextConfig = {
             value: 'off',
           },
         ],
-        destination: 'https://domremont.com/:path*',
+        destination: '/:path*',
         statusCode: 301,
       },
     ];
