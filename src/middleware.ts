@@ -4,50 +4,59 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const pathname = url.pathname;
+  const host = request.headers.get('host') || '';
 
   console.log(`Middleware processing: ${pathname}`);
 
-  let normalizedPath = pathname;
+  // Создаем финальный URL, который будет результатом всех нормализаций
+  const finalUrl = new URL(request.url);
   let needsRedirect = false;
 
-  //todo: remove
+  // 1. HTTPS нормализация
+  if (finalUrl.protocol === 'http:') {
+    finalUrl.protocol = 'https:';
+    finalUrl.port = '';
+    needsRedirect = true;
+  }
+
+  // 2. WWW нормализация (убираем www)
+  if (host.startsWith('www.')) {
+    finalUrl.hostname = host.replace('www.', '');
+    needsRedirect = true;
+  }
+
+  // 3. Специальный редирект
   if (pathname === '/catalog/stenovoi-arbolitovyi-blok_1') {
-    url.pathname = '/catalog/stenovoi-arbolitovyi-blok';
-    return NextResponse.redirect(url, { status: 301 });
-  }
-
-  // Нормализация пути
-  if (/\/\/+/.test(normalizedPath)) {
-    normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
+    finalUrl.pathname = '/catalog/stenovoi-arbolitovyi-blok';
     needsRedirect = true;
+  } else {
+    // 4. Нормализация пути
+    let normalizedPath = pathname;
+
+    // Множественные слеши
+    if (/\/\/+/.test(normalizedPath)) {
+      normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
+    }
+
+    // Верхний регистр
+    if (/[A-Z]/.test(normalizedPath)) {
+      normalizedPath = normalizedPath.toLowerCase();
+    }
+
+    // Завершающий слеш
+    if (normalizedPath.length > 1 && normalizedPath.endsWith('/')) {
+      normalizedPath = normalizedPath.slice(0, -1);
+    }
+
+    if (normalizedPath !== pathname) {
+      finalUrl.pathname = normalizedPath;
+      needsRedirect = true;
+    }
   }
 
-  if (/[A-Z]/.test(normalizedPath)) {
-    normalizedPath = normalizedPath.toLowerCase();
-    needsRedirect = true;
-  }
-
-  if (normalizedPath.length > 1 && normalizedPath.endsWith('/')) {
-    normalizedPath = normalizedPath.slice(0, -1);
-    needsRedirect = true;
-  }
-
-  // Если нужна нормализация пути, делаем редирект
+  // Если нужен редирект, делаем его одним шагом
   if (needsRedirect) {
-    const redirectUrl = new URL(request.url);
-    redirectUrl.pathname = normalizedPath;
-
-    return NextResponse.redirect(redirectUrl.toString(), 301);
-  }
-
-  // HTTPS редирект делаем только после нормализации пути
-  const currentUrl = new URL(request.url);
-  if (currentUrl.protocol === 'http:') {
-    currentUrl.protocol = 'https:';
-    currentUrl.port = '';
-    // Используем уже нормализованный путь
-    currentUrl.pathname = normalizedPath;
-    return NextResponse.redirect(currentUrl.toString(), 301);
+    return Response.redirect(finalUrl.toString(), 301);
   }
 
   return NextResponse.next();
