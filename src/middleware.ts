@@ -5,15 +5,14 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const pathname = url.pathname;
 
-  const proto = request.headers.get('x-forwarded-proto');
-  const ssl = request.headers.get('x-forwarded-ssl');
 
-  if (proto === 'http' || ssl === 'off') {
-    const httpsUrl = new URL(request.url);
-    httpsUrl.protocol = 'https:';
-    httpsUrl.port = '';
-    return NextResponse.redirect(httpsUrl.toString(), 301);
+  const currentUrl = new URL(request.url);
+  if (currentUrl.protocol === 'http:') {
+    currentUrl.protocol = 'https:';
+    currentUrl.port = '';
+    return NextResponse.redirect(currentUrl.toString(), 301);
   }
+
 
   let normalizedPath = pathname;
   let needsRedirect = false;
