@@ -4,44 +4,59 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const pathname = url.pathname;
+  const host = request.headers.get('host') || '';
 
-  const proto = request.headers.get('x-forwarded-proto');
-  const ssl = request.headers.get('x-forwarded-ssl');
+  console.log(`Middleware processing: ${pathname}`);
 
-  if (proto === 'http' || ssl === 'off') {
-    const httpsUrl = new URL(request.url);
-    httpsUrl.protocol = 'https:';
-    httpsUrl.port = '';
-    return NextResponse.redirect(httpsUrl.toString(), 301);
-  }
-
-  let normalizedPath = pathname;
+  // Создаем финальный URL, который будет результатом всех нормализаций
+  const finalUrl = new URL(request.url);
   let needsRedirect = false;
 
-  //todo: remove
+  // 1. HTTPS нормализация
+  if (finalUrl.protocol === 'http:') {
+    finalUrl.protocol = 'https:';
+    finalUrl.port = '';
+    needsRedirect = true;
+  }
+
+  // 2. WWW нормализация (убираем www)
+  if (host.startsWith('www.')) {
+    finalUrl.hostname = host.replace('www.', '');
+    needsRedirect = true;
+  }
+
+  // 3. Специальный редирект
   if (pathname === '/catalog/stenovoi-arbolitovyi-blok_1') {
-    url.pathname = '/catalog/stenovoi-arbolitovyi-blok';
-    return NextResponse.redirect(url, { status: 301 });
-  }
-
-  if (/\/\/+/.test(normalizedPath)) {
-    normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
+    finalUrl.pathname = '/catalog/stenovoi-arbolitovyi-blok';
     needsRedirect = true;
+  } else {
+    // 4. Нормализация пути
+    let normalizedPath = pathname;
+
+    // Множественные слеши
+    if (/\/\/+/.test(normalizedPath)) {
+      normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
+    }
+
+    // Верхний регистр
+    if (/[A-Z]/.test(normalizedPath)) {
+      normalizedPath = normalizedPath.toLowerCase();
+    }
+
+    // Завершающий слеш
+    if (normalizedPath.length > 1 && normalizedPath.endsWith('/')) {
+      normalizedPath = normalizedPath.slice(0, -1);
+    }
+
+    if (normalizedPath !== pathname) {
+      finalUrl.pathname = normalizedPath;
+      needsRedirect = true;
+    }
   }
 
-  if (/[A-Z]/.test(normalizedPath)) {
-    normalizedPath = normalizedPath.toLowerCase();
-    needsRedirect = true;
-  }
-
-  if (normalizedPath.length > 1 && normalizedPath.endsWith('/')) {
-    normalizedPath = normalizedPath.slice(0, -1);
-    needsRedirect = true;
-  }
-
+  // Если нужен редирект, делаем его одним шагом
   if (needsRedirect) {
-    url.pathname = normalizedPath;
-    return NextResponse.redirect(url, { status: 301 });
+    return Response.redirect(finalUrl.toString(), 301);
   }
 
   return NextResponse.next();

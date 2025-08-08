@@ -2,7 +2,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  trailingSlash: false,
+  skipTrailingSlashRedirect: true,
   skipMiddlewareUrlNormalize: true,
   env: {
     API_URL: process.env.API_URL,
@@ -33,22 +33,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.(?<domain>.*)',
-          },
-        ],
-        destination: 'https://:domain/:path*',
-        statusCode: 301,
-      },
-
-    ];
-  },
 };
 
 export default nextConfig;
