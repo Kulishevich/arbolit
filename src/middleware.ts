@@ -37,7 +37,7 @@ export function middleware(request: NextRequest) {
     const redirectUrl = new URL(request.url);
     redirectUrl.pathname = normalizedPath;
 
-    return Response.redirect(redirectUrl.toString().slice(0, -1), 301);
+    return NextResponse.redirect(redirectUrl.toString(), 301);
   }
 
   // HTTPS редирект делаем только после нормализации пути
@@ -47,7 +47,7 @@ export function middleware(request: NextRequest) {
     currentUrl.port = '';
     // Используем уже нормализованный путь
     currentUrl.pathname = normalizedPath;
-    return NextResponse.redirect(currentUrl.toString().slice(0, -1), 301);
+    return NextResponse.redirect(currentUrl.toString(), 301);
   }
 
   return NextResponse.next();
