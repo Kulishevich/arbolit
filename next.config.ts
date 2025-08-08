@@ -2,6 +2,8 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
+  skipTrailingSlashRedirect: true,
+  skipMiddlewareUrlNormalize: true,
   env: {
     API_URL: process.env.API_URL,
     STORE_URL: process.env.STORE_URL,

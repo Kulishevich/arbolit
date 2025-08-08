@@ -34,7 +34,7 @@ export function middleware(request: NextRequest) {
   // Если нужна нормализация пути, делаем редирект
   if (needsRedirect) {
     url.pathname = normalizedPath;
-    return NextResponse.redirect(url, 301);
+    return Response.redirect(url.toString(), 301);
   }
 
   // HTTPS редирект делаем только после нормализации пути
