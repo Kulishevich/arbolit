@@ -5,6 +5,7 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const pathname = url.pathname;
 
+  console.log(`Middleware processing: ${pathname}`);
 
   let normalizedPath = pathname;
   let needsRedirect = false;
@@ -33,8 +34,10 @@ export function middleware(request: NextRequest) {
 
   // Если нужна нормализация пути, делаем редирект
   if (needsRedirect) {
-    url.pathname = normalizedPath;
-    return Response.redirect(url.toString(), 301);
+    const redirectUrl = new URL(request.url);
+    redirectUrl.pathname = normalizedPath;
+
+    return Response.redirect(redirectUrl.toString().slice(0, -1), 301);
   }
 
   // HTTPS редирект делаем только после нормализации пути
@@ -44,7 +47,7 @@ export function middleware(request: NextRequest) {
     currentUrl.port = '';
     // Используем уже нормализованный путь
     currentUrl.pathname = normalizedPath;
-    return NextResponse.redirect(currentUrl.toString(), 301);
+    return NextResponse.redirect(currentUrl.toString().slice(0, -1), 301);
   }
 
   return NextResponse.next();
