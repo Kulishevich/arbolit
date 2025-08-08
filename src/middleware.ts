@@ -6,14 +6,6 @@ export function middleware(request: NextRequest) {
   const pathname = url.pathname;
 
 
-  const currentUrl = new URL(request.url);
-  if (currentUrl.protocol === 'http:') {
-    currentUrl.protocol = 'https:';
-    currentUrl.port = '';
-    return NextResponse.redirect(currentUrl.toString(), 301);
-  }
-
-
   let normalizedPath = pathname;
   let needsRedirect = false;
 
@@ -23,6 +15,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, { status: 301 });
   }
 
+  // Нормализация пути
   if (/\/\/+/.test(normalizedPath)) {
     normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
     needsRedirect = true;
@@ -38,9 +31,20 @@ export function middleware(request: NextRequest) {
     needsRedirect = true;
   }
 
+  // Если нужна нормализация пути, делаем редирект
   if (needsRedirect) {
     url.pathname = normalizedPath;
     return NextResponse.redirect(url, { status: 301 });
+  }
+
+  // HTTPS редирект делаем только после нормализации пути
+  const currentUrl = new URL(request.url);
+  if (currentUrl.protocol === 'http:') {
+    currentUrl.protocol = 'https:';
+    currentUrl.port = '';
+    // Используем уже нормализованный путь
+    currentUrl.pathname = normalizedPath;
+    return NextResponse.redirect(currentUrl.toString(), 301);
   }
 
   return NextResponse.next();
