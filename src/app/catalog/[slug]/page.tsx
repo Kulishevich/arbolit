@@ -8,7 +8,6 @@ import { FeedbackPopup } from '@/entities/feedback-popup/FeedbackPopup';
 import FeedbackSection from '@/widgets/feedback-section/FeedbackSection';
 import SeoText from '@/widgets/SeoText/SeoText';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
 import { getSeoMetadata } from '@/shared/api/getSeoMetadata';
 
 type Props = {
@@ -43,83 +42,79 @@ const page = async ({ params }: Props) => {
   };
 
   return (
-    <>
-      <Script
-        id="product-schema"
+    <main className={styles.container}>
+      <script
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd),
         }}
       />
 
-      <main className={styles.container}>
-        <Breadcrumbs
-          dynamicPath={{
-            name: product.name,
-            href: `/catalog/${product.slug}`,
-          }}
-        />
+      <Breadcrumbs
+        dynamicPath={{
+          name: product.name,
+          href: `/catalog/${product.slug}`,
+        }}
+      />
 
-        {product && (
-          <>
-            <section className={styles.product}>
-              <Image
-                src={`${process.env.STORE_URL}/${product.photo_path}`}
-                alt={product.name}
-                className={styles.image}
-                width={538}
-                height={538}
-              />
+      {product && (
+        <>
+          <section className={styles.product}>
+            <Image
+              src={`${process.env.STORE_URL}/${product.photo_path}`}
+              alt={product.name}
+              className={styles.image}
+              width={538}
+              height={538}
+            />
 
-              <div className={styles.info}>
-                <h1 className={clsx(styles.title, 'h2')}>{product.name}</h1>
-                <div className={styles.specifications}>
-                  {product.specifications.map((specification) => (
-                    <div
-                      className={clsx(styles.specificationsItem, 'body-1')}
-                      key={specification.id}
-                    >
-                      <span className={styles.specificationsItemKey}>
-                        {specification.name}:{' '}
-                      </span>
-                      {specification.pivot.value}
-                    </div>
-                  ))}
-                </div>
-
-                <div className={clsx(styles.price, 'h2')}>
-                  {product.price} ₽. / <span>m3</span>
-                </div>
-                <FeedbackPopup>
-                  <Button className={styles.button}>Заказать</Button>
-                </FeedbackPopup>
+            <div className={styles.info}>
+              <h1 className={clsx(styles.title, 'h2')}>{product.name}</h1>
+              <div className={styles.specifications}>
+                {product.specifications.map((specification) => (
+                  <div
+                    className={clsx(styles.specificationsItem, 'body-1')}
+                    key={specification.id}
+                  >
+                    <span className={styles.specificationsItemKey}>
+                      {specification.name}:{' '}
+                    </span>
+                    {specification.pivot.value}
+                  </div>
+                ))}
               </div>
-            </section>
-            <section className={styles.description}>
-              <div className={styles.tabs}>
-                <Button className={clsx(styles.tab, styles.active)}>
-                  Описание
-                </Button>
-                <Button className={styles.tab} as="a" href="/delivery">
-                  доставка
-                </Button>
-              </div>
-              <div
-                className={clsx(styles.content, 'body-2')}
-                dangerouslySetInnerHTML={{ __html: product.description }}
-              ></div>
-            </section>
-          </>
-        )}
 
-        <SeoText page={catalogSlug} />
-        <FeedbackSection
-          title="связаться с нами"
-          description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
-        />
-      </main>
-    </>
+              <div className={clsx(styles.price, 'h2')}>
+                {product.price} ₽. / <span>m3</span>
+              </div>
+              <FeedbackPopup>
+                <Button className={styles.button}>Заказать</Button>
+              </FeedbackPopup>
+            </div>
+          </section>
+          <section className={styles.description}>
+            <div className={styles.tabs}>
+              <Button className={clsx(styles.tab, styles.active)}>
+                Описание
+              </Button>
+              <Button className={styles.tab} as="a" href="/delivery">
+                доставка
+              </Button>
+            </div>
+            <div
+              className={clsx(styles.content, 'body-2')}
+              dangerouslySetInnerHTML={{ __html: product.description }}
+            ></div>
+          </section>
+        </>
+      )}
+
+      <SeoText page={catalogSlug} />
+      <FeedbackSection
+        title="связаться с нами"
+        description="Оставьте свои контактные данные и мы ответим на все интересующие вас вопросы"
+      />
+    </main>
   );
 };
 
