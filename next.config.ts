@@ -3,8 +3,6 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   /* config options here */
   trailingSlash: false,
-  skipMiddlewareUrlNormalize: true,
-  skipTrailingSlashRedirect: true,
   env: {
     API_URL: process.env.API_URL,
     STORE_URL: process.env.STORE_URL,
