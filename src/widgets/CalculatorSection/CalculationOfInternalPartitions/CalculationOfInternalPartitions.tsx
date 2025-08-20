@@ -42,6 +42,12 @@ export const CalculationOfInternalPartitions = () => {
 
   const [step, setStep] = useState(1);
 
+  const stepDecrement = () => {
+    if (step > 1) {
+      setStep((prev) => --prev);
+    }
+  };
+
   const stepIncrement = () => {
     if (step < 3) {
       setStep((prev) => ++prev);
@@ -324,11 +330,26 @@ export const CalculationOfInternalPartitions = () => {
         </div>
       </div>
 
-      {step < 3 && (
-        <Button className={s.stepBtn} onClick={stepIncrement}>
-          Следующий шаг
-        </Button>
-      )}
+      <div className={s.buttonsContainer}>
+        {step > 1 && (
+          <Button className={s.stepBtn} onClick={stepDecrement}>
+            Предыдущий шаг
+          </Button>
+        )}
+        {step < 3 && (
+          <Button className={s.stepBtn} onClick={stepIncrement}>
+            Следующий шаг
+          </Button>
+        )}
+      </div>
+
+      <div className={s.mobileImageContainer}>
+        <Image
+          src={'/calculation-of-internal-partitions.png'}
+          fill
+          alt="calculation-of-internal-partitions-image"
+        />
+      </div>
     </div>
   );
 };

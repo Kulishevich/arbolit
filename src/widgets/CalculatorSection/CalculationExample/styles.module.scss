@@ -1,29 +1,49 @@
+@import '../../../shared/config/styles/functions.scss';
+
 .container {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: vw-1490(24);
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
 }
+
 .header {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: vw-1490(16);
 
   .number {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 58px;
-    height: 58px;
+    width: vw-1490(58);
+    height: vw-1490(58);
 
     background-color: var(--green);
     color: var(--white);
     border-radius: 4px;
+
+    @media (max-width: 768px) {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    gap: 16px;
   }
 }
 
 .elem {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: vw-1490(12);
+
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
 }

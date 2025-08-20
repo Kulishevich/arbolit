@@ -1,3 +1,9 @@
+@import '../../shared/config/styles/functions.scss';
+
 .container {
-  margin-bottom: 160px;
+  margin-bottom: vw-1490(160);
+
+  @media (max-width: 768px) {
+    margin-bottom: 72px;
+  }
 }

@@ -3,6 +3,7 @@ import React from 'react';
 import clsx from 'clsx';
 import s from './styles.module.scss';
 import Image from 'next/image';
+import { useBreakpoint } from '@/shared/lib/hooks/useBreakpoint';
 
 const navItems = [
   {
@@ -25,6 +26,8 @@ const navItems = [
   },
 ];
 export const CalculatorNavigation = () => {
+  const { isTablet } = useBreakpoint();
+
   return (
     <div className={s.navigation}>
       {navItems.map((nav) => (
@@ -34,7 +37,7 @@ export const CalculatorNavigation = () => {
           onClick={() => {
             const el = document.getElementById(nav.targetId);
             if (el) {
-              const yOffset = -200; // отступ сверху
+              const yOffset = !isTablet ? -200 : -100; // отступ сверху
               const y =
                 el.getBoundingClientRect().top + window.pageYOffset + yOffset;
               window.scrollTo({ top: y, behavior: 'smooth' });

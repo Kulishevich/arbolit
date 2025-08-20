@@ -52,6 +52,12 @@ export const BoxCalculator = () => {
     }
   };
 
+  const stepDecrement = () => {
+    if (step > 1) {
+      setStep((prev) => --prev);
+    }
+  };
+
   const getTotalPrice = () => {
     const {
       width,
@@ -351,16 +357,27 @@ export const BoxCalculator = () => {
           </div>
         )}
 
-        <div className={s.imageContainer}>
+        <div className={clsx(s.imageContainer)}>
           <Image src={'/box-calculator.png'} fill alt="box-calculator-image" />
         </div>
       </div>
 
-      {step < 3 && (
-        <Button className={s.stepBtn} onClick={stepIncrement}>
-          Следующий шаг
-        </Button>
-      )}
+      <div className={s.buttonsContainer}>
+        {step > 1 && (
+          <Button className={s.stepBtn} onClick={stepDecrement}>
+            Предыдущий шаг
+          </Button>
+        )}
+        {step < 3 && (
+          <Button className={s.stepBtn} onClick={stepIncrement}>
+            Следующий шаг
+          </Button>
+        )}
+      </div>
+
+      <div className={clsx(s.mobileImageContainer)}>
+        <Image src={'/box-calculator.png'} fill alt="box-calculator-image" />
+      </div>
     </div>
   );
 };
