@@ -10,22 +10,22 @@ import { Checkbox } from '@/shared/ui/checkbox';
 
 export const BoxCalculator = () => {
   const [formData, setFormData] = useState({
-    width: 0,
-    length: 0,
-    height: 0,
-    gableHeight: 0,
-    gablesCount: 0,
+    width: 1,
+    length: 1,
+    height: 1,
+    gableHeight: 1,
+    gablesCount: 1,
 
-    window1Width: 0,
-    window1Height: 0,
+    window1Width: 1,
+    window1Height: 1,
     window1Count: 1,
 
-    window2Width: 0,
-    window2Height: 0,
+    window2Width: 1,
+    window2Height: 1,
     window2Count: 1,
 
-    window3Width: 0,
-    window3Height: 0,
+    window3Width: 1,
+    window3Height: 1,
     window3Count: 1,
 
     wallThickness: 20,
@@ -37,7 +37,10 @@ export const BoxCalculator = () => {
     consent: false,
   });
 
-  const updateField = (field: keyof typeof formData, value: any) => {
+  const updateField = (
+    field: keyof typeof formData,
+    value: string | number | boolean
+  ) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -49,8 +52,53 @@ export const BoxCalculator = () => {
     }
   };
 
+  const getTotalPrice = () => {
+    const {
+      width,
+      length,
+      height,
+      gableHeight,
+      gablesCount,
+      window1Width,
+      window1Height,
+      window1Count,
+      window2Width,
+      window2Height,
+      window2Count,
+      window3Width,
+      window3Height,
+      window3Count,
+      wallThickness,
+    } = formData;
+
+    // 1. Площадь стен
+    const S_sten = 2 * height * (length + width);
+
+    // 2. Площадь фронтонов
+    const S_fronton = 0.5 * length * gableHeight * gablesCount;
+
+    // 3. Окна и двери
+    const S_window1 = window1Width * window1Height * window1Count;
+    const S_window2 = window2Width * window2Height * window2Count;
+    const S_door = window3Width * window3Height * window3Count;
+
+    const S_windowsDoors = S_window1 + S_window2 + S_door;
+
+    // 4. Наружная площадь
+    const S_naruzh = S_sten + S_fronton;
+
+    // 5. Чистая площадь
+    const S_total = S_naruzh - S_windowsDoors;
+
+    // 6. Объем (толщина в метрах)
+    const V = S_total * (wallThickness / 100);
+
+    // 7. Цена
+    return Math.round(V * 8900);
+  };
+
   return (
-    <div className={s.container}>
+    <div className={s.container} id="step-1">
       <div className={clsx(s.stepHeader, 'h4')}>
         <p className={s.step}>1</p>
         <h4>Расчёт коробки</h4>
@@ -196,19 +244,19 @@ export const BoxCalculator = () => {
               <RangeSlider
                 value={formData.window3Width}
                 onValueChange={(v) => updateField('window3Width', v)}
-                label="Ширина окон, м: "
+                label="Ширина двери, м:"
                 max={5}
               />
               <RangeSlider
                 value={formData.window3Height}
                 onValueChange={(v) => updateField('window3Height', v)}
-                label="Высота окон , м:"
+                label="Высота двери, м:"
                 max={5}
               />
 
               <div className={s.counterContainer}>
                 <label className={clsx(s.counterLabel, 'body-3')}>
-                  Количество окон этого типа:
+                  Количество дверей этого типа:
                 </label>
                 <div className={s.counter}>
                   <button
@@ -260,7 +308,7 @@ export const BoxCalculator = () => {
 
             <div className={s.fullPrice}>
               <p className="body-1">Итого стоимость арболитовых блоков:</p>
-              <p className="h2">27 800 ₽</p>
+              <p className="h2">{getTotalPrice()} ₽</p>
             </div>
 
             <div className={s.feedbackForm}>

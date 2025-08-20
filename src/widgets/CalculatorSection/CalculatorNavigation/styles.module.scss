@@ -1,0 +1,44 @@
+.navigation {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+
+  margin-bottom: 64px;
+}
+
+.navItem {
+  cursor: pointer;
+
+  position: relative;
+  padding: 16px;
+  border: 1px solid var(--blue);
+  border-radius: 6px;
+
+  display: flex;
+  gap: 10px;
+
+  height: 180px;
+  overflow: hidden;
+  &__number {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    border-radius: 4px;
+    background-color: var(--green);
+  }
+
+  &__image {
+    position: absolute;
+    width: 238px;
+    height: 152px;
+
+    bottom: 0;
+    right: 0;
+
+    object-fit: contain;
+  }
+}

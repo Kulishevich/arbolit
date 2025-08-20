@@ -1,6 +1,6 @@
 'use client';
 import { RangeSlider } from '@/shared/ui/range-slider';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import s from './styles.module.scss';
 import { Button } from '@/shared/ui/button';
 import Image from 'next/image';
@@ -33,7 +33,10 @@ export const CalculationOfInternalPartitions = () => {
     consent: false,
   });
 
-  const updateField = (field: keyof typeof formData, value: any) => {
+  const updateField = (
+    field: keyof typeof formData,
+    value: string | number | boolean
+  ) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -45,8 +48,38 @@ export const CalculationOfInternalPartitions = () => {
     }
   };
 
+  const { blocksCount, volume } = useMemo(() => {
+    // S1 для 1 этажа
+    const S1walls = formData.houseHeight * formData.houseLength;
+    const S1doors =
+      formData.doorWidth * formData.doorHeight * formData.doorsCount;
+    const S1 = S1walls + S1doors;
+
+    // S2 для 2 этажа (если есть)
+    let S2 = 0;
+    if (formData.hasSecondFloor) {
+      const S2walls = formData.partitionHeight * formData.partitionLength;
+      const S2doors =
+        formData.partitionDoorWidth *
+        formData.partitionDoorHeight *
+        formData.partitionDoorsCount;
+      S2 = S2walls + S2doors;
+    }
+
+    const totalArea = S1 + S2;
+    const blocksCount = totalArea > 0 ? Math.ceil(totalArea / 0.15) : 0;
+    const volume = totalArea > 0 ? +(totalArea * 0.2).toFixed(2) : 0;
+
+    // S1 – площадь внутренних перегородок 1-го этажа
+    // S2 – площадь внутренних перегородок 2-го этажа
+    // totalArea – суммарная площадь перегородок
+    // blocksCount – количество блоков
+    // volume – объём блоков
+    return { S1, S2, totalArea, blocksCount, volume };
+  }, [formData]);
+
   return (
-    <div className={s.container}>
+    <div className={s.container} id="step-2">
       <div className={clsx(s.stepHeader, 'h4')}>
         <p className={s.step}>2</p>
         <h4>Расчёт внутренних перегородок</h4>
@@ -234,11 +267,11 @@ export const CalculationOfInternalPartitions = () => {
               </p>
               <div className={s.blockInfo}>
                 <p className="body-1">Количество блоков:</p>
-                <p className="h2">350</p>
+                <p className="h2">{blocksCount}</p>
               </div>
               <div className={s.blockInfo}>
                 <p className="body-1">Объём блоков:</p>
-                <p className="h2">10 м3</p>
+                <p className="h2">{volume} м3</p>
               </div>
             </div>
 

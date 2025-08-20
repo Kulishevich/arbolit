@@ -2,62 +2,62 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // const url = request.nextUrl.clone();
-  // const pathname = url.pathname;
-  // const host = request.headers.get('host') || '';
+  const url = request.nextUrl.clone();
+  const pathname = url.pathname;
+  const host = request.headers.get('host') || '';
 
-  // console.log(`Middleware processing: ${pathname}`);
+  console.log(`Middleware processing: ${pathname}`);
 
-  // // Создаем финальный URL, который будет результатом всех нормализаций
-  // const finalUrl = new URL(request.url);
-  // let needsRedirect = false;
+  // Создаем финальный URL, который будет результатом всех нормализаций
+  const finalUrl = new URL(request.url);
+  let needsRedirect = false;
 
-  // // 1. HTTPS нормализация
-  // if (finalUrl.protocol === 'http:') {
-  //   finalUrl.protocol = 'https:';
-  //   finalUrl.port = '';
-  //   needsRedirect = true;
-  // }
+  // 1. HTTPS нормализация
+  if (finalUrl.protocol === 'http:') {
+    finalUrl.protocol = 'https:';
+    finalUrl.port = '';
+    needsRedirect = true;
+  }
 
-  // // 2. WWW нормализация (убираем www)
-  // if (host.startsWith('www.')) {
-  //   finalUrl.hostname = host.replace('www.', '');
-  //   needsRedirect = true;
-  // }
+  // 2. WWW нормализация (убираем www)
+  if (host.startsWith('www.')) {
+    finalUrl.hostname = host.replace('www.', '');
+    needsRedirect = true;
+  }
 
-  // // 3. Специальный редирект
-  // if (pathname === '/catalog/stenovoi-arbolitovyi-blok_1') {
-  //   finalUrl.pathname = '/catalog/stenovoi-arbolitovyi-blok';
-  //   needsRedirect = true;
-  // } else {
-  //   // 4. Нормализация пути
-  //   let normalizedPath = pathname;
+  // 3. Специальный редирект
+  if (pathname === '/catalog/stenovoi-arbolitovyi-blok_1') {
+    finalUrl.pathname = '/catalog/stenovoi-arbolitovyi-blok';
+    needsRedirect = true;
+  } else {
+    // 4. Нормализация пути
+    let normalizedPath = pathname;
 
-  //   // Множественные слеши
-  //   if (/\/\/+/.test(normalizedPath)) {
-  //     normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
-  //   }
+    // Множественные слеши
+    if (/\/\/+/.test(normalizedPath)) {
+      normalizedPath = normalizedPath.replace(/\/\/+/g, '/');
+    }
 
-  //   // Верхний регистр
-  //   if (/[A-Z]/.test(normalizedPath)) {
-  //     normalizedPath = normalizedPath.toLowerCase();
-  //   }
+    // Верхний регистр
+    if (/[A-Z]/.test(normalizedPath)) {
+      normalizedPath = normalizedPath.toLowerCase();
+    }
 
-  //   // Завершающий слеш
-  //   if (normalizedPath.length > 1 && normalizedPath.endsWith('/')) {
-  //     normalizedPath = normalizedPath.slice(0, -1);
-  //   }
+    // Завершающий слеш
+    if (normalizedPath.length > 1 && normalizedPath.endsWith('/')) {
+      normalizedPath = normalizedPath.slice(0, -1);
+    }
 
-  //   if (normalizedPath !== pathname) {
-  //     finalUrl.pathname = normalizedPath;
-  //     needsRedirect = true;
-  //   }
-  // }
+    if (normalizedPath !== pathname) {
+      finalUrl.pathname = normalizedPath;
+      needsRedirect = true;
+    }
+  }
 
-  // // Если нужен редирект, делаем его одним шагом
-  // if (needsRedirect) {
-  //   return Response.redirect(finalUrl.toString(), 301);
-  // }
+  // Если нужен редирект, делаем его одним шагом
+  if (needsRedirect) {
+    return Response.redirect(finalUrl.toString(), 301);
+  }
 
   return NextResponse.next();
 }

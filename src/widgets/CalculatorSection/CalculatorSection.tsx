@@ -3,12 +3,12 @@ import s from './styles.module.scss';
 import { BoxCalculator } from './BoxCalculator';
 import { CalculationOfInternalPartitions } from './CalculationOfInternalPartitions';
 import { CalculationExample } from './CalculationExample';
+import { CalculatorNavigation } from './CalculatorNavigation';
 
 export const CalculatorSection = () => {
   return (
     <div className={s.container}>
-      <div className={s.navigation}></div>
-
+      <CalculatorNavigation />
       <BoxCalculator />
       <CalculationOfInternalPartitions />
       <CalculationExample />

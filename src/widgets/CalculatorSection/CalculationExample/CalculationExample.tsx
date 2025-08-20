@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 export const CalculationExample = () => {
   return (
-    <div className={s.container}>
+    <div className={s.container} id="step-3">
       <div className={s.header}>
         <p className={clsx(s.number, 'h4')}>3</p>
         <h4 className="h4">пример расчёта</h4>

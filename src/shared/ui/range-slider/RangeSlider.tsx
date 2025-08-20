@@ -1,6 +1,5 @@
 'use client';
 import * as Slider from '@radix-ui/react-slider';
-import { useState } from 'react';
 import s from './styles.module.scss';
 import clsx from 'clsx';
 import { CommentIcon } from '@/shared/assets/icons';
