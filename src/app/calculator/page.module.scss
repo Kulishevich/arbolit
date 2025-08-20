@@ -1,0 +1,26 @@
+@import '../../shared/config/styles/functions.scss';
+
+.container {
+  width: vw-1490(1322);
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    width: 336px;
+  }
+}
+
+main .hero {
+  margin-bottom: 92px;
+}
+
+@media (max-width: 1490px) {
+  main .hero {
+    margin-bottom: vw-1490(92);
+  }
+}
+
+@media (max-width: 768px) {
+  main .hero {
+    margin-bottom: 48px;
+  }
+}

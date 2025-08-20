@@ -22,11 +22,11 @@
   outline: none;
 
   &:focus {
-    border-bottom: 1px solid var(--green);
+    border-color: var(--green);
   }
 
   &:hover {
-    border-bottom: 1px solid var(--green);
+    border-color: var(--green);
   }
 
   &:disabled {

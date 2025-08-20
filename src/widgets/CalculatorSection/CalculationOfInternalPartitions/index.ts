@@ -1,0 +1,1 @@
+export { CalculationOfInternalPartitions } from './CalculationOfInternalPartitions';

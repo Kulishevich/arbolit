@@ -23,17 +23,19 @@ declare global {
   }
 }
 
+interface FeedbackFormProps {
+  title: string;
+  description: string;
+  type?: 'delivery' | 'feedback';
+  setting: SettingT | null;
+}
+
 export const FeedbackForm = ({
   title,
   description,
   type = 'feedback',
   setting,
-}: {
-  title: string;
-  description: string;
-  type?: 'delivery' | 'feedback';
-  setting: SettingT | null;
-}) => {
+}: FeedbackFormProps) => {
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       name: '',
