@@ -140,12 +140,29 @@
   gap: vw-1490(64);
 
   .fullPrice {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: vw-1490(12);
 
     @media (max-width: 768px) {
+      grid-template-columns: repeat(1, 1fr);
       gap: 8px;
+    }
+  }
+
+  .elem {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &:nth-child(3) {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 768px) {
+      &:nth-child(3) {
+        grid-column: span 1;
+      }
     }
   }
 

@@ -45,7 +45,7 @@ export const CalculationExample = () => {
       <div className={s.elem}>
         <h5 className="h5">3. Площадь фронтонов</h5>
         <p className="body-2">
-          Площадь одного фронтона = 0,5 × L × H = 0,5 × 10 × 2 = 10 м²{' '}
+          Площадь одного фронтона = 0,5 × W × H = 0,5 × 10 × 2 = 10 м²{' '}
         </p>
         <p className="body-2">Всего фронтонов: 2 × 10 = 20 м²</p>
       </div>
@@ -70,10 +70,10 @@ export const CalculationExample = () => {
       <div className={s.elem}>
         <h5 className="h5">7. Объём арболитовых блоков для наружных стен</h5>
         <p className="body-2">V = Sобщ × Wстены = 122,6 × 0,4 = 49,04 м³</p>
-        <h5 className="h5">“Расчет внутренних перегородок:</h5>
+        <h5 className="h5">Расчет внутренних перегородок:</h5>
         <p className="body-2">Sстен=H⋅L</p>
         <p className="body-2">Sдвер=l⋅h</p>
-        <p className="body-2">Sвнутр= Sстен - Sдвер“</p>
+        <p className="body-2">Sвнутр= Sстен - Sдвер</p>
       </div>
 
       <div className={s.elem}>

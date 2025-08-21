@@ -54,12 +54,13 @@ export const CalculationOfInternalPartitions = () => {
     }
   };
 
-  const { blocksCount, volume } = useMemo(() => {
+  const { blocksCount, volume, price } = useMemo(() => {
     // S1 для 1 этажа
     const S1walls = formData.houseHeight * formData.houseLength;
     const S1doors =
       formData.doorWidth * formData.doorHeight * formData.doorsCount;
-    const S1 = S1walls + S1doors;
+    // от площади стен отнимаем площадь дверей
+    const S1 = S1walls - S1doors;
 
     // S2 для 2 этажа (если есть)
     let S2 = 0;
@@ -69,19 +70,21 @@ export const CalculationOfInternalPartitions = () => {
         formData.partitionDoorWidth *
         formData.partitionDoorHeight *
         formData.partitionDoorsCount;
-      S2 = S2walls + S2doors;
+      S2 = S2walls - S2doors;
     }
 
     const totalArea = S1 + S2;
     const blocksCount = totalArea > 0 ? Math.ceil(totalArea / 0.15) : 0;
     const volume = totalArea > 0 ? +(totalArea * 0.2).toFixed(2) : 0;
 
+    const price = Math.round(volume * 8900);
     // S1 – площадь внутренних перегородок 1-го этажа
     // S2 – площадь внутренних перегородок 2-го этажа
     // totalArea – суммарная площадь перегородок
     // blocksCount – количество блоков
     // volume – объём блоков
-    return { S1, S2, totalArea, blocksCount, volume };
+    // price - цена
+    return { S1, S2, totalArea, blocksCount, volume, price };
   }, [formData]);
 
   return (
@@ -277,7 +280,11 @@ export const CalculationOfInternalPartitions = () => {
               </div>
               <div className={s.blockInfo}>
                 <p className="body-1">Объём блоков:</p>
-                <p className="h2">{volume} м3</p>
+                <p className="h2">{volume} м³</p>
+              </div>
+              <div className={s.blockInfo}>
+                <p className="body-1">Итого стоимость арболитовых блоков:</p>
+                <p className="h2">{price} ₽</p>
               </div>
             </div>
 

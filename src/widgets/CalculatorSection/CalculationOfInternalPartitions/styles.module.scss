@@ -200,8 +200,15 @@
     flex-direction: column;
     gap: vw-1490(12);
 
+    &:last-child {
+      grid-column: span 2;
+    }
+
     @media (max-width: 768px) {
       gap: 12px;
+      &:last-child {
+        grid-column: span 1;
+      }
     }
   }
 

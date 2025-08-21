@@ -1,6 +1,6 @@
 'use client';
 import { RangeSlider } from '@/shared/ui/range-slider';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import s from './styles.module.scss';
 import { Button } from '@/shared/ui/button';
 import Image from 'next/image';
@@ -10,25 +10,25 @@ import { Checkbox } from '@/shared/ui/checkbox';
 
 export const BoxCalculator = () => {
   const [formData, setFormData] = useState({
-    width: 1,
-    length: 1,
-    height: 1,
-    gableHeight: 1,
-    gablesCount: 1,
+    width: 1, //ширина дома
+    length: 1, //длина дома
+    height: 1, //высота дома
+    gableHeight: 1, //высота фронтона
+    gablesCount: 1, //кол-во фротонов
 
-    window1Width: 1,
-    window1Height: 1,
-    window1Count: 1,
+    window1Width: 1, //ширина окна 1ого типа
+    window1Height: 1, //высота окна 1ого типа
+    window1Count: 1, //кол-во окна 1ого типа
 
-    window2Width: 1,
-    window2Height: 1,
-    window2Count: 1,
+    window2Width: 1, //ширина окна 2ого типа
+    window2Height: 1, //высота окна 2ого типа
+    window2Count: 1, //кол-во окна 2ого типа
 
-    window3Width: 1,
-    window3Height: 1,
-    window3Count: 1,
+    window3Width: 1, //ширина дверей 1ого типа
+    window3Height: 1, //высота дверей 1ого типа
+    window3Count: 1, //кол-во дверей 1ого типа
 
-    wallThickness: 20,
+    wallThickness: 20, //желаемая толщина стен
 
     address: '',
     name: '',
@@ -58,7 +58,7 @@ export const BoxCalculator = () => {
     }
   };
 
-  const getTotalPrice = () => {
+  const { price, totalV, blocksCount } = useMemo(() => {
     const {
       width,
       length,
@@ -77,31 +77,43 @@ export const BoxCalculator = () => {
       wallThickness,
     } = formData;
 
-    // 1. Площадь стен
+    // 1. Площадь стен (2 * высота дома * (ширина + длинна))
     const S_sten = 2 * height * (length + width);
+    console.log('Sстен =', S_sten);
 
-    // 2. Площадь фронтонов
-    const S_fronton = 0.5 * length * gableHeight * gablesCount;
+    // 2. Площадь фронтонов (0.5 * Высота фротона * ширина здания * кол-во фронтонов )
+    const S_fronton = 0.5 * gableHeight * width * gablesCount;
+    console.log('Sфронтов =', S_fronton);
 
-    // 3. Окна и двери
+    // 3. Окна и двери (ширина * высота * кол-во)
     const S_window1 = window1Width * window1Height * window1Count;
     const S_window2 = window2Width * window2Height * window2Count;
     const S_door = window3Width * window3Height * window3Count;
-
+    // складываем все площади
     const S_windowsDoors = S_window1 + S_window2 + S_door;
+    console.log('Sокон+дверей = ', S_windowsDoors);
 
-    // 4. Наружная площадь
+    // 4. Наружная площадь (площадь фротонов + площадь стен)
     const S_naruzh = S_sten + S_fronton;
+    console.log('Sнаруж = ', S_naruzh);
 
-    // 5. Чистая площадь
+    // 5. Чистая площадь (наружная - площадь окон и дверей)
     const S_total = S_naruzh - S_windowsDoors;
+    console.log('Sобщ', S_total);
 
-    // 6. Объем (толщина в метрах)
-    const V = S_total * (wallThickness / 100);
+    // 6. Объем (площадь умножаем на толщину стен (толщина в метрах))
+    const V = S_total * (wallThickness / 100); //делим толщину на 100 тк изначально она в см
+    const totalV = V.toFixed(2);
 
-    // 7. Цена
-    return Math.round(V * 8900);
-  };
+    // 7. Цена (объём на цену)
+    const price = Math.round(V * 8900);
+
+    //8. Кол-во блоков: (тут под вопросом тк хз считать исходя из объёма или площади, может быть ошибка!!!)
+    // если чистая площадь больше нуля то делим её на 0.15, если меньше то кол-во = 0
+    const blocksCount = S_total > 0 ? Math.ceil(S_total / 0.15) : 0;
+
+    return { price, totalV, blocksCount };
+  }, [formData]);
 
   return (
     <div className={s.container} id="step-1">
@@ -158,12 +170,14 @@ export const BoxCalculator = () => {
                 onValueChange={(v) => updateField('window1Width', v)}
                 label="Ширина окон, м: "
                 max={5}
+                step={0.1}
               />
               <RangeSlider
                 value={formData.window1Height}
                 onValueChange={(v) => updateField('window1Height', v)}
                 label="Высота окон , м:"
                 max={5}
+                step={0.1}
               />
 
               <div className={s.counterContainer}>
@@ -205,12 +219,14 @@ export const BoxCalculator = () => {
                 onValueChange={(v) => updateField('window2Width', v)}
                 label="Ширина окон, м: "
                 max={5}
+                step={0.1}
               />
               <RangeSlider
                 value={formData.window2Height}
                 onValueChange={(v) => updateField('window2Height', v)}
                 label="Высота окон , м:"
                 max={5}
+                step={0.1}
               />
 
               <div className={s.counterContainer}>
@@ -222,7 +238,7 @@ export const BoxCalculator = () => {
                     className={clsx(s.counterBtn, 'body-3')}
                     onClick={() =>
                       updateField(
-                        'window1Count',
+                        'window2Count',
                         Math.max(0, formData.window2Count - 1)
                       )
                     }
@@ -252,12 +268,14 @@ export const BoxCalculator = () => {
                 onValueChange={(v) => updateField('window3Width', v)}
                 label="Ширина двери, м:"
                 max={5}
+                step={0.1}
               />
               <RangeSlider
                 value={formData.window3Height}
                 onValueChange={(v) => updateField('window3Height', v)}
                 label="Высота двери, м:"
                 max={5}
+                step={0.1}
               />
 
               <div className={s.counterContainer}>
@@ -308,13 +326,24 @@ export const BoxCalculator = () => {
                   label="Желаемая толщина стены, см: "
                   min={20}
                   max={70}
+                  step={10}
                 />
               </div>
             </div>
 
             <div className={s.fullPrice}>
-              <p className="body-1">Итого стоимость арболитовых блоков:</p>
-              <p className="h2">{getTotalPrice()} ₽</p>
+              <div className={s.elem}>
+                <p className="body-1">Объём блоков:</p>
+                <p className="h2">{totalV} м³</p>
+              </div>
+              <div className={s.elem}>
+                <p className="body-1">Количество блоков:</p>
+                <p className="h2">{blocksCount}</p>
+              </div>
+              <div className={s.elem}>
+                <p className="body-1">Итого стоимость арболитовых блоков:</p>
+                <p className="h2">{price} ₽</p>
+              </div>
             </div>
 
             <div className={s.feedbackForm}>
