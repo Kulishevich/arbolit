@@ -7,6 +7,8 @@ import Image from 'next/image';
 import clsx from 'clsx';
 import { TextField } from '@/shared/ui/text-field';
 import { Checkbox } from '@/shared/ui/checkbox';
+import { createOrder } from '@/shared/api/createOrder';
+import { showToast } from '@/shared/ui/toast';
 
 export const BoxCalculator = () => {
   const [formData, setFormData] = useState({
@@ -18,15 +20,15 @@ export const BoxCalculator = () => {
 
     window1Width: 1, //ширина окна 1ого типа
     window1Height: 1, //высота окна 1ого типа
-    window1Count: 1, //кол-во окна 1ого типа
+    window1Count: 0, //кол-во окна 1ого типа
 
     window2Width: 1, //ширина окна 2ого типа
     window2Height: 1, //высота окна 2ого типа
-    window2Count: 1, //кол-во окна 2ого типа
+    window2Count: 0, //кол-во окна 2ого типа
 
     window3Width: 1, //ширина дверей 1ого типа
     window3Height: 1, //высота дверей 1ого типа
-    window3Count: 1, //кол-во дверей 1ого типа
+    window3Count: 0, //кол-во дверей 1ого типа
 
     wallThickness: 20, //желаемая толщина стен
 
@@ -114,6 +116,55 @@ export const BoxCalculator = () => {
 
     return { price, totalV, blocksCount };
   }, [formData]);
+
+  const sendFeedback = async () => {
+    const orderData = {
+      name: formData.name,
+      phone: formData.phone,
+      comment: `Адрес: ${formData.address}, Email: ${formData.email}, \n
+       ширина дома: ${formData.width}, \n
+        длина дома: ${formData.length}, \n
+        высота дома: ${formData.height}, \n
+        высота фронтона: ${formData.gableHeight}, \n
+        кол-во фротонов: ${formData.gablesCount}, \n
+
+        ширина окна 1ого типа: ${formData.window1Width}, \n
+        высота окна 1ого типа: ${formData.window1Height}, \n
+        кол-во окна 1ого типа: ${formData.window1Count}, \n
+
+        ширина окна 2ого типа: ${formData.window2Width}, \n
+        высота окна 2ого типа: ${formData.window2Height}, \n
+        кол-во окна 2ого типа: ${formData.window2Count}, \n
+
+        ширина дверей 1ого типа: ${formData.window3Width}, \n
+        высота дверей 1ого типа: ${formData.window3Height}, \n
+        кол-во дверей 1ого типа: ${formData.window3Count}, \n
+
+        2желаемая толщина стен: ${formData.wallThickness}, \n
+
+        Итоговая цена:  ${price} , \n
+        Объём:  ${totalV} , \n
+        Кол-во блоков:  ${blocksCount} , \n
+      `,
+    };
+
+    try {
+      await createOrder(orderData);
+
+      showToast({
+        title: 'Ваша заявка получена!',
+        message: 'Скоро наш менеджер свяжется с вами.',
+        variant: 'success',
+      });
+    } catch (err) {
+      showToast({
+        title: 'Ваша заявка не получена...',
+        message: 'Пожалуйста, повторите попытку ещё раз.',
+        variant: 'error',
+      });
+      console.log(err);
+    }
+  };
 
   return (
     <div className={s.container} id="step-1">
@@ -376,10 +427,7 @@ export const BoxCalculator = () => {
                 onCheckedChange={(v) => updateField('consent', v)}
               />
 
-              <Button
-                onClick={() => console.log(formData)}
-                disabled={!formData.consent}
-              >
+              <Button onClick={sendFeedback} disabled={!formData.consent}>
                 Заказать
               </Button>
             </div>

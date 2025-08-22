@@ -7,23 +7,25 @@ import Image from 'next/image';
 import clsx from 'clsx';
 import { TextField } from '@/shared/ui/text-field';
 import { Checkbox } from '@/shared/ui/checkbox';
+import { createOrder } from '@/shared/api/createOrder';
+import { showToast } from '@/shared/ui/toast';
 
 export const CalculationOfInternalPartitions = () => {
   const [formData, setFormData] = useState({
     // Шаг 1
-    houseLength: 0, // "Длина, м:"
-    houseHeight: 0, // "Высота, м:"
-    doorHeight: 0, // "Высота двери, м:"
-    doorWidth: 0, // "Ширина двери, м:"
-    doorsCount: 1, // "Количество дверей"
+    houseLength: 1, // "Длина, м:"
+    houseHeight: 1, // "Высота, м:"
+    doorHeight: 1, // "Высота двери, м:"
+    doorWidth: 1, // "Ширина двери, м:"
+    doorsCount: 0, // "Количество дверей"
 
     // Шаг 2
     hasSecondFloor: false, // есть ли второй этаж
-    partitionLength: 0, // "Длина, м:"
-    partitionHeight: 0, // "Высота, м:"
-    partitionDoorHeight: 0, // "Высота двери, м:"
-    partitionDoorWidth: 0, // "Ширина двери, м:"
-    partitionDoorsCount: 1, // "Количество дверей"
+    partitionLength: 1, // "Длина, м:"
+    partitionHeight: 1, // "Высота, м:"
+    partitionDoorHeight: 1, // "Высота двери, м:"
+    partitionDoorWidth: 1, // "Ширина двери, м:"
+    partitionDoorsCount: 0, // "Количество дверей"
 
     // Шаг 3 (контакты)
     address: '',
@@ -87,6 +89,47 @@ export const CalculationOfInternalPartitions = () => {
     return { S1, S2, totalArea, blocksCount, volume, price };
   }, [formData]);
 
+  const sendFeedback = async () => {
+    const orderData = {
+      name: formData.name,
+      phone: formData.phone,
+      comment: `Адрес: ${formData.address}, Email: ${formData.email}, \n
+        "Длина, м:" ${formData.houseLength}, \n
+        "Высота, м:" ${formData.houseHeight}, \n
+        "Высота двери, м:" ${formData.doorHeight}, \n
+        "Ширина двери, м:" ${formData.doorWidth}, \n
+        "Количество дверей" ${formData.doorsCount}, \n
+
+        Есть ли второй этаж: ${formData.hasSecondFloor ? 'Да' : 'Нет'}, \n
+        "Длина, м:" ${formData.partitionLength}, \n
+        "Высота, м:" ${formData.partitionHeight}, \n
+        "Высота двери, м:" ${formData.partitionDoorHeight}, \n
+        "Ширина двери, м:" ${formData.partitionDoorWidth}, \n
+        "Количество дверей:" ${formData.partitionDoorsCount}, \n
+  
+        Итоговая цена:  ${price} , \n
+        Объём:  ${volume} , \n
+        Кол-во блоков:  ${blocksCount} , \n
+        `,
+    };
+
+    try {
+      await createOrder(orderData);
+
+      showToast({
+        title: 'Ваша заявка получена!',
+        message: 'Скоро наш менеджер свяжется с вами.',
+        variant: 'success',
+      });
+    } catch (err) {
+      showToast({
+        title: 'Ваша заявка не получена...',
+        message: 'Пожалуйста, повторите попытку ещё раз.',
+        variant: 'error',
+      });
+      console.log(err);
+    }
+  };
   return (
     <div className={s.container} id="step-2">
       <div className={clsx(s.stepHeader, 'h4')}>
@@ -318,10 +361,7 @@ export const CalculationOfInternalPartitions = () => {
                 onCheckedChange={(v) => updateField('consent', v)}
               />
 
-              <Button
-                onClick={() => console.log(formData)}
-                disabled={!formData.consent}
-              >
+              <Button onClick={sendFeedback} disabled={!formData.consent}>
                 Заказать
               </Button>
             </div>
