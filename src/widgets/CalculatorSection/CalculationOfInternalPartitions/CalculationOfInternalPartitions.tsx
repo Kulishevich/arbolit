@@ -9,8 +9,15 @@ import { TextField } from '@/shared/ui/text-field';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { createOrder } from '@/shared/api/createOrder';
 import { showToast } from '@/shared/ui/toast';
+import { useBreakpoint } from '@/shared/lib/hooks/useBreakpoint';
 
-export const CalculationOfInternalPartitions = () => {
+export const CalculationOfInternalPartitions = ({
+  arbolitPrice,
+}: {
+  arbolitPrice: number;
+}) => {
+  const { isTablet } = useBreakpoint();
+
   const [formData, setFormData] = useState({
     // Шаг 1
     houseLength: 1, // "Длина, м:"
@@ -48,11 +55,25 @@ export const CalculationOfInternalPartitions = () => {
     if (step > 1) {
       setStep((prev) => --prev);
     }
+    const el = document.getElementById('step-2');
+
+    if (el) {
+      const yOffset = !isTablet ? -200 : -100; // отступ сверху
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
   const stepIncrement = () => {
     if (step < 3) {
       setStep((prev) => ++prev);
+    }
+    const el = document.getElementById('step-2');
+
+    if (el) {
+      const yOffset = !isTablet ? -200 : -100; // отступ сверху
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
@@ -79,7 +100,7 @@ export const CalculationOfInternalPartitions = () => {
     const blocksCount = totalArea > 0 ? Math.ceil(totalArea / 0.15) : 0;
     const volume = totalArea > 0 ? +(totalArea * 0.2).toFixed(2) : 0;
 
-    const price = Math.round(volume * 8900);
+    const price = Math.round(volume * arbolitPrice);
     // S1 – площадь внутренних перегородок 1-го этажа
     // S2 – площадь внутренних перегородок 2-го этажа
     // totalArea – суммарная площадь перегородок
@@ -159,12 +180,14 @@ export const CalculationOfInternalPartitions = () => {
                 onValueChange={(v) => updateField('doorHeight', v)}
                 label="Высота двери, м:"
                 max={5}
+                step={0.1}
               />
               <RangeSlider
                 value={formData.doorWidth}
                 onValueChange={(v) => updateField('doorWidth', v)}
                 label="Ширина двери, м:"
                 max={5}
+                step={0.1}
               />
 
               <div className={s.counterContainer}>
@@ -260,12 +283,14 @@ export const CalculationOfInternalPartitions = () => {
                 onValueChange={(v) => updateField('partitionDoorHeight', v)}
                 label="Высота двери, м:"
                 max={5}
+                step={0.1}
               />
               <RangeSlider
                 value={formData.partitionDoorWidth}
                 onValueChange={(v) => updateField('partitionDoorWidth', v)}
                 label="Ширина двери, м:"
                 max={5}
+                step={0.1}
               />
 
               <div className={s.counterContainer}>

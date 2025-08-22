@@ -9,8 +9,11 @@ import { TextField } from '@/shared/ui/text-field';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { createOrder } from '@/shared/api/createOrder';
 import { showToast } from '@/shared/ui/toast';
+import { useBreakpoint } from '@/shared/lib/hooks/useBreakpoint';
 
-export const BoxCalculator = () => {
+export const BoxCalculator = ({ arbolitPrice }: { arbolitPrice: number }) => {
+  const { isTablet } = useBreakpoint();
+
   const [formData, setFormData] = useState({
     width: 1, //ширина дома
     length: 1, //длина дома
@@ -52,11 +55,25 @@ export const BoxCalculator = () => {
     if (step < 3) {
       setStep((prev) => ++prev);
     }
+    const el = document.getElementById('step-1');
+
+    if (el) {
+      const yOffset = !isTablet ? -200 : -100; // отступ сверху
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
   const stepDecrement = () => {
     if (step > 1) {
       setStep((prev) => --prev);
+    }
+    const el = document.getElementById('step-1');
+
+    if (el) {
+      const yOffset = !isTablet ? -200 : -100; // отступ сверху
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
@@ -81,11 +98,9 @@ export const BoxCalculator = () => {
 
     // 1. Площадь стен (2 * высота дома * (ширина + длинна))
     const S_sten = 2 * height * (length + width);
-    console.log('Sстен =', S_sten);
 
     // 2. Площадь фронтонов (0.5 * Высота фротона * ширина здания * кол-во фронтонов )
     const S_fronton = 0.5 * gableHeight * width * gablesCount;
-    console.log('Sфронтов =', S_fronton);
 
     // 3. Окна и двери (ширина * высота * кол-во)
     const S_window1 = window1Width * window1Height * window1Count;
@@ -93,26 +108,23 @@ export const BoxCalculator = () => {
     const S_door = window3Width * window3Height * window3Count;
     // складываем все площади
     const S_windowsDoors = S_window1 + S_window2 + S_door;
-    console.log('Sокон+дверей = ', S_windowsDoors);
 
     // 4. Наружная площадь (площадь фротонов + площадь стен)
     const S_naruzh = S_sten + S_fronton;
-    console.log('Sнаруж = ', S_naruzh);
 
     // 5. Чистая площадь (наружная - площадь окон и дверей)
     const S_total = S_naruzh - S_windowsDoors;
-    console.log('Sобщ', S_total);
 
     // 6. Объем (площадь умножаем на толщину стен (толщина в метрах))
     const V = S_total * (wallThickness / 100); //делим толщину на 100 тк изначально она в см
     const totalV = V.toFixed(2);
 
     // 7. Цена (объём на цену)
-    const price = Math.round(V * 8900);
+    const price = Math.round(V * arbolitPrice);
 
     //8. Кол-во блоков: (тут под вопросом тк хз считать исходя из объёма или площади, может быть ошибка!!!)
     // если чистая площадь больше нуля то делим её на 0.15, если меньше то кол-во = 0
-    const blocksCount = S_total > 0 ? Math.ceil(S_total / 0.15) : 0;
+    const blocksCount = V > 0 ? Math.ceil(V * 33) : 0;
 
     return { price, totalV, blocksCount };
   }, [formData]);
