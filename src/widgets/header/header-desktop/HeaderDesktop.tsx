@@ -77,6 +77,10 @@ export const HeaderDesktop = ({
             items={catalogProducts}
             className="t-header"
           />
+          <Link className="t-header" href={`${paths.calculator}`}>
+            Калькулятор
+          </Link>
+
           <HeaderDropdown
             href={paths.about}
             title="О компании"

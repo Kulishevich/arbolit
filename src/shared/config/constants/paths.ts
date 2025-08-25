@@ -9,4 +9,5 @@ export const paths = {
   about: '/about',
   certificate: '/certificate',
   catalog: '/catalog',
+  calculator: '/calculator',
 };

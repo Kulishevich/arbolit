@@ -63,6 +63,10 @@ export const Footer = ({
                 items={aboutCompany}
                 className="body-2"
               />
+              <Link className="body-2" href={paths.calculator}>
+                Калькулятор
+              </Link>
+
               {blockStatus?.reviews_section_enabled && (
                 <Link className="body-2" href={navigation[1].path}>
                   {navigation[1].title}

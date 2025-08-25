@@ -79,6 +79,9 @@ export const HeaderBurgerMenu = ({
                 </Link>
               ))}
             </CollapseHeader>
+            <Link className="h2" href={paths.calculator}>
+              Калькулятор
+            </Link>
             {blockStatus?.reviews_section_enabled && (
               <Link className="h2" href={navigation[1].path}>
                 {navigation[1].title}
