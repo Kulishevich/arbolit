@@ -2,7 +2,8 @@ export type NewT = {
   content_blocks: ContentBlockT[];
   created_at: string;
   id: number;
-  photo_path: string;
+  photo_path: string | null;
+  background_photo_path: string | null;
   publication_date: string;
   subtitle: string;
   title: string;

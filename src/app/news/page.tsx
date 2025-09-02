@@ -34,7 +34,7 @@ const page = async ({
   if (!blockStatus?.news_section_enabled) {
     redirect('/');
   }
-
+  console.log(news);
   return (
     <main>
       <PagesHero className={styles.hero} image={newsBg}>

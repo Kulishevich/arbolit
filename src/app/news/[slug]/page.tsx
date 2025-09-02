@@ -37,7 +37,7 @@ const page = async ({ params }: Props) => {
     <main>
       <PagesHero
         className={styles.hero}
-        image={`${process.env.STORE_URL}/${info?.photo_path}`}
+        image={`${process.env.STORE_URL}/${info?.background_photo_path}`}
       >
         <PageInfo
           isWide

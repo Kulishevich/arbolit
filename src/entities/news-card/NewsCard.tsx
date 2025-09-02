@@ -5,12 +5,9 @@ import { Button } from '@/shared/ui/button';
 import clsx from 'clsx';
 import { slugifyWithOpts } from '@/shared/lib/utils/slugifyWithOpts';
 import { parseDate } from '@/shared/lib/utils/parcsDate';
+import { NewT } from '@/shared/types';
 
-interface NewsCardProps {
-  id: number;
-  title: string;
-  publication_date: string;
-  photo_path: string;
+interface NewsCardProps extends NewT {
   isLow?: boolean;
 }
 
